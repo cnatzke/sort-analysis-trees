@@ -1,0 +1,6168 @@
+GRG01BN00A { 
+Name:	GRG01BN00A
+Number:	0
+Address:	0x0000
+Digitizer:	GRF16
+EngCoeff:	0.867839 1.37574 -1.03333e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG01GN00A { 
+Name:	GRG01GN00A
+Number:	1
+Address:	0x0001
+Digitizer:	GRF16
+EngCoeff:	0.375853 1.32645 -1.46975e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG01RN00A { 
+Name:	GRG01RN00A
+Number:	2
+Address:	0x0002
+Digitizer:	GRF16
+EngCoeff:	0.164682 1.36647 -6.27791e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG01WN00A { 
+Name:	GRG01WN00A
+Number:	3
+Address:	0x0003
+Digitizer:	GRF16
+EngCoeff:	-0.0329572 1.33692 -1.83867e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01BN01X { 
+Name:	GRS01BN01X
+Number:	4
+Address:	0x0005
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01BN02X { 
+Name:	GRS01BN02X
+Number:	5
+Address:	0x0006
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01BN03X { 
+Name:	GRS01BN03X
+Number:	6
+Address:	0x0007
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01BN04X { 
+Name:	GRS01BN04X
+Number:	7
+Address:	0x0008
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01BN05X { 
+Name:	GRS01BN05X
+Number:	8
+Address:	0x0009
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01GN01X { 
+Name:	GRS01GN01X
+Number:	9
+Address:	0x000a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01GN02X { 
+Name:	GRS01GN02X
+Number:	10
+Address:	0x000b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01GN03X { 
+Name:	GRS01GN03X
+Number:	11
+Address:	0x000c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01GN04X { 
+Name:	GRS01GN04X
+Number:	12
+Address:	0x000d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01GN05X { 
+Name:	GRS01GN05X
+Number:	13
+Address:	0x000e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG01BN00B { 
+Name:	GRG01BN00B
+Number:	14
+Address:	0x0100
+Digitizer:	GRF16
+EngCoeff:	0.867839 1.37574 -1.03333e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG01GN00B { 
+Name:	GRG01GN00B
+Number:	15
+Address:	0x0101
+Digitizer:	GRF16
+EngCoeff:	0.375853 1.32645 -1.46975e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG01RN00B { 
+Name:	GRG01RN00B
+Number:	16
+Address:	0x0102
+Digitizer:	GRF16
+EngCoeff:	0.164682 1.36647 -6.27791e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG01WN00B { 
+Name:	GRG01WN00B
+Number:	17
+Address:	0x0103
+Digitizer:	GRF16
+EngCoeff:	-0.0329572 1.33692 -1.83867e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01RN01X { 
+Name:	GRS01RN01X
+Number:	18
+Address:	0x0105
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01RN02X { 
+Name:	GRS01RN02X
+Number:	19
+Address:	0x0106
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01RN03X { 
+Name:	GRS01RN03X
+Number:	20
+Address:	0x0107
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01RN04X { 
+Name:	GRS01RN04X
+Number:	21
+Address:	0x0108
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01RN05X { 
+Name:	GRS01RN05X
+Number:	22
+Address:	0x0109
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01WN01X { 
+Name:	GRS01WN01X
+Number:	23
+Address:	0x010a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01WN02X { 
+Name:	GRS01WN02X
+Number:	24
+Address:	0x010b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01WN03X { 
+Name:	GRS01WN03X
+Number:	25
+Address:	0x010c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01WN04X { 
+Name:	GRS01WN04X
+Number:	26
+Address:	0x010d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS01WN05X { 
+Name:	GRS01WN05X
+Number:	27
+Address:	0x010e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG02BN00A { 
+Name:	GRG02BN00A
+Number:	28
+Address:	0x0200
+Digitizer:	GRF16
+EngCoeff:	1.22513 1.35212 2.14557e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG02GN00A { 
+Name:	GRG02GN00A
+Number:	29
+Address:	0x0201
+Digitizer:	GRF16
+EngCoeff:	1 1 1
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG02RN00A { 
+Name:	GRG02RN00A
+Number:	30
+Address:	0x0202
+Digitizer:	GRF16
+EngCoeff:	1 1 1
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG02WN00A { 
+Name:	GRG02WN00A
+Number:	31
+Address:	0x0203
+Digitizer:	GRF16
+EngCoeff:	0.521503 1.3452 -7.47721e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02BN01X { 
+Name:	GRS02BN01X
+Number:	32
+Address:	0x0205
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02BN02X { 
+Name:	GRS02BN02X
+Number:	33
+Address:	0x0206
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02BN03X { 
+Name:	GRS02BN03X
+Number:	34
+Address:	0x0207
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02BN04X { 
+Name:	GRS02BN04X
+Number:	35
+Address:	0x0208
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02BN05X { 
+Name:	GRS02BN05X
+Number:	36
+Address:	0x0209
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02GN01X { 
+Name:	GRS02GN01X
+Number:	37
+Address:	0x020a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02GN02X { 
+Name:	GRS02GN02X
+Number:	38
+Address:	0x020b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02GN03X { 
+Name:	GRS02GN03X
+Number:	39
+Address:	0x020c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02GN04X { 
+Name:	GRS02GN04X
+Number:	40
+Address:	0x020d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02GN05X { 
+Name:	GRS02GN05X
+Number:	41
+Address:	0x020e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG02BN00B { 
+Name:	GRG02BN00B
+Number:	42
+Address:	0x0300
+Digitizer:	GRF16
+EngCoeff:	1.22513 1.35212 2.14557e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG02GN00B { 
+Name:	GRG02GN00B
+Number:	43
+Address:	0x0301
+Digitizer:	GRF16
+EngCoeff:	1 1 1
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG02RN00B { 
+Name:	GRG02RN00B
+Number:	44
+Address:	0x0302
+Digitizer:	GRF16
+EngCoeff:	1 1 1
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG02WN00B { 
+Name:	GRG02WN00B
+Number:	45
+Address:	0x0303
+Digitizer:	GRF16
+EngCoeff:	0.521503 1.3452 -7.47721e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02RN01X { 
+Name:	GRS02RN01X
+Number:	46
+Address:	0x0305
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02RN02X { 
+Name:	GRS02RN02X
+Number:	47
+Address:	0x0306
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02RN03X { 
+Name:	GRS02RN03X
+Number:	48
+Address:	0x0307
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02RN04X { 
+Name:	GRS02RN04X
+Number:	49
+Address:	0x0308
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02RN05X { 
+Name:	GRS02RN05X
+Number:	50
+Address:	0x0309
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02WN01X { 
+Name:	GRS02WN01X
+Number:	51
+Address:	0x030a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02WN02X { 
+Name:	GRS02WN02X
+Number:	52
+Address:	0x030b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02WN03X { 
+Name:	GRS02WN03X
+Number:	53
+Address:	0x030c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02WN04X { 
+Name:	GRS02WN04X
+Number:	54
+Address:	0x030d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS02WN05X { 
+Name:	GRS02WN05X
+Number:	55
+Address:	0x030e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG03BN00A { 
+Name:	GRG03BN00A
+Number:	56
+Address:	0x0400
+Digitizer:	GRF16
+EngCoeff:	0.669563 1.26779 -8.20679e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG03GN00A { 
+Name:	GRG03GN00A
+Number:	57
+Address:	0x0401
+Digitizer:	GRF16
+EngCoeff:	0.658456 1.3119 1.41772e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG03RN00A { 
+Name:	GRG03RN00A
+Number:	58
+Address:	0x0402
+Digitizer:	GRF16
+EngCoeff:	0.318339 1.34343 5.35885e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG03WN00A { 
+Name:	GRG03WN00A
+Number:	59
+Address:	0x0403
+Digitizer:	GRF16
+EngCoeff:	0.638648 1.28365 -4.22043e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03BN01X { 
+Name:	GRS03BN01X
+Number:	60
+Address:	0x0404
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03BN02X { 
+Name:	GRS03BN02X
+Number:	61
+Address:	0x0406
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03BN03X { 
+Name:	GRS03BN03X
+Number:	62
+Address:	0x0407
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03BN04X { 
+Name:	GRS03BN04X
+Number:	63
+Address:	0x0408
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03BN05X { 
+Name:	GRS03BN05X
+Number:	64
+Address:	0x0409
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03GN01X { 
+Name:	GRS03GN01X
+Number:	65
+Address:	0x040a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03GN02X { 
+Name:	GRS03GN02X
+Number:	66
+Address:	0x040b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03GN03X { 
+Name:	GRS03GN03X
+Number:	67
+Address:	0x040c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03GN04X { 
+Name:	GRS03GN04X
+Number:	68
+Address:	0x040d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03GN05X { 
+Name:	GRS03GN05X
+Number:	69
+Address:	0x040e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG03BN00B { 
+Name:	GRG03BN00B
+Number:	70
+Address:	0x0500
+Digitizer:	GRF16
+EngCoeff:	0.669563 1.26779 -8.20679e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG03GN00B { 
+Name:	GRG03GN00B
+Number:	71
+Address:	0x0501
+Digitizer:	GRF16
+EngCoeff:	0.658456 1.3119 1.41772e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG03RN00B { 
+Name:	GRG03RN00B
+Number:	72
+Address:	0x0502
+Digitizer:	GRF16
+EngCoeff:	0.318339 1.34343 5.35885e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG03WN00B { 
+Name:	GRG03WN00B
+Number:	73
+Address:	0x0503
+Digitizer:	GRF16
+EngCoeff:	0.638648 1.28365 -4.22043e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03RN01X { 
+Name:	GRS03RN01X
+Number:	74
+Address:	0x0505
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03RN02X { 
+Name:	GRS03RN02X
+Number:	75
+Address:	0x0506
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03RN03X { 
+Name:	GRS03RN03X
+Number:	76
+Address:	0x0507
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03RN04X { 
+Name:	GRS03RN04X
+Number:	77
+Address:	0x0508
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03RN05X { 
+Name:	GRS03RN05X
+Number:	78
+Address:	0x0509
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03WN01X { 
+Name:	GRS03WN01X
+Number:	79
+Address:	0x050a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03WN02X { 
+Name:	GRS03WN02X
+Number:	80
+Address:	0x050b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03WN03X { 
+Name:	GRS03WN03X
+Number:	81
+Address:	0x050c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03WN04X { 
+Name:	GRS03WN04X
+Number:	82
+Address:	0x050d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS03WN05X { 
+Name:	GRS03WN05X
+Number:	83
+Address:	0x050e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG04BN00A { 
+Name:	GRG04BN00A
+Number:	84
+Address:	0x0600
+Digitizer:	GRF16
+EngCoeff:	0.615609 1.26333 -1.47277e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG04GN00A { 
+Name:	GRG04GN00A
+Number:	85
+Address:	0x0601
+Digitizer:	GRF16
+EngCoeff:	1.06425 1.27441 -2.27886e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG04RN00A { 
+Name:	GRG04RN00A
+Number:	86
+Address:	0x0602
+Digitizer:	GRF16
+EngCoeff:	-0.419216 1.28002 -7.73457e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG04WN00A { 
+Name:	GRG04WN00A
+Number:	87
+Address:	0x0603
+Digitizer:	GRF16
+EngCoeff:	0.271847 1.25327 -7.23096e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04BN01X { 
+Name:	GRS04BN01X
+Number:	88
+Address:	0x0605
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04BN02X { 
+Name:	GRS04BN02X
+Number:	89
+Address:	0x0606
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04BN03X { 
+Name:	GRS04BN03X
+Number:	90
+Address:	0x0607
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04BN04X { 
+Name:	GRS04BN04X
+Number:	91
+Address:	0x0608
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04BN05X { 
+Name:	GRS04BN05X
+Number:	92
+Address:	0x0609
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04GN01X { 
+Name:	GRS04GN01X
+Number:	93
+Address:	0x060a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04GN02X { 
+Name:	GRS04GN02X
+Number:	94
+Address:	0x060b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04GN03X { 
+Name:	GRS04GN03X
+Number:	95
+Address:	0x060c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04GN04X { 
+Name:	GRS04GN04X
+Number:	96
+Address:	0x060d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04GN05X { 
+Name:	GRS04GN05X
+Number:	97
+Address:	0x060e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG04BN00B { 
+Name:	GRG04BN00B
+Number:	98
+Address:	0x0700
+Digitizer:	GRF16
+EngCoeff:	0.615609 1.26333 -1.47277e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG04GN00B { 
+Name:	GRG04GN00B
+Number:	99
+Address:	0x0701
+Digitizer:	GRF16
+EngCoeff:	1.06425 1.27441 -2.27886e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG04RN00B { 
+Name:	GRG04RN00B
+Number:	100
+Address:	0x0702
+Digitizer:	GRF16
+EngCoeff:	-0.419216 1.28002 -7.73457e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG04WN00B { 
+Name:	GRG04WN00B
+Number:	101
+Address:	0x0703
+Digitizer:	GRF16
+EngCoeff:	0.271847 1.25327 -7.23096e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04RN01X { 
+Name:	GRS04RN01X
+Number:	102
+Address:	0x0705
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04RN02X { 
+Name:	GRS04RN02X
+Number:	103
+Address:	0x0706
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04RN03X { 
+Name:	GRS04RN03X
+Number:	104
+Address:	0x0707
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04RN04X { 
+Name:	GRS04RN04X
+Number:	105
+Address:	0x0708
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04RN05X { 
+Name:	GRS04RN05X
+Number:	106
+Address:	0x0709
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04WN01X { 
+Name:	GRS04WN01X
+Number:	107
+Address:	0x070a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04WN02X { 
+Name:	GRS04WN02X
+Number:	108
+Address:	0x070b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04WN03X { 
+Name:	GRS04WN03X
+Number:	109
+Address:	0x070c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04WN04X { 
+Name:	GRS04WN04X
+Number:	110
+Address:	0x070d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS04WN05X { 
+Name:	GRS04WN05X
+Number:	111
+Address:	0x070e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG05BN00A { 
+Name:	GRG05BN00A
+Number:	112
+Address:	0x0800
+Digitizer:	GRF16
+EngCoeff:	0.653363 1.26738 -4.2195e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG05GN00A { 
+Name:	GRG05GN00A
+Number:	113
+Address:	0x0801
+Digitizer:	GRF16
+EngCoeff:	0.515896 1.34941 -1.20921e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG05RN00A { 
+Name:	GRG05RN00A
+Number:	114
+Address:	0x0802
+Digitizer:	GRF16
+EngCoeff:	0.856142 1.32167 4.19921e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG05WN00A { 
+Name:	GRG05WN00A
+Number:	115
+Address:	0x0803
+Digitizer:	GRF16
+EngCoeff:	-0.47787 1.26208 -8.81428e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05BN01X { 
+Name:	GRS05BN01X
+Number:	116
+Address:	0x0805
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05BN02X { 
+Name:	GRS05BN02X
+Number:	117
+Address:	0x0806
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05BN03X { 
+Name:	GRS05BN03X
+Number:	118
+Address:	0x0807
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05BN04X { 
+Name:	GRS05BN04X
+Number:	119
+Address:	0x0808
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05BN05X { 
+Name:	GRS05BN05X
+Number:	120
+Address:	0x0809
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05GN01X { 
+Name:	GRS05GN01X
+Number:	121
+Address:	0x080a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05GN02X { 
+Name:	GRS05GN02X
+Number:	122
+Address:	0x080b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05GN03X { 
+Name:	GRS05GN03X
+Number:	123
+Address:	0x080c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05GN04X { 
+Name:	GRS05GN04X
+Number:	124
+Address:	0x080d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05GN05X { 
+Name:	GRS05GN05X
+Number:	125
+Address:	0x080f
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG05BN00B { 
+Name:	GRG05BN00B
+Number:	126
+Address:	0x0900
+Digitizer:	GRF16
+EngCoeff:	0.653363 1.26738 -4.2195e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG05GN00B { 
+Name:	GRG05GN00B
+Number:	127
+Address:	0x0901
+Digitizer:	GRF16
+EngCoeff:	0.515896 1.34941 -1.20921e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG05RN00B { 
+Name:	GRG05RN00B
+Number:	128
+Address:	0x0902
+Digitizer:	GRF16
+EngCoeff:	0.856142 1.32167 4.19921e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG05WN00B { 
+Name:	GRG05WN00B
+Number:	129
+Address:	0x0903
+Digitizer:	GRF16
+EngCoeff:	-0.47787 1.26208 -8.81428e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05RN01X { 
+Name:	GRS05RN01X
+Number:	130
+Address:	0x0905
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05RN02X { 
+Name:	GRS05RN02X
+Number:	131
+Address:	0x0906
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05RN03X { 
+Name:	GRS05RN03X
+Number:	132
+Address:	0x0907
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05RN04X { 
+Name:	GRS05RN04X
+Number:	133
+Address:	0x0908
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05RN05X { 
+Name:	GRS05RN05X
+Number:	134
+Address:	0x0909
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05WN01X { 
+Name:	GRS05WN01X
+Number:	135
+Address:	0x090a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05WN02X { 
+Name:	GRS05WN02X
+Number:	136
+Address:	0x090b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05WN03X { 
+Name:	GRS05WN03X
+Number:	137
+Address:	0x090c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05WN04X { 
+Name:	GRS05WN04X
+Number:	138
+Address:	0x090d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS05WN05X { 
+Name:	GRS05WN05X
+Number:	139
+Address:	0x090e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG06BN00A { 
+Name:	GRG06BN00A
+Number:	140
+Address:	0x0a00
+Digitizer:	GRF16
+EngCoeff:	0.60743 1.2472 -3.83772e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG06GN00A { 
+Name:	GRG06GN00A
+Number:	141
+Address:	0x0a01
+Digitizer:	GRF16
+EngCoeff:	0.103628 1.2935 -8.85496e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG06RN00A { 
+Name:	GRG06RN00A
+Number:	142
+Address:	0x0a02
+Digitizer:	GRF16
+EngCoeff:	1.00922 1.24211 5.19693e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG06WN00A { 
+Name:	GRG06WN00A
+Number:	143
+Address:	0x0a03
+Digitizer:	GRF16
+EngCoeff:	0.500406 1.18925 -3.86425e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06BN01X { 
+Name:	GRS06BN01X
+Number:	144
+Address:	0x0a05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06BN02X { 
+Name:	GRS06BN02X
+Number:	145
+Address:	0x0a06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06BN03X { 
+Name:	GRS06BN03X
+Number:	146
+Address:	0x0a07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06BN04X { 
+Name:	GRS06BN04X
+Number:	147
+Address:	0x0a08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06BN05X { 
+Name:	GRS06BN05X
+Number:	148
+Address:	0x0a09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06GN01X { 
+Name:	GRS06GN01X
+Number:	149
+Address:	0x0a0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06GN02X { 
+Name:	GRS06GN02X
+Number:	150
+Address:	0x0a0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06GN03X { 
+Name:	GRS06GN03X
+Number:	151
+Address:	0x0a0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06GN04X { 
+Name:	GRS06GN04X
+Number:	152
+Address:	0x0a0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06GN05X { 
+Name:	GRS06GN05X
+Number:	153
+Address:	0x0a0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG06BN00B { 
+Name:	GRG06BN00B
+Number:	154
+Address:	0x0b00
+Digitizer:	GRF16
+EngCoeff:	0.60743 1.2472 -3.83772e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG06GN00B { 
+Name:	GRG06GN00B
+Number:	155
+Address:	0x0b01
+Digitizer:	GRF16
+EngCoeff:	0.103628 1.2935 -8.85496e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG06RN00B { 
+Name:	GRG06RN00B
+Number:	156
+Address:	0x0b02
+Digitizer:	GRF16
+EngCoeff:	1.00922 1.24211 5.19693e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG06WN00B { 
+Name:	GRG06WN00B
+Number:	157
+Address:	0x0b03
+Digitizer:	GRF16
+EngCoeff:	0.500406 1.18925 -3.86425e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06RN01X { 
+Name:	GRS06RN01X
+Number:	158
+Address:	0x0b05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06RN02X { 
+Name:	GRS06RN02X
+Number:	159
+Address:	0x0b06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06RN03X { 
+Name:	GRS06RN03X
+Number:	160
+Address:	0x0b07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06RN04X { 
+Name:	GRS06RN04X
+Number:	161
+Address:	0x0b08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06RN05X { 
+Name:	GRS06RN05X
+Number:	162
+Address:	0x0b09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06WN01X { 
+Name:	GRS06WN01X
+Number:	163
+Address:	0x0b0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06WN02X { 
+Name:	GRS06WN02X
+Number:	164
+Address:	0x0b0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06WN03X { 
+Name:	GRS06WN03X
+Number:	165
+Address:	0x0b0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06WN04X { 
+Name:	GRS06WN04X
+Number:	166
+Address:	0x0b0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS06WN05X { 
+Name:	GRS06WN05X
+Number:	167
+Address:	0x0b0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG07BN00A { 
+Name:	GRG07BN00A
+Number:	168
+Address:	0x0c00
+Digitizer:	GRF16
+EngCoeff:	0.594774 1.24362 -3.35323e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG07GN00A { 
+Name:	GRG07GN00A
+Number:	169
+Address:	0x0c01
+Digitizer:	GRF16
+EngCoeff:	0.774871 1.26105 -3.21918e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG07RN00A { 
+Name:	GRG07RN00A
+Number:	170
+Address:	0x0c02
+Digitizer:	GRF16
+EngCoeff:	0.998073 1.2807 7.6588e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG07WN00A { 
+Name:	GRG07WN00A
+Number:	171
+Address:	0x0c03
+Digitizer:	GRF16
+EngCoeff:	0.103592 1.27155 -1.20752e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07BN01X { 
+Name:	GRS07BN01X
+Number:	172
+Address:	0x0c05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07BN02X { 
+Name:	GRS07BN02X
+Number:	173
+Address:	0x0c06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07BN03X { 
+Name:	GRS07BN03X
+Number:	174
+Address:	0x0c07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07BN04X { 
+Name:	GRS07BN04X
+Number:	175
+Address:	0x0c08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07BN05X { 
+Name:	GRS07BN05X
+Number:	176
+Address:	0x0c09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07GN01X { 
+Name:	GRS07GN01X
+Number:	177
+Address:	0x0c0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07GN02X { 
+Name:	GRS07GN02X
+Number:	178
+Address:	0x0c0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07GN03X { 
+Name:	GRS07GN03X
+Number:	179
+Address:	0x0c0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07GN04X { 
+Name:	GRS07GN04X
+Number:	180
+Address:	0x0c0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07GN05X { 
+Name:	GRS07GN05X
+Number:	181
+Address:	0x0c0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG07BN00B { 
+Name:	GRG07BN00B
+Number:	182
+Address:	0x0d00
+Digitizer:	GRF16
+EngCoeff:	0.594774 1.24362 -3.35323e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG07GN00B { 
+Name:	GRG07GN00B
+Number:	183
+Address:	0x0d01
+Digitizer:	GRF16
+EngCoeff:	0.774871 1.26105 -3.21918e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG07RN00B { 
+Name:	GRG07RN00B
+Number:	184
+Address:	0x0d02
+Digitizer:	GRF16
+EngCoeff:	0.998073 1.2807 7.6588e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG07WN00B { 
+Name:	GRG07WN00B
+Number:	185
+Address:	0x0d03
+Digitizer:	GRF16
+EngCoeff:	0.103592 1.27155 -1.20752e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07RN01X { 
+Name:	GRS07RN01X
+Number:	186
+Address:	0x0d05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07RN02X { 
+Name:	GRS07RN02X
+Number:	187
+Address:	0x0d06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07RN03X { 
+Name:	GRS07RN03X
+Number:	188
+Address:	0x0d07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07RN04X { 
+Name:	GRS07RN04X
+Number:	189
+Address:	0x0d08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07RN05X { 
+Name:	GRS07RN05X
+Number:	190
+Address:	0x0d09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07WN01X { 
+Name:	GRS07WN01X
+Number:	191
+Address:	0x0d0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07WN02X { 
+Name:	GRS07WN02X
+Number:	192
+Address:	0x0d0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07WN03X { 
+Name:	GRS07WN03X
+Number:	193
+Address:	0x0d0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07WN04X { 
+Name:	GRS07WN04X
+Number:	194
+Address:	0x0d0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS07WN05X { 
+Name:	GRS07WN05X
+Number:	195
+Address:	0x0d0f
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG08BN00A { 
+Name:	GRG08BN00A
+Number:	196
+Address:	0x0e00
+Digitizer:	GRF16
+EngCoeff:	0.862088 1.3878 -3.92396e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG08GN00A { 
+Name:	GRG08GN00A
+Number:	197
+Address:	0x0e01
+Digitizer:	GRF16
+EngCoeff:	0.0871234 1.38665 -1.05874e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG08RN00A { 
+Name:	GRG08RN00A
+Number:	198
+Address:	0x0e02
+Digitizer:	GRF16
+EngCoeff:	1.29462 1.3943 -4.88706e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG08WN00A { 
+Name:	GRG08WN00A
+Number:	199
+Address:	0x0e03
+Digitizer:	GRF16
+EngCoeff:	0.259321 1.39259 -7.28555e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08BN01X { 
+Name:	GRS08BN01X
+Number:	200
+Address:	0x0e05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08BN02X { 
+Name:	GRS08BN02X
+Number:	201
+Address:	0x0e06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08BN03X { 
+Name:	GRS08BN03X
+Number:	202
+Address:	0x0e07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08BN04X { 
+Name:	GRS08BN04X
+Number:	203
+Address:	0x0e08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08BN05X { 
+Name:	GRS08BN05X
+Number:	204
+Address:	0x0e09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08GN01X { 
+Name:	GRS08GN01X
+Number:	205
+Address:	0x0e0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08GN02X { 
+Name:	GRS08GN02X
+Number:	206
+Address:	0x0e0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08GN03X { 
+Name:	GRS08GN03X
+Number:	207
+Address:	0x0e0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08GN04X { 
+Name:	GRS08GN04X
+Number:	208
+Address:	0x0e0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08GN05X { 
+Name:	GRS08GN05X
+Number:	209
+Address:	0x0e0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG08BN00B { 
+Name:	GRG08BN00B
+Number:	210
+Address:	0x0f00
+Digitizer:	GRF16
+EngCoeff:	0.862088 1.3878 -3.92396e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG08GN00B { 
+Name:	GRG08GN00B
+Number:	211
+Address:	0x0f04
+Digitizer:	GRF16
+EngCoeff:	0.0871234 1.38665 -1.05874e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG08RN00B { 
+Name:	GRG08RN00B
+Number:	212
+Address:	0x0f02
+Digitizer:	GRF16
+EngCoeff:	1.29462 1.3943 -4.88706e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG08WN00B { 
+Name:	GRG08WN00B
+Number:	213
+Address:	0x0f03
+Digitizer:	GRF16
+EngCoeff:	0.259321 1.39259 -7.28555e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08RN01X { 
+Name:	GRS08RN01X
+Number:	214
+Address:	0x0f05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08RN02X { 
+Name:	GRS08RN02X
+Number:	215
+Address:	0x0f06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08RN03X { 
+Name:	GRS08RN03X
+Number:	216
+Address:	0x0f07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08RN04X { 
+Name:	GRS08RN04X
+Number:	217
+Address:	0x0f08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08RN05X { 
+Name:	GRS08RN05X
+Number:	218
+Address:	0x0f09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08WN01X { 
+Name:	GRS08WN01X
+Number:	219
+Address:	0x0f0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08WN02X { 
+Name:	GRS08WN02X
+Number:	220
+Address:	0x0f0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08WN03X { 
+Name:	GRS08WN03X
+Number:	221
+Address:	0x0f0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08WN04X { 
+Name:	GRS08WN04X
+Number:	222
+Address:	0x0f0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS08WN05X { 
+Name:	GRS08WN05X
+Number:	223
+Address:	0x0f0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG09BN00A { 
+Name:	GRG09BN00A
+Number:	224
+Address:	0x1000
+Digitizer:	GRF16
+EngCoeff:	0.342746 1.31466 -4.9826e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG09GN00A { 
+Name:	GRG09GN00A
+Number:	225
+Address:	0x1004
+Digitizer:	GRF16
+EngCoeff:	0.708755 1.34725 -9.71349e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG09RN00A { 
+Name:	GRG09RN00A
+Number:	226
+Address:	0x1002
+Digitizer:	GRF16
+EngCoeff:	0.447745 1.35303 -1.24234e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG09WN00A { 
+Name:	GRG09WN00A
+Number:	227
+Address:	0x1003
+Digitizer:	GRF16
+EngCoeff:	0.550344 1.34929 -1.41962e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09BN01X { 
+Name:	GRS09BN01X
+Number:	228
+Address:	0x1005
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09BN02X { 
+Name:	GRS09BN02X
+Number:	229
+Address:	0x1006
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09BN03X { 
+Name:	GRS09BN03X
+Number:	230
+Address:	0x1007
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09BN04X { 
+Name:	GRS09BN04X
+Number:	231
+Address:	0x1008
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09BN05X { 
+Name:	GRS09BN05X
+Number:	232
+Address:	0x1009
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09GN01X { 
+Name:	GRS09GN01X
+Number:	233
+Address:	0x100a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09GN02X { 
+Name:	GRS09GN02X
+Number:	234
+Address:	0x100b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09GN03X { 
+Name:	GRS09GN03X
+Number:	235
+Address:	0x100c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09GN04X { 
+Name:	GRS09GN04X
+Number:	236
+Address:	0x100d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09GN05X { 
+Name:	GRS09GN05X
+Number:	237
+Address:	0x100e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG09BN00B { 
+Name:	GRG09BN00B
+Number:	238
+Address:	0x1100
+Digitizer:	GRF16
+EngCoeff:	0.342746 1.31466 -4.9826e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG09GN00B { 
+Name:	GRG09GN00B
+Number:	239
+Address:	0x1101
+Digitizer:	GRF16
+EngCoeff:	0.708755 1.34725 -9.71349e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG09RN00B { 
+Name:	GRG09RN00B
+Number:	240
+Address:	0x1102
+Digitizer:	GRF16
+EngCoeff:	0.447745 1.35303 -1.24234e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG09WN00B { 
+Name:	GRG09WN00B
+Number:	241
+Address:	0x1103
+Digitizer:	GRF16
+EngCoeff:	0.550344 1.34929 -1.41962e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09RN01X { 
+Name:	GRS09RN01X
+Number:	242
+Address:	0x1105
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09RN02X { 
+Name:	GRS09RN02X
+Number:	243
+Address:	0x1106
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09RN03X { 
+Name:	GRS09RN03X
+Number:	244
+Address:	0x1107
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09RN04X { 
+Name:	GRS09RN04X
+Number:	245
+Address:	0x1108
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09RN05X { 
+Name:	GRS09RN05X
+Number:	246
+Address:	0x1109
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09WN01X { 
+Name:	GRS09WN01X
+Number:	247
+Address:	0x110a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09WN02X { 
+Name:	GRS09WN02X
+Number:	248
+Address:	0x110b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09WN03X { 
+Name:	GRS09WN03X
+Number:	249
+Address:	0x110c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09WN04X { 
+Name:	GRS09WN04X
+Number:	250
+Address:	0x110d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS09WN05X { 
+Name:	GRS09WN05X
+Number:	251
+Address:	0x110e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG10BN00A { 
+Name:	GRG10BN00A
+Number:	252
+Address:	0x1200
+Digitizer:	GRF16
+EngCoeff:	0.0363571 1.39154 -1.56636e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG10GN00A { 
+Name:	GRG10GN00A
+Number:	253
+Address:	0x1201
+Digitizer:	GRF16
+EngCoeff:	0.235745 1.35977 -1.8903e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG10RN00A { 
+Name:	GRG10RN00A
+Number:	254
+Address:	0x1202
+Digitizer:	GRF16
+EngCoeff:	0.225561 1.35716 -2.94032e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG10WN00A { 
+Name:	GRG10WN00A
+Number:	255
+Address:	0x1203
+Digitizer:	GRF16
+EngCoeff:	0.807764 1.33204 -7.34225e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10BN01X { 
+Name:	GRS10BN01X
+Number:	256
+Address:	0x1205
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10BN02X { 
+Name:	GRS10BN02X
+Number:	257
+Address:	0x1206
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10BN03X { 
+Name:	GRS10BN03X
+Number:	258
+Address:	0x1207
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10BN04X { 
+Name:	GRS10BN04X
+Number:	259
+Address:	0x1208
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10BN05X { 
+Name:	GRS10BN05X
+Number:	260
+Address:	0x1209
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10GN01X { 
+Name:	GRS10GN01X
+Number:	261
+Address:	0x120a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10GN02X { 
+Name:	GRS10GN02X
+Number:	262
+Address:	0x120b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10GN03X { 
+Name:	GRS10GN03X
+Number:	263
+Address:	0x120c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10GN04X { 
+Name:	GRS10GN04X
+Number:	264
+Address:	0x120d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10GN05X { 
+Name:	GRS10GN05X
+Number:	265
+Address:	0x120e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG10BN00B { 
+Name:	GRG10BN00B
+Number:	266
+Address:	0x1300
+Digitizer:	GRF16
+EngCoeff:	0.0363571 1.39154 -1.56636e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG10GN00B { 
+Name:	GRG10GN00B
+Number:	267
+Address:	0x1301
+Digitizer:	GRF16
+EngCoeff:	0.235745 1.35977 -1.8903e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG10RN00B { 
+Name:	GRG10RN00B
+Number:	268
+Address:	0x1302
+Digitizer:	GRF16
+EngCoeff:	0.225561 1.35716 -2.94032e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG10WN00B { 
+Name:	GRG10WN00B
+Number:	269
+Address:	0x1303
+Digitizer:	GRF16
+EngCoeff:	0.807764 1.33204 -7.34225e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10RN01X { 
+Name:	GRS10RN01X
+Number:	270
+Address:	0x1305
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10RN02X { 
+Name:	GRS10RN02X
+Number:	271
+Address:	0x1306
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10RN03X { 
+Name:	GRS10RN03X
+Number:	272
+Address:	0x1307
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10RN04X { 
+Name:	GRS10RN04X
+Number:	273
+Address:	0x1308
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10RN05X { 
+Name:	GRS10RN05X
+Number:	274
+Address:	0x1309
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10WN01X { 
+Name:	GRS10WN01X
+Number:	275
+Address:	0x130a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10WN02X { 
+Name:	GRS10WN02X
+Number:	276
+Address:	0x130b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10WN03X { 
+Name:	GRS10WN03X
+Number:	277
+Address:	0x130c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10WN04X { 
+Name:	GRS10WN04X
+Number:	278
+Address:	0x130d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS10WN05X { 
+Name:	GRS10WN05X
+Number:	279
+Address:	0x130e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG11BN00A { 
+Name:	GRG11BN00A
+Number:	280
+Address:	0x1400
+Digitizer:	GRF16
+EngCoeff:	0.858882 1.32811 -1.59326e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG11GN00A { 
+Name:	GRG11GN00A
+Number:	281
+Address:	0x1401
+Digitizer:	GRF16
+EngCoeff:	0.400604 1.29128 -2.72036e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG11RN00A { 
+Name:	GRG11RN00A
+Number:	282
+Address:	0x1402
+Digitizer:	GRF16
+EngCoeff:	0.304936 1.34081 2.02998e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG11WN00A { 
+Name:	GRG11WN00A
+Number:	283
+Address:	0x1403
+Digitizer:	GRF16
+EngCoeff:	0.632867 1.33133 -8.17795e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11BN01X { 
+Name:	GRS11BN01X
+Number:	284
+Address:	0x1405
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11BN02X { 
+Name:	GRS11BN02X
+Number:	285
+Address:	0x1406
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11BN03X { 
+Name:	GRS11BN03X
+Number:	286
+Address:	0x1407
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11BN04X { 
+Name:	GRS11BN04X
+Number:	287
+Address:	0x1408
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11BN05X { 
+Name:	GRS11BN05X
+Number:	288
+Address:	0x1409
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11GN01X { 
+Name:	GRS11GN01X
+Number:	289
+Address:	0x140a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11GN02X { 
+Name:	GRS11GN02X
+Number:	290
+Address:	0x140b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11GN03X { 
+Name:	GRS11GN03X
+Number:	291
+Address:	0x140c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11GN04X { 
+Name:	GRS11GN04X
+Number:	292
+Address:	0x140d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11GN05X { 
+Name:	GRS11GN05X
+Number:	293
+Address:	0x140e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG11BN00B { 
+Name:	GRG11BN00B
+Number:	294
+Address:	0x1500
+Digitizer:	GRF16
+EngCoeff:	0.858882 1.32811 -1.59326e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG11GN00B { 
+Name:	GRG11GN00B
+Number:	295
+Address:	0x1501
+Digitizer:	GRF16
+EngCoeff:	0.400604 1.29128 -2.72036e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG11RN00B { 
+Name:	GRG11RN00B
+Number:	296
+Address:	0x1502
+Digitizer:	GRF16
+EngCoeff:	0.304936 1.34081 2.02998e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG11WN00B { 
+Name:	GRG11WN00B
+Number:	297
+Address:	0x1503
+Digitizer:	GRF16
+EngCoeff:	0.632867 1.33133 -8.17795e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11RN01X { 
+Name:	GRS11RN01X
+Number:	298
+Address:	0x1505
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11RN02X { 
+Name:	GRS11RN02X
+Number:	299
+Address:	0x1506
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11RN03X { 
+Name:	GRS11RN03X
+Number:	300
+Address:	0x1507
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11RN04X { 
+Name:	GRS11RN04X
+Number:	301
+Address:	0x1508
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11RN05X { 
+Name:	GRS11RN05X
+Number:	302
+Address:	0x1509
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11WN01X { 
+Name:	GRS11WN01X
+Number:	303
+Address:	0x150a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11WN02X { 
+Name:	GRS11WN02X
+Number:	304
+Address:	0x150b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11WN03X { 
+Name:	GRS11WN03X
+Number:	305
+Address:	0x150c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11WN04X { 
+Name:	GRS11WN04X
+Number:	306
+Address:	0x150d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS11WN05X { 
+Name:	GRS11WN05X
+Number:	307
+Address:	0x150e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG12BN00A { 
+Name:	GRG12BN00A
+Number:	308
+Address:	0x1600
+Digitizer:	GRF16
+EngCoeff:	0.441237 1.28189 -1.00077e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG12GN00A { 
+Name:	GRG12GN00A
+Number:	309
+Address:	0x1601
+Digitizer:	GRF16
+EngCoeff:	0.995807 1.25822 -1.18723e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG12RN00A { 
+Name:	GRG12RN00A
+Number:	310
+Address:	0x1602
+Digitizer:	GRF16
+EngCoeff:	0.322262 1.19791 -2.21149e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG12WN00A { 
+Name:	GRG12WN00A
+Number:	311
+Address:	0x1603
+Digitizer:	GRF16
+EngCoeff:	-0.195866 1.22778 -3.75228e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12BN01X { 
+Name:	GRS12BN01X
+Number:	312
+Address:	0x1605
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12BN02X { 
+Name:	GRS12BN02X
+Number:	313
+Address:	0x1606
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12BN03X { 
+Name:	GRS12BN03X
+Number:	314
+Address:	0x1607
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12BN04X { 
+Name:	GRS12BN04X
+Number:	315
+Address:	0x1608
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12BN05X { 
+Name:	GRS12BN05X
+Number:	316
+Address:	0x1609
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12GN01X { 
+Name:	GRS12GN01X
+Number:	317
+Address:	0x160a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12GN02X { 
+Name:	GRS12GN02X
+Number:	318
+Address:	0x160b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12GN03X { 
+Name:	GRS12GN03X
+Number:	319
+Address:	0x160c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12GN04X { 
+Name:	GRS12GN04X
+Number:	320
+Address:	0x160d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12GN05X { 
+Name:	GRS12GN05X
+Number:	321
+Address:	0x160e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG12BN00B { 
+Name:	GRG12BN00B
+Number:	322
+Address:	0x1700
+Digitizer:	GRF16
+EngCoeff:	0.441237 1.28189 -1.00077e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG12GN00B { 
+Name:	GRG12GN00B
+Number:	323
+Address:	0x1701
+Digitizer:	GRF16
+EngCoeff:	0.995807 1.25822 -1.18723e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG12RN00B { 
+Name:	GRG12RN00B
+Number:	324
+Address:	0x1702
+Digitizer:	GRF16
+EngCoeff:	0.322262 1.19791 -2.21149e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG12WN00B { 
+Name:	GRG12WN00B
+Number:	325
+Address:	0x1704
+Digitizer:	GRF16
+EngCoeff:	-0.195866 1.22778 -3.75228e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12RN01X { 
+Name:	GRS12RN01X
+Number:	326
+Address:	0x1705
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12RN02X { 
+Name:	GRS12RN02X
+Number:	327
+Address:	0x1706
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12RN03X { 
+Name:	GRS12RN03X
+Number:	328
+Address:	0x1707
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12RN04X { 
+Name:	GRS12RN04X
+Number:	329
+Address:	0x1708
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12RN05X { 
+Name:	GRS12RN05X
+Number:	330
+Address:	0x1709
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12WN01X { 
+Name:	GRS12WN01X
+Number:	331
+Address:	0x170f
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12WN02X { 
+Name:	GRS12WN02X
+Number:	332
+Address:	0x170b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12WN03X { 
+Name:	GRS12WN03X
+Number:	333
+Address:	0x170c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12WN04X { 
+Name:	GRS12WN04X
+Number:	334
+Address:	0x170d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS12WN05X { 
+Name:	GRS12WN05X
+Number:	335
+Address:	0x170e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG13BN00A { 
+Name:	GRG13BN00A
+Number:	336
+Address:	0x1800
+Digitizer:	GRF16
+EngCoeff:	0.63779 1.24489 7.14244e-09
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG13GN00A { 
+Name:	GRG13GN00A
+Number:	337
+Address:	0x1804
+Digitizer:	GRF16
+EngCoeff:	0.394424 1.19576 -3.66263e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG13RN00A { 
+Name:	GRG13RN00A
+Number:	338
+Address:	0x1802
+Digitizer:	GRF16
+EngCoeff:	0.790669 1.10768 -2.89393e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG13WN00A { 
+Name:	GRG13WN00A
+Number:	339
+Address:	0x1803
+Digitizer:	GRF16
+EngCoeff:	0.101481 1.20461 -5.26957e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13BN01X { 
+Name:	GRS13BN01X
+Number:	340
+Address:	0x1805
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13BN02X { 
+Name:	GRS13BN02X
+Number:	341
+Address:	0x1806
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13BN03X { 
+Name:	GRS13BN03X
+Number:	342
+Address:	0x1807
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13BN04X { 
+Name:	GRS13BN04X
+Number:	343
+Address:	0x1808
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13BN05X { 
+Name:	GRS13BN05X
+Number:	344
+Address:	0x1809
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13GN01X { 
+Name:	GRS13GN01X
+Number:	345
+Address:	0x180a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13GN02X { 
+Name:	GRS13GN02X
+Number:	346
+Address:	0x180b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13GN03X { 
+Name:	GRS13GN03X
+Number:	347
+Address:	0x180c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13GN04X { 
+Name:	GRS13GN04X
+Number:	348
+Address:	0x180d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13GN05X { 
+Name:	GRS13GN05X
+Number:	349
+Address:	0x180e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG13BN00B { 
+Name:	GRG13BN00B
+Number:	350
+Address:	0x1900
+Digitizer:	GRF16
+EngCoeff:	0.63779 1.24489 7.14244e-09
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG13GN00B { 
+Name:	GRG13GN00B
+Number:	351
+Address:	0x1901
+Digitizer:	GRF16
+EngCoeff:	0.394424 1.19576 -3.66263e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG13RN00B { 
+Name:	GRG13RN00B
+Number:	352
+Address:	0x1902
+Digitizer:	GRF16
+EngCoeff:	0.790669 1.10768 -2.89393e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG13WN00B { 
+Name:	GRG13WN00B
+Number:	353
+Address:	0x1903
+Digitizer:	GRF16
+EngCoeff:	0.101481 1.20461 -5.26957e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13RN01X { 
+Name:	GRS13RN01X
+Number:	354
+Address:	0x1905
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13RN02X { 
+Name:	GRS13RN02X
+Number:	355
+Address:	0x1906
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13RN03X { 
+Name:	GRS13RN03X
+Number:	356
+Address:	0x1907
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13RN04X { 
+Name:	GRS13RN04X
+Number:	357
+Address:	0x1908
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13RN05X { 
+Name:	GRS13RN05X
+Number:	358
+Address:	0x1909
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13WN01X { 
+Name:	GRS13WN01X
+Number:	359
+Address:	0x190a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13WN02X { 
+Name:	GRS13WN02X
+Number:	360
+Address:	0x190b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13WN03X { 
+Name:	GRS13WN03X
+Number:	361
+Address:	0x190c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13WN04X { 
+Name:	GRS13WN04X
+Number:	362
+Address:	0x190d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS13WN05X { 
+Name:	GRS13WN05X
+Number:	363
+Address:	0x190e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG14BN00A { 
+Name:	GRG14BN00A
+Number:	364
+Address:	0x1a00
+Digitizer:	GRF16
+EngCoeff:	0.525839 1.24019 -7.30786e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG14GN00A { 
+Name:	GRG14GN00A
+Number:	365
+Address:	0x1a01
+Digitizer:	GRF16
+EngCoeff:	0.720144 1.17165 1.58493e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG14RN00A { 
+Name:	GRG14RN00A
+Number:	366
+Address:	0x1a02
+Digitizer:	GRF16
+EngCoeff:	0.783596 1.27916 -7.54836e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG14WN00A { 
+Name:	GRG14WN00A
+Number:	367
+Address:	0x1a03
+Digitizer:	GRF16
+EngCoeff:	-0.0095452 1.27264 -7.19526e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14BN01X { 
+Name:	GRS14BN01X
+Number:	368
+Address:	0x1a05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14BN02X { 
+Name:	GRS14BN02X
+Number:	369
+Address:	0x1a06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14BN03X { 
+Name:	GRS14BN03X
+Number:	370
+Address:	0x1a07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14BN04X { 
+Name:	GRS14BN04X
+Number:	371
+Address:	0x1a08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14BN05X { 
+Name:	GRS14BN05X
+Number:	372
+Address:	0x1a09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14GN01X { 
+Name:	GRS14GN01X
+Number:	373
+Address:	0x1a0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14GN02X { 
+Name:	GRS14GN02X
+Number:	374
+Address:	0x1a0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14GN03X { 
+Name:	GRS14GN03X
+Number:	375
+Address:	0x1a0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14GN04X { 
+Name:	GRS14GN04X
+Number:	376
+Address:	0x1a0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14GN05X { 
+Name:	GRS14GN05X
+Number:	377
+Address:	0x1a0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG14BN00B { 
+Name:	GRG14BN00B
+Number:	378
+Address:	0x1b00
+Digitizer:	GRF16
+EngCoeff:	0.525839 1.24019 -7.30786e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG14GN00B { 
+Name:	GRG14GN00B
+Number:	379
+Address:	0x1b01
+Digitizer:	GRF16
+EngCoeff:	0.720144 1.17165 1.58493e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG14RN00B { 
+Name:	GRG14RN00B
+Number:	380
+Address:	0x1b02
+Digitizer:	GRF16
+EngCoeff:	0.783596 1.27916 -7.54836e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG14WN00B { 
+Name:	GRG14WN00B
+Number:	381
+Address:	0x1b03
+Digitizer:	GRF16
+EngCoeff:	-0.0095452 1.27264 -7.19526e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14RN01X { 
+Name:	GRS14RN01X
+Number:	382
+Address:	0x1b05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14RN02X { 
+Name:	GRS14RN02X
+Number:	383
+Address:	0x1b06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14RN03X { 
+Name:	GRS14RN03X
+Number:	384
+Address:	0x1b07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14RN04X { 
+Name:	GRS14RN04X
+Number:	385
+Address:	0x1b08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14RN05X { 
+Name:	GRS14RN05X
+Number:	386
+Address:	0x1b09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14WN01X { 
+Name:	GRS14WN01X
+Number:	387
+Address:	0x1b0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14WN02X { 
+Name:	GRS14WN02X
+Number:	388
+Address:	0x1b0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14WN03X { 
+Name:	GRS14WN03X
+Number:	389
+Address:	0x1b0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14WN04X { 
+Name:	GRS14WN04X
+Number:	390
+Address:	0x1b0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS14WN05X { 
+Name:	GRS14WN05X
+Number:	391
+Address:	0x1b0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG15BN00A { 
+Name:	GRG15BN00A
+Number:	392
+Address:	0x1c00
+Digitizer:	GRF16
+EngCoeff:	0.894111 1.29868 -2.9679e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG15GN00A { 
+Name:	GRG15GN00A
+Number:	393
+Address:	0x1c01
+Digitizer:	GRF16
+EngCoeff:	0.734073 1.19566 -5.99682e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG15RN00A { 
+Name:	GRG15RN00A
+Number:	394
+Address:	0x1c02
+Digitizer:	GRF16
+EngCoeff:	1.01958 1.20579 -3.99142e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG15WN00A { 
+Name:	GRG15WN00A
+Number:	395
+Address:	0x1c03
+Digitizer:	GRF16
+EngCoeff:	0.689459 1.25049 -4.63458e-09
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15BN01X { 
+Name:	GRS15BN01X
+Number:	396
+Address:	0x1c05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15BN02X { 
+Name:	GRS15BN02X
+Number:	397
+Address:	0x1c06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15BN03X { 
+Name:	GRS15BN03X
+Number:	398
+Address:	0x1c07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15BN04X { 
+Name:	GRS15BN04X
+Number:	399
+Address:	0x1c08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15BN05X { 
+Name:	GRS15BN05X
+Number:	400
+Address:	0x1c09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15GN01X { 
+Name:	GRS15GN01X
+Number:	401
+Address:	0x1c0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15GN02X { 
+Name:	GRS15GN02X
+Number:	402
+Address:	0x1c0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15GN03X { 
+Name:	GRS15GN03X
+Number:	403
+Address:	0x1c0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15GN04X { 
+Name:	GRS15GN04X
+Number:	404
+Address:	0x1c0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15GN05X { 
+Name:	GRS15GN05X
+Number:	405
+Address:	0x1c0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG15BN00B { 
+Name:	GRG15BN00B
+Number:	406
+Address:	0x1d00
+Digitizer:	GRF16
+EngCoeff:	0.894111 1.29868 -2.9679e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG15GN00B { 
+Name:	GRG15GN00B
+Number:	407
+Address:	0x1d01
+Digitizer:	GRF16
+EngCoeff:	0.734073 1.19566 -5.99682e-08
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG15RN00B { 
+Name:	GRG15RN00B
+Number:	408
+Address:	0x1d02
+Digitizer:	GRF16
+EngCoeff:	1.01958 1.20579 -3.99142e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG15WN00B { 
+Name:	GRG15WN00B
+Number:	409
+Address:	0x1d03
+Digitizer:	GRF16
+EngCoeff:	0.689459 1.25049 -4.63458e-09
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15RN01X { 
+Name:	GRS15RN01X
+Number:	410
+Address:	0x1d05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15RN02X { 
+Name:	GRS15RN02X
+Number:	411
+Address:	0x1d06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15RN03X { 
+Name:	GRS15RN03X
+Number:	412
+Address:	0x1d07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15RN04X { 
+Name:	GRS15RN04X
+Number:	413
+Address:	0x1d08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15RN05X { 
+Name:	GRS15RN05X
+Number:	414
+Address:	0x1d09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15WN01X { 
+Name:	GRS15WN01X
+Number:	415
+Address:	0x1d0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15WN02X { 
+Name:	GRS15WN02X
+Number:	416
+Address:	0x1d0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15WN03X { 
+Name:	GRS15WN03X
+Number:	417
+Address:	0x1d0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15WN04X { 
+Name:	GRS15WN04X
+Number:	418
+Address:	0x1d0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS15WN05X { 
+Name:	GRS15WN05X
+Number:	419
+Address:	0x1d0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG16BN00A { 
+Name:	GRG16BN00A
+Number:	420
+Address:	0x1e00
+Digitizer:	GRF16
+EngCoeff:	0.597334 1.27313 -1.56253e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG16GN00A { 
+Name:	GRG16GN00A
+Number:	421
+Address:	0x1e01
+Digitizer:	GRF16
+EngCoeff:	0.926587 1.24272 2.901e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG16RN00A { 
+Name:	GRG16RN00A
+Number:	422
+Address:	0x1e02
+Digitizer:	GRF16
+EngCoeff:	0.812719 1.26214 -4.73562e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG16WN00A { 
+Name:	GRG16WN00A
+Number:	423
+Address:	0x1e03
+Digitizer:	GRF16
+EngCoeff:	0.630907 1.27321 -3.17706e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16BN01X { 
+Name:	GRS16BN01X
+Number:	424
+Address:	0x1e05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16BN02X { 
+Name:	GRS16BN02X
+Number:	425
+Address:	0x1e06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16BN03X { 
+Name:	GRS16BN03X
+Number:	426
+Address:	0x1e07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16BN04X { 
+Name:	GRS16BN04X
+Number:	427
+Address:	0x1e08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16BN05X { 
+Name:	GRS16BN05X
+Number:	428
+Address:	0x1e09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16GN01X { 
+Name:	GRS16GN01X
+Number:	429
+Address:	0x1e0a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16GN02X { 
+Name:	GRS16GN02X
+Number:	430
+Address:	0x1e0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16GN03X { 
+Name:	GRS16GN03X
+Number:	431
+Address:	0x1e0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16GN04X { 
+Name:	GRS16GN04X
+Number:	432
+Address:	0x1e0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16GN05X { 
+Name:	GRS16GN05X
+Number:	433
+Address:	0x1e0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG16BN00B { 
+Name:	GRG16BN00B
+Number:	434
+Address:	0x1f00
+Digitizer:	GRF16
+EngCoeff:	0.597334 1.27313 -1.56253e-06
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG16GN00B { 
+Name:	GRG16GN00B
+Number:	435
+Address:	0x1f01
+Digitizer:	GRF16
+EngCoeff:	0.926587 1.24272 2.901e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG16RN00B { 
+Name:	GRG16RN00B
+Number:	436
+Address:	0x1f02
+Digitizer:	GRF16
+EngCoeff:	0.812719 1.26214 -4.73562e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRG16WN00B { 
+Name:	GRG16WN00B
+Number:	437
+Address:	0x1f03
+Digitizer:	GRF16
+EngCoeff:	0.630907 1.27321 -3.17706e-07
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16RN01X { 
+Name:	GRS16RN01X
+Number:	438
+Address:	0x1f05
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16RN02X { 
+Name:	GRS16RN02X
+Number:	439
+Address:	0x1f06
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16RN03X { 
+Name:	GRS16RN03X
+Number:	440
+Address:	0x1f07
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16RN04X { 
+Name:	GRS16RN04X
+Number:	441
+Address:	0x1f08
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16RN05X { 
+Name:	GRS16RN05X
+Number:	442
+Address:	0x1f09
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16WN01X { 
+Name:	GRS16WN01X
+Number:	443
+Address:	0x1f0f
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16WN02X { 
+Name:	GRS16WN02X
+Number:	444
+Address:	0x1f0b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16WN03X { 
+Name:	GRS16WN03X
+Number:	445
+Address:	0x1f0c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16WN04X { 
+Name:	GRS16WN04X
+Number:	446
+Address:	0x1f0d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+GRS16WN05X { 
+Name:	GRS16WN05X
+Number:	447
+Address:	0x1f0e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP01XN00A { 
+Name:	SEP01XN00A
+Number:	448
+Address:	0x2000
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP02XN00A { 
+Name:	SEP02XN00A
+Number:	449
+Address:	0x2001
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP03XN00A { 
+Name:	SEP03XN00A
+Number:	450
+Address:	0x2002
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP04XN00A { 
+Name:	SEP04XN00A
+Number:	451
+Address:	0x2003
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP05XN00A { 
+Name:	SEP05XN00A
+Number:	452
+Address:	0x2004
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP06XN00A { 
+Name:	SEP06XN00A
+Number:	453
+Address:	0x2005
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP07XN00A { 
+Name:	SEP07XN00A
+Number:	454
+Address:	0x2006
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP08XN00A { 
+Name:	SEP08XN00A
+Number:	455
+Address:	0x2007
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP09XN00A { 
+Name:	SEP09XN00A
+Number:	456
+Address:	0x2008
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP10XN00A { 
+Name:	SEP10XN00A
+Number:	457
+Address:	0x2009
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP11XN00A { 
+Name:	SEP11XN00A
+Number:	458
+Address:	0x2100
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP12XN00A { 
+Name:	SEP12XN00A
+Number:	459
+Address:	0x210a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP13XN00A { 
+Name:	SEP13XN00A
+Number:	460
+Address:	0x2102
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP14XN00A { 
+Name:	SEP14XN00A
+Number:	461
+Address:	0x2103
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP15XN00A { 
+Name:	SEP15XN00A
+Number:	462
+Address:	0x2104
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP16XN00A { 
+Name:	SEP16XN00A
+Number:	463
+Address:	0x2105
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP17XN00A { 
+Name:	SEP17XN00A
+Number:	464
+Address:	0x2106
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP18XN00A { 
+Name:	SEP18XN00A
+Number:	465
+Address:	0x2107
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP19XN00A { 
+Name:	SEP19XN00A
+Number:	466
+Address:	0x2108
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+SEP20XN00A { 
+Name:	SEP20XN00A
+Number:	467
+Address:	0x2109
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+ZDS01XN00A { 
+Name:	ZDS01XN00A
+Number:	468
+Address:	0x2200
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+PAC01XN00A { 
+Name:	PAC01XN00A
+Number:	469
+Address:	0x220b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+PAC02XN00A { 
+Name:	PAC02XN00A
+Number:	470
+Address:	0x220c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+PAC03XN00A { 
+Name:	PAC03XN00A
+Number:	471
+Address:	0x220d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+PAC04XN00A { 
+Name:	PAC04XN00A
+Number:	472
+Address:	0x220e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+PAC05XN00A { 
+Name:	PAC05XN00A
+Number:	473
+Address:	0x220f
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBL01XN00X { 
+Name:	LBL01XN00X
+Number:	474
+Address:	0x2400
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBL02XN00X { 
+Name:	LBL02XN00X
+Number:	475
+Address:	0x2401
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBL03XN00X { 
+Name:	LBL03XN00X
+Number:	476
+Address:	0x2402
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBL04XN00X { 
+Name:	LBL04XN00X
+Number:	477
+Address:	0x2403
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS01AN00X { 
+Name:	LBS01AN00X
+Number:	478
+Address:	0x2404
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS01BN00X { 
+Name:	LBS01BN00X
+Number:	479
+Address:	0x2405
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS01CN00X { 
+Name:	LBS01CN00X
+Number:	480
+Address:	0x2406
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS02AN00X { 
+Name:	LBS02AN00X
+Number:	481
+Address:	0x2407
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS02BN00X { 
+Name:	LBS02BN00X
+Number:	482
+Address:	0x2408
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS02CN00X { 
+Name:	LBS02CN00X
+Number:	483
+Address:	0x2409
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS03AN00X { 
+Name:	LBS03AN00X
+Number:	484
+Address:	0x240a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS03BN00X { 
+Name:	LBS03BN00X
+Number:	485
+Address:	0x240b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS03CN00X { 
+Name:	LBS03CN00X
+Number:	486
+Address:	0x240c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS04AN00X { 
+Name:	LBS04AN00X
+Number:	487
+Address:	0x240d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS04BN00X { 
+Name:	LBS04BN00X
+Number:	488
+Address:	0x240e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS04CN00X { 
+Name:	LBS04CN00X
+Number:	489
+Address:	0x240f
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBL05XN00X { 
+Name:	LBL05XN00X
+Number:	490
+Address:	0x2500
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBL06XN00X { 
+Name:	LBL06XN00X
+Number:	491
+Address:	0x2501
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBL07XN00X { 
+Name:	LBL07XN00X
+Number:	492
+Address:	0x2502
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBL08XN00X { 
+Name:	LBL08XN00X
+Number:	493
+Address:	0x2503
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS05AN00X { 
+Name:	LBS05AN00X
+Number:	494
+Address:	0x2504
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS05BN00X { 
+Name:	LBS05BN00X
+Number:	495
+Address:	0x2505
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS05CN00X { 
+Name:	LBS05CN00X
+Number:	496
+Address:	0x2506
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS06AN00X { 
+Name:	LBS06AN00X
+Number:	497
+Address:	0x2507
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS06BN00X { 
+Name:	LBS06BN00X
+Number:	498
+Address:	0x2508
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS06CN00X { 
+Name:	LBS06CN00X
+Number:	499
+Address:	0x2509
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS07AN00X { 
+Name:	LBS07AN00X
+Number:	500
+Address:	0x250a
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS07BN00X { 
+Name:	LBS07BN00X
+Number:	501
+Address:	0x250b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS07CN00X { 
+Name:	LBS07CN00X
+Number:	502
+Address:	0x250c
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS08AN00X { 
+Name:	LBS08AN00X
+Number:	503
+Address:	0x250d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS08BN00X { 
+Name:	LBS08BN00X
+Number:	504
+Address:	0x250e
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBS08CN00X { 
+Name:	LBS08CN00X
+Number:	505
+Address:	0x250f
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBT01XT00X { 
+Name:	LBT01XT00X
+Number:	506
+Address:	0x2601
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBT02XT00X { 
+Name:	LBT02XT00X
+Number:	507
+Address:	0x2603
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBT03XT00X { 
+Name:	LBT03XT00X
+Number:	508
+Address:	0x2605
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBT04XT00X { 
+Name:	LBT04XT00X
+Number:	509
+Address:	0x2607
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBT05XT00X { 
+Name:	LBT05XT00X
+Number:	510
+Address:	0x2609
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBT06XT00X { 
+Name:	LBT06XT00X
+Number:	511
+Address:	0x260b
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBT07XT00X { 
+Name:	LBT07XT00X
+Number:	512
+Address:	0x260d
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
+LBT08XT00X { 
+Name:	LBT08XT00X
+Number:	513
+Address:	0x260f
+Digitizer:	GRF16
+EngCoeff:	0 1 0
+Integration:	0
+ENGChi2:	0
+FileInt:	0
+}
+
+//====================================//
