@@ -37,6 +37,7 @@ private:
     std::map<std::string, TH1D*> hist_1D;
     std::map<std::string, TH2D*> hist_2D;
     std::map<std::string, TH2D*> hist_2D_tr;
+    std::map<std::string, TH2D*> hist_2D_prompt;
 
     std::vector<float> energy_vec; // vector which contains the energy values
     std::vector<long> time_vec; // vector which contains the time values

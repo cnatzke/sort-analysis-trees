@@ -24,15 +24,7 @@ int main(int argc, char **argv)
         return 0;
     }
 
-    // makes time retrival happy and loads GRSIEnv
-    std::string grsi_path = getenv("GRSISYS");
-    if(grsi_path.length() > 0) {
-        grsi_path += "/";
-    }
-    grsi_path += ".grsirc";
-    gEnv->ReadFile(grsi_path.c_str(), kEnvChange);
-
-    TParserLibrary::Get()->Load();
+    InitGRSISort();
 
     for (auto i = 1; i < argc; i++) AutoFileDetect(argv[i]);
 
@@ -103,11 +95,26 @@ void AutoFileDetect(std::string file_name)
 } // AutoFileDetect()
 
 /******************************************************************************
+ * Initializes GRSISort libraries and stuff
+ *
+ *****************************************************************************/
+void InitGRSISort(){
+    // makes time retrival happy and loads GRSIEnv
+    grsi_path = getenv("GRSISYS");
+    if(grsi_path.length() > 0) {
+        grsi_path += "/";
+    }
+    grsi_path += ".grsirc";
+    gEnv->ReadFile(grsi_path.c_str(), kEnvChange);
+
+    TParserLibrary::Get()->Load();
+} // end InitGRSISort
+
+/******************************************************************************
  * Prints usage message and version
  *****************************************************************************/
 void PrintUsage(char* argv[]){
-    //std::cerr << argv[0] << " Version: " << SORT_ANALYSIS_TREES_VERSION_MAJOR << "." << SORT_ANALYSIS_TREES_VERSION_MINOR << "\n"
-    std::cerr << argv[0] << "\n"
+    std::cerr << argv[0] << " Version: " << SortAnalysisTrees_VERSION_MAJOR << "." << SortAnalysisTrees_VERSION_MINOR << "\n"
               << "usage: " << argv[0] << " calibration_file analysis_tree [analysis_tree_2 ... ] linear_parameter_file\n"
               << " calibration_file:       calibration file (must end with .cal)\n"
               << " analysis_tree:          analysis tree to process (must end with .root)\n"
