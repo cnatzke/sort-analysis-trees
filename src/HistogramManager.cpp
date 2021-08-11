@@ -43,35 +43,21 @@ void HistogramManager::InitializeHistograms(int verbose)
     // 1D Histograms
     hist_1D["delta_t"] = new TH1D("delta_time", "#Delta t", energy_bins_max, energy_bins_min, energy_bins_max);
     hist_1D["k_value"] = new TH1D("k_value", "#Delta t", 1000, 0, 1000);
-    hist_1D["sum_energy"] = new TH1D("sum_energy", "sum energy", energy_bins_max, energy_bins_min, energy_bins_max);
     hist_1D["gamma_energy"] = new TH1D("gamma_energy", "gamma singles", energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_1D["sum_energy_time_random"] = new TH1D("sum_energy_time_random", "time-random sum energy", energy_bins_max, energy_bins_min, energy_bins_max);
 
     // 2D Histograms
     if (verbose > 0 ) std::cout << "Creating 2D histograms ... " << std::endl;
-    hist_2D["energy_sum_total"] = new TH2D("energy_sum_total", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["sum_energy_time_random_matrix"] = new TH2D("sum_energy_time_random_matrix", "time-random sum energy", energy_bins_max, energy_bins_min, energy_bins_max, 1000, 0, 1000);
-    hist_2D["energy_channel"] = new TH2D("energy_channel", "Energy vs channel", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["singles_channel"] = new TH2D("singles_channel", "#gamma singles vs channel", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["gg_singles"] = new TH2D("gg_singles", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_angle"] = new TH2D("sum_energy_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-    //hist_2D["sum_energy_angle_time_random"] = new TH2D("sum_energy_angle_time_random", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D_tr["sum_energy_angle_tr"] = new TH2D("sum_energy_angle_tr", "Sum Energy vs angle index (time random)", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
 
+    // individual histograms for each angular bin
+    for (unsigned int i = 0; i < angle_combinations_vec.size(); i++) {
+        hist_2D[Form("index_%i_sum", i)] = new TH2D(Form("index_%i_sum", i), ";sum energy [keV];#gamma_1 energy [keV]", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+        hist_2D_tr[Form("index_%i_sum_tr", i)] = new TH2D(Form("index_%i_sum_tr", i), ";sum energy [keV];#Deltat [ns]", energy_bins_max, energy_bins_min, energy_bins_max, 600, 400, 1000);
+    }
 
-    /*
-       TH2D *sum_hist = new TH2D("energy_sum_total", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-       TH2D *sum_hist_mixed = new TH2D("energy_sum_mixed_total", "", num_bins, bin_min, bin_max, num_bins, bin_min, bin_max);
-       // individual histograms for each angular bin
-       for (unsigned int i = 0; i < angle_combinations_vec.size(); i++) {
-        hist_vec_2D.push_back(new TH2D(Form("energy_sum_%i", i), Form("#gamma_1 Energy Sum %0.2f;Sum [keV];#gamma_1 Energy (keV)", angle_combinations_vec[i]), num_bins, bin_min, bin_max, num_bins, bin_min, bin_max));
-        hist_vec_mixed_2D.push_back(new TH2D(Form("energy_sum_%i_mixed", i), Form("#gamma_1 Energy Sum %i Mixed;Sum [keV];#gamma_1 Energy (keV)", i), num_bins, bin_min, bin_max, num_bins, bin_min, bin_max));
-       }
-
-
-       // adding 'total' histograms to back of vector
-       hist_vec_2D.push_back(sum_hist);
-       hist_vec_mixed_2D.push_back(sum_hist_mixed);
-
-       if (verbose > 0 ) std::cout << "Creating 2D histograms ... [DONE]" << std::endl;
-     */
 } // InitializeHistograms()
 
 /************************************************************//**
@@ -119,7 +105,7 @@ void HistogramManager::FillHistograms(TChain *gChain)
             for (unsigned int g1 = 0; g1 < energy_vec.size(); ++g1) {
                 hist_1D["k_value"]->Fill(kvalue_vec.at(g1));
                 hist_1D["gamma_energy"]->Fill(energy_vec.at(g1));
-                hist_2D["energy_channel"]->Fill(detector_vec.at(g1), energy_vec.at(g1));
+                hist_2D["singles_channel"]->Fill(detector_vec.at(g1), energy_vec.at(g1));
                 // for(unsigned int g2 = 0; g2 < energy_vec.size(); ++g2) { // Makes matrices symmetric
                 for(unsigned int g2 = g1 + 1; g2 < energy_vec.size(); ++g2) {                 // Makes matrices assymmetric
                     if (g1 == g2) continue;
@@ -138,18 +124,19 @@ void HistogramManager::FillHistograms(TChain *gChain)
                     // Prompt coincidences
                     if (delta_t < prompt_time_max) {
                         // 1D
-                        hist_1D["sum_energy"]->Fill(energy_vec.at(g1) + energy_vec.at(g2));
 
                         // 2D
-                        hist_2D["energy_sum_total"]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
                         hist_2D["sum_energy_angle"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
+                        hist_2D["gg_singles"]->Fill(energy_vec.at(g1), energy_vec.at(g2));
+                        hist_2D["gg_singles"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
+                        hist_2D[Form("index_%i_sum", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
                     }
                     if (delta_t > bg_time_min) {
                         // 1D
-                        hist_1D["sum_energy_time_random"]->Fill(energy_vec.at(g1) + energy_vec.at(g2));
+
                         // 2D
-                        hist_2D["sum_energy_time_random_matrix"]->Fill(energy_vec.at(g1) + energy_vec.at(g2), delta_t);
-                        //hist_2D["sum_energy_angle_time_random"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
+                        hist_2D_tr["sum_energy_angle_tr"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
+                        hist_2D_tr[Form("index_%i_sum_tr", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), delta_t);
                     }
 
                 } // grif2
@@ -299,8 +286,7 @@ int HistogramManager::GetClosest(int val1, int val2, std::vector<double> vec, do
 void HistogramManager::WriteHistogramsToFile()
 {
     TFile *out_file = new TFile("histograms.root", "RECREATE");
-    //TDirectory *sum_dir = out_file->mkdir("Histograms");
-    //TDirectory *sum_mixed_dir = out_file->mkdir("EventMixedHistograms");
+    TDirectory *time_random_dir = out_file->mkdir("time-random");
     std::cout << "Writing histograms to file: " << out_file->GetName() << std::endl;
 
     out_file->cd();
@@ -310,22 +296,9 @@ void HistogramManager::WriteHistogramsToFile()
     for(auto my_histogram : hist_2D) {
         my_histogram.second->Write();
     }
+    time_random_dir->cd();
+    for(auto my_histogram : hist_2D_tr) {
+        my_histogram.second->Write();
+    }
     out_file->Close();
-
-    /*
-       out_file->cd();
-       for (auto &h : hist_vec_1D) {
-        h->Write();
-       }
-       sum_dir->cd();
-       for (auto &h : hist_vec_2D) {
-        h->Write();
-       }
-       sum_mixed_dir->cd();
-       for (auto &h : hist_vec_mixed_2D) {
-        h->Write();
-       }
-       out_file->Close();
-     */
-
 } // WriteHistogramsToFile()

@@ -20,9 +20,9 @@ function unpack_data(){
 #--- Main Function ---------------------------------------
 TOP_DIR=$(pwd)
 CAL_FILE="$TOP_DIR/July2020_calibration.cal"
-HIST_DIR="/data/histograms/subruns"
-DATA_DIR="/data/analysis-trees"
-SORT_CODE="/vagrant/sort-analysis-tree/my-build/SortAnalysisTrees"
+HIST_DIR="/tig/belodon_data4/S9038/two-photon-resort/histograms/subruns"
+DATA_DIR="/tig/belodon_data4/S9038/two-photon-resort/analysis-trees"
+SORT_CODE="/home/S9038/projects/sort-analysis-trees/my-build/SortAnalysisTrees"
 
 if [ $# -eq 0 ]; then
     echo "Pass one arguement to sort a single run or two for a range"
