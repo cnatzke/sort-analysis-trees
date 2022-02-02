@@ -115,9 +115,8 @@ void InitGRSISort(){
  *****************************************************************************/
 void PrintUsage(char* argv[]){
     std::cerr << argv[0] << " Version: " << SortAnalysisTrees_VERSION_MAJOR << "." << SortAnalysisTrees_VERSION_MINOR << "\n"
-              << "usage: " << argv[0] << " calibration_file analysis_tree [analysis_tree_2 ... ] linear_parameter_file\n"
+              << "usage: " << argv[0] << " calibration_file analysis_tree [analysis_tree_2 ... ] calibration_file\n"
               << " calibration_file:       calibration file (must end with .cal)\n"
-              << " analysis_tree:          analysis tree to process (must end with .root)\n"
-              << " linear_parameter_file:  contains secondary linear parameters (must end with .txt)"
+              << " analysis_tree:          analysis tree to process (must end with .root)"
               << std::endl;
 } // end PrintUsage
