@@ -23,6 +23,7 @@
 void HistogramManager::MakeHistograms(TChain *input_chain)
 {
     int verbosity = 1;
+    energy_resolution = 0.0023; // 0.23%
     std::string compton_limits_filepath = "/data1/S9038/current-sort/data/histograms/compton-algorithm/compton_limits.csv";
     // reads in Compton limits from file
     ReadInComptonLimits(compton_limits_filepath);
@@ -319,8 +320,8 @@ bool HistogramManager::ComptonScatterCandidate(int angle_index, float energy_1, 
     float compton_angle_ftb = compton_limit_vec_ftb.at(angle_index);
     float compton_angle_btf = compton_limit_vec_btf.at(angle_index);
 
-    double scattered_photon_energy_upper = ComptonScatter(compton_angle_ftb, energy_total);
-    double scattered_photon_energy_lower = ComptonScatter(compton_angle_btf, energy_total);
+    double scattered_photon_energy_upper = ComptonScatter(compton_angle_ftb, energy_total * (1.0 + 2 * energy_resolution));
+    double scattered_photon_energy_lower = ComptonScatter(compton_angle_btf, energy_total * (1.0 - 2 * energy_resolution));
     double second_photon_energy_upper = energy_total - scattered_photon_energy_lower;
     double second_photon_energy_lower = energy_total - scattered_photon_energy_upper;
 
