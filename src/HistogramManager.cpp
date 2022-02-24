@@ -81,6 +81,7 @@ void HistogramManager::InitializeHistograms(int verbose)
 
     // 1D Histograms
     hist_1D["delta_t"] = new TH1D("delta_time", "#Delta t", energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_1D["delta_t_comp_rej"] = new TH1D("delta_time_comp_rej", "#Delta t Compton Rejected", energy_bins_max, energy_bins_min, energy_bins_max);
     hist_1D["k_value"] = new TH1D("k_value", "#Delta t", 1000, 0, 1000);
     hist_1D["gamma_energy"] = new TH1D("gamma_energy", "gamma singles", energy_bins_max, energy_bins_min, energy_bins_max);
 
@@ -90,16 +91,25 @@ void HistogramManager::InitializeHistograms(int verbose)
     hist_2D["gg_singles"] = new TH2D("gg_singles", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_angle"] = new TH2D("sum_energy_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_angle_tr"] = new TH2D("sum_energy_angle_tr", "Sum Energy vs angle index (time random);angle index;sum energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+    // Compton algorithm histograms
+    hist_2D["sum_energy_comp_rej"] = new TH2D("sum_energy_comp_rej", "Compton Rejected Sum Energy;angle index;sume energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["sum_energy_comp_rej_tr"] = new TH2D("sum_energy_comp_rej_tr", "Compton Rejected Sum Energy Time-Random;angle index;sume energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["sum_energy_comp_acc"] = new TH2D("sum_energy_comp_acc", "Compton Accepted Sum Energy;angle index;sume energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
 
     // individual histograms for each angular bin
     for (unsigned int i = 0; i < angle_combinations_vec.size(); i++) {
+        // Compton agnostic
         hist_2D_prompt[Form("index_%02i_sum", i)] = new TH2D(Form("index_%02i_sum", i), ";sum energy [keV];#gamma_1 energy [keV]", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
         // Time randoms
         hist_2D_tr[Form("index_%02i_sum_tr", i)] = new TH2D(Form("index_%02i_sum_tr", i), ";sum energy [keV];#Deltat [ns]", energy_bins_max, energy_bins_min, energy_bins_max, 600, 400, 1000);
         hist_2D_tr[Form("index_%02i_sum_tr_avg", i)] = new TH2D(Form("index_%02i_sum_tr_avg", i), ";sum energy [keV];#gamma_1 energy [keV]", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
         // Compton algorithm histograms
+        // prompt
         hist_2D_comp_alg_acc[Form("index_%02i", i)] = new TH2D(Form("index_%02i_comp_acc", i), Form("Compton Algorithm Accepted %.2f;sum energy [keV];#gamma_1 energy [keV]", angle_combinations_vec.at(i)), energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
         hist_2D_comp_alg_rej[Form("index_%02i", i)] = new TH2D(Form("index_%02i_comp_rej", i), Form("Compton Algorithm Rejected %.2f;sum energy [keV];#gamma_1 energy [keV]", angle_combinations_vec.at(i)), energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+        // time-random
+        hist_2D_comp_alg_rej_tr[Form("index_%02i", i)] = new TH2D(Form("index_%02i_comp_rej_tr", i), Form("Compton Algorithm Rejected %.2f Time-random;sum energy [keV];#gamma_1 energy [keV]", angle_combinations_vec.at(i)), energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+        hist_2D_comp_alg_rej_tr[Form("index_%02i_avg", i)] = new TH2D(Form("index_%02i_comp_rej_tr_avg", i), Form("Compton Algorithm Rejected %.2f Time-random Avg;sum energy [keV];#gamma_1 energy [keV]", angle_combinations_vec.at(i)), energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     }
 
 } // InitializeHistograms()
@@ -179,9 +189,14 @@ void HistogramManager::FillHistograms(TChain *gChain)
                         hist_2D["gg_singles"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
                         hist_2D_prompt[Form("index_%02i_sum", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
                         // Compton algorithm
-                        if (comp_scatter_candidate){
+                        if (comp_scatter_candidate) {
+                            hist_2D["sum_energy_comp_acc"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
                             hist_2D_comp_alg_acc[Form("index_%02i", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
-                        } else {
+                        } else { // Compton algorithm rejected, therefore does not match Compton scattering
+                            // 1D
+                            hist_1D["delta_t_comp_rej"]->Fill(delta_t);
+                            // 2D
+                            hist_2D["sum_energy_comp_rej"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
                             hist_2D_comp_alg_rej[Form("index_%02i", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
                         }
                     }
@@ -191,12 +206,22 @@ void HistogramManager::FillHistograms(TChain *gChain)
                         // 2D
                         hist_2D["sum_energy_angle_tr"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
                         hist_2D_tr[Form("index_%02i_sum_tr", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), delta_t);
+
                         if (IsInSlice(delta_t, prompt_time_max)) {
                             // fill histogram and scale by 1/5 since we want the average of 5 time slices
                             hist_2D_tr[Form("index_%02i_sum_tr_avg", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1), 1.0 / 5.0);
                         }
-                    }
-
+                        // Compton algorithm
+                        if (!comp_scatter_candidate) {
+                            // 2D
+                            hist_2D["sum_energy_comp_rej_tr"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
+                            hist_2D_comp_alg_rej_tr[Form("index_%02i", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
+                            if (IsInSlice(delta_t, prompt_time_max)) {
+                                // fill histogram and scale by 1/5 since we want the average of 5 time slices
+                                hist_2D_comp_alg_rej_tr[Form("index_%02i_avg", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1), 1.0 / 5.0);
+                            }
+                        } // end compton algorithm rejected
+                    } // end time-random
                 } // grif2
             } // grif1
         } // energy_vec
@@ -289,14 +314,30 @@ void HistogramManager::PreProcessData()
  *****************************************************************************/
 bool HistogramManager::ComptonScatterCandidate(int angle_index, float energy_1, float energy_2)
 {
+    int verbose = 0;
     float energy_total = energy_1 + energy_2;
-    float compton_angle_1 = compton_limit_vec_ftb.at(angle_index);
-    float compton_angle_2 = compton_limit_vec_btf.at(angle_index);
+    float compton_angle_ftb = compton_limit_vec_ftb.at(angle_index);
+    float compton_angle_btf = compton_limit_vec_btf.at(angle_index);
 
-    float energy_scatter_high = ComptonScatter(compton_angle_1, energy_total);
-    float energy_scatter_low = ComptonScatter(compton_angle_2, energy_total);
+    double scattered_photon_energy_upper = ComptonScatter(compton_angle_ftb, energy_total);
+    double scattered_photon_energy_lower = ComptonScatter(compton_angle_btf, energy_total);
+    double second_photon_energy_upper = energy_total - scattered_photon_energy_lower;
+    double second_photon_energy_lower = energy_total - scattered_photon_energy_upper;
 
-    if (((energy_scatter_low < energy_1) && (energy_1 < energy_scatter_high)) || ((energy_scatter_low < energy_2) && (energy_2 < energy_scatter_high))){
+    if (((scattered_photon_energy_lower < energy_1) && (energy_1 < scattered_photon_energy_upper)) && ((second_photon_energy_lower < energy_2) && (energy_2 < second_photon_energy_upper))) {
+        if (verbose > 0) {
+            std::cout << "[" << scattered_photon_energy_lower << ", " << scattered_photon_energy_upper << "] " << energy_1 << std::endl;
+            std::cout << "[" << second_photon_energy_lower << ", " << second_photon_energy_upper << "] " << energy_2 << std::endl;
+            std::cout << "-----------" << std::endl;
+        }
+        return true;
+    }
+    else if (((scattered_photon_energy_lower < energy_2) && (energy_2 < scattered_photon_energy_upper)) && ((second_photon_energy_lower < energy_1) && (energy_1 < second_photon_energy_upper))) {
+        if (verbose > 0) {
+            std::cout << "[" << scattered_photon_energy_lower << ", " << scattered_photon_energy_upper << "] " << energy_2 << std::endl;
+            std::cout << "[" << second_photon_energy_lower << ", " << second_photon_energy_upper << "] " << energy_1 << std::endl;
+            std::cout << "-----------" << std::endl;
+        }
         return true;
     } else {
         return false;
@@ -309,7 +350,7 @@ bool HistogramManager::ComptonScatterCandidate(int angle_index, float energy_1, 
  * @param angle Compton scatter angle (rad)
  * @param energy Energy of initial photon (keV)
  *****************************************************************************/
-float HistogramManager::ComptonScatter(double angle, float energy)
+double HistogramManager::ComptonScatter(double angle, float energy)
 {
     float electron_rest_mass_energy = 511.; //keV
     return energy / (1 + (energy / electron_rest_mass_energy) * (1 - TMath::Cos(angle)));
@@ -384,6 +425,7 @@ void HistogramManager::WriteHistogramsToFile()
     TDirectory *prompt_angle_dir = out_file->mkdir("prompt_angle");
     TDirectory *comp_dir_rej = out_file->mkdir("compton_alg_rej");
     TDirectory *comp_dir_acc = out_file->mkdir("compton_alg_acc");
+    TDirectory *comp_dir_rej_tr = out_file->mkdir("compton_alg_rej_tr");
     std::cout << "Writing histograms to file: " << out_file->GetName() << std::endl;
 
     out_file->cd();
@@ -407,6 +449,10 @@ void HistogramManager::WriteHistogramsToFile()
     }
     comp_dir_rej->cd();
     for(auto my_histogram : hist_2D_comp_alg_rej) {
+        my_histogram.second->Write();
+    }
+    comp_dir_rej_tr->cd();
+    for(auto my_histogram : hist_2D_comp_alg_rej_tr) {
         my_histogram.second->Write();
     }
     out_file->Close();

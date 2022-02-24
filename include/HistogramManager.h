@@ -19,7 +19,7 @@ public:
     void InitializeHistograms(int verbose = 0);
     void WriteHistogramsToFile();
     bool ComptonScatterCandidate(int angle_index, float energy_1, float energy_2);
-    float ComptonScatter(double angle, float energy);
+    double ComptonScatter(double angle, float energy);
 
 private:
     void PreProcessData();
@@ -47,6 +47,7 @@ private:
     std::map<std::string, TH2D*> hist_2D_prompt;
     std::map<std::string, TH2D*> hist_2D_comp_alg_acc;
     std::map<std::string, TH2D*> hist_2D_comp_alg_rej;
+    std::map<std::string, TH2D*> hist_2D_comp_alg_rej_tr;
 
     std::vector<float> energy_vec; // vector which contains the energy values
     std::vector<long> time_vec; // vector which contains the time values
