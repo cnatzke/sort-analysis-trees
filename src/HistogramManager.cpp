@@ -89,10 +89,12 @@ void HistogramManager::InitializeHistograms(int verbose)
     // 2D Histograms
     if (verbose > 0 ) std::cout << "Creating 2D histograms ... " << std::endl;
     hist_2D["singles_channel"] = new TH2D("singles_channel", "#gamma singles vs channel", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["gg_singles"] = new TH2D("gg_singles", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["gg_matrix"] = new TH2D("gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_angle"] = new TH2D("sum_energy_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_angle_tr"] = new TH2D("sum_energy_angle_tr", "Sum Energy vs angle index (time random);angle index;sum energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     // Compton algorithm histograms
+    hist_2D["gg_matrix_comp_rej"] = new TH2D("gg_matrix_comp_rej", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["gg_matrix_comp_acc"] = new TH2D("gg_matrix_comp_acc", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_comp_rej"] = new TH2D("sum_energy_comp_rej", "Compton Rejected Sum Energy;angle index;sume energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_comp_rej_tr"] = new TH2D("sum_energy_comp_rej_tr", "Compton Rejected Sum Energy Time-Random;angle index;sume energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_comp_acc"] = new TH2D("sum_energy_comp_acc", "Compton Accepted Sum Energy;angle index;sume energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
@@ -186,14 +188,18 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
                         // 2D
                         hist_2D["sum_energy_angle"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
-                        hist_2D["gg_singles"]->Fill(energy_vec.at(g1), energy_vec.at(g2));
-                        hist_2D["gg_singles"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
+                        hist_2D["gg_matrix"]->Fill(energy_vec.at(g1), energy_vec.at(g2));
+                        hist_2D["gg_matrix"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
                         hist_2D_prompt[Form("index_%02i_sum", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
                         // Compton algorithm
                         if (comp_scatter_candidate) {
+                            hist_2D["gg_matrix_comp_acc"]->Fill(energy_vec.at(g1), energy_vec.at(g2));
+                            hist_2D["gg_matrix_comp_acc"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
                             hist_2D["sum_energy_comp_acc"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
                             hist_2D_comp_alg_acc[Form("index_%02i", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
                         } else { // Compton algorithm rejected, therefore does not match Compton scattering
+                            hist_2D["gg_matrix_comp_rej"]->Fill(energy_vec.at(g1), energy_vec.at(g2));
+                            hist_2D["gg_matrix_comp_rej"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
                             // 1D
                             hist_1D["delta_t_comp_rej"]->Fill(delta_t);
                             // 2D
