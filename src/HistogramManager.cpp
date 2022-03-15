@@ -7,13 +7,25 @@
 // Usage:
 //
 //////////////////////////////////////////////////////////////////////////////////
-#include <iostream>
 #include <map>
-#include "csv.h"
 #include "HistogramManager.h"
+#include "ComptonRecovery.h"
 #include "progress_bar.h"
 #include "LoadingMessenger.h"
 
+/************************************************************//**
+ * Constructor
+ ***************************************************************/
+HistogramManager::HistogramManager(std::string compton_limits_file) : _compton_limits_file(compton_limits_file)
+{
+} // end Constructor
+
+/************************************************************//**
+ * Destructor
+ ***************************************************************/
+HistogramManager::~HistogramManager(void)
+{
+} // end Destructor
 
 /************************************************************//**
  * Creates and Fills histograms
@@ -23,50 +35,11 @@
 void HistogramManager::MakeHistograms(TChain *input_chain)
 {
     int verbosity = 1;
-    energy_resolution = 0.0023; // 0.23%
-    std::string compton_limits_filepath = "/data1/S9038/current-sort/data/histograms/compton-algorithm/compton_limits.csv";
-    // reads in Compton limits from file
-    ReadInComptonLimits(compton_limits_filepath);
     // create histograms
     InitializeHistograms(verbosity);
     FillHistograms(input_chain);
 
 } // GenerateHistogramFile()
-
-
-/************************************************************//**
- * Reads in csv file with Compton scattering bands
- *
- * @param filepath Filepath to csv file
- ***************************************************************/
-void HistogramManager::ReadInComptonLimits(std::string filepath)
-{
-    std::fstream compton_limits_file;
-
-    compton_limits_file.open(filepath, std::ios_base::in);
-    // if bg file doesn't exist, throw error
-    if (!compton_limits_file) {
-        compton_limits_file.close();
-        std::cout << "Could not open " << filepath << ", exiting." << std::endl;
-        exit(EXIT_FAILURE);
-    } else {
-        std::cout << "Found accepted Compton scatter angles file: " << filepath << std::endl;
-        io::CSVReader<5> in(filepath);
-        in.read_header(io::ignore_extra_column, "angular_bin", "compton_limit_ftb", "compton_limit_btf", "angle_diff_ftb", "angle_diff_btf");
-        float angular_bin; float compton_limit_ftb; float compton_limit_btf; float angle_diff_ftb; float angle_diff_btf;
-        while(in.read_row(angular_bin, compton_limit_ftb, compton_limit_btf, angle_diff_ftb, angle_diff_btf)) {
-            angular_bin_vec.push_back(angular_bin);
-            compton_limit_vec_ftb.push_back(compton_limit_ftb);
-            compton_limit_vec_btf.push_back(compton_limit_btf);
-        }
-        compton_limits_file.close();
-        // remove first bin of filled vectors sinces it's the zero angle
-        angular_bin_vec.erase(angular_bin_vec.begin());
-        compton_limit_vec_ftb.erase(compton_limit_vec_ftb.begin());
-        compton_limit_vec_btf.erase(compton_limit_vec_btf.begin());
-    }
-
-} // end ReadInComptonLimits
 
 /************************************************************//**
  * Initializes histograms to be filled
@@ -92,8 +65,10 @@ void HistogramManager::InitializeHistograms(int verbose)
     hist_2D["gg_matrix"] = new TH2D("gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_angle"] = new TH2D("sum_energy_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_angle_tr"] = new TH2D("sum_energy_angle_tr", "Sum Energy vs angle index (time random);angle index;sum energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+
     // Compton algorithm histograms
     hist_2D["gg_matrix_comp_rej"] = new TH2D("gg_matrix_comp_rej", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["gg_matrix_comp_rej1"] = new TH2D("gg_matrix_comp_rej1", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["gg_matrix_comp_acc"] = new TH2D("gg_matrix_comp_acc", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_comp_rej"] = new TH2D("sum_energy_comp_rej", "Compton Rejected Sum Energy;angle index;sume energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_comp_rej_tr"] = new TH2D("sum_energy_comp_rej_tr", "Compton Rejected Sum Energy Time-Random;angle index;sume energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
@@ -151,23 +126,44 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
     long analysis_entries = gChain->GetEntries();
     ProgressBar progress_bar(analysis_entries, 70, '=', ' ');
-    for (auto i = 0; i < analysis_entries; i++) {
+    for (auto i = 0; i < 10000; i++) {
+        //for (auto i = 0; i < analysis_entries; i++) {
         gChain->GetEntry(i);
 
-        // Applies secondary energy calculation
+        // Applies multiplicity filter and recovers intra-clover compton scatters
         PreProcessData();
 
-        // Filling histograms
-        if (energy_vec.size() > 0) {
-            for (unsigned int g1 = 0; g1 < energy_vec.size(); ++g1) {
-                hist_1D["k_value"]->Fill(kvalue_vec.at(g1));
-                hist_1D["gamma_energy"]->Fill(energy_vec.at(g1));
-                hist_2D["singles_channel"]->Fill(detector_vec.at(g1), energy_vec.at(g1));
-                // for(unsigned int g2 = 0; g2 < energy_vec.size(); ++g2) { // Makes matrices symmetric
-                for(unsigned int g2 = g1 + 1; g2 < energy_vec.size(); ++g2) {                 // Makes matrices assymmetric
+        if (addback_energy_vec.size() > 0) {
+            for (unsigned int g1 = 0; g1 < addback_energy_vec.size(); ++g1) {
+                // for(unsigned int g2 = 0; g2 < addback_energy_vec.size(); ++g2) { // Makes matrices symmetric
+                for(unsigned int g2 = g1 + 1; g2 < addback_energy_vec.size(); ++g2) {                 // Makes matrices assymmetric
                     if (g1 == g2) continue;
 
-                    double angle_rad = pos_vec.at(g1).Angle(pos_vec.at(g2));
+                    // get angle between hits
+                    double angle_rad = addback_pos_vec.at(g1).Angle(addback_pos_vec.at(g2));
+                    double angle = angle_rad * rad_to_degree;
+                    if (angle < 0.0001 || angle > 180.0) {
+                        continue;
+                    }
+
+                    int angle_index = GetAngleIndex(angle, angle_combinations_vec);
+                    double delta_t = TMath::Abs(time_vec.at(g1) - time_vec.at(g2));
+                } // end g2
+            } // end g1
+        } // end addback hits
+
+        /*
+           // Filling histograms
+           if (crystal_energy_vec.size() > 0) {
+            for (unsigned int g1 = 0; g1 < crystal_energy_vec.size(); ++g1) {
+                hist_1D["k_value"]->Fill(kvalue_vec.at(g1));
+                hist_1D["gamma_energy"]->Fill(crystal_energy_vec.at(g1));
+                hist_2D["singles_channel"]->Fill(crystal_vec.at(g1), crystal_energy_vec.at(g1));
+                // for(unsigned int g2 = 0; g2 < crystal_energy_vec.size(); ++g2) { // Makes matrices symmetric
+                for(unsigned int g2 = g1 + 1; g2 < crystal_energy_vec.size(); ++g2) {                 // Makes matrices assymmetric
+                    if (g1 == g2) continue;
+
+                    double angle_rad = crystal_pos_vec.at(g1).Angle(crystal_pos_vec.at(g2));
                     double angle = angle_rad * rad_to_degree;
                     if (angle < 0.0001 || angle > 180.0) {
                         continue;
@@ -177,7 +173,8 @@ void HistogramManager::FillHistograms(TChain *gChain)
                     double delta_t = TMath::Abs(time_vec.at(g1) - time_vec.at(g2));
 
                     // Possible Compton scatter?
-                    bool comp_scatter_candidate = ComptonScatterCandidate(angle_index, energy_vec.at(g1), energy_vec.at(g2));
+                    //bool comp_scatter_candidate = ComptonScatterCandidate(angle_index, crystal_energy_vec.at(g1), crystal_energy_vec.at(g2));
+                    bool comp_scatter_candidate = false;
 
                     // Timing information
                     hist_1D["delta_t"]->Fill(delta_t);
@@ -187,51 +184,57 @@ void HistogramManager::FillHistograms(TChain *gChain)
                         // 1D
 
                         // 2D
-                        hist_2D["sum_energy_angle"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
-                        hist_2D["gg_matrix"]->Fill(energy_vec.at(g1), energy_vec.at(g2));
-                        hist_2D["gg_matrix"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
-                        hist_2D_prompt[Form("index_%02i_sum", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
+                        hist_2D["sum_energy_angle"]->Fill(angle_index, crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2));
+                        hist_2D["gg_matrix"]->Fill(crystal_energy_vec.at(g1), crystal_energy_vec.at(g2));
+                        hist_2D["gg_matrix"]->Fill(crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
+                        hist_2D_prompt[Form("index_%02i_sum", angle_index)]->Fill(crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
                         // Compton algorithm
                         if (comp_scatter_candidate) {
-                            hist_2D["gg_matrix_comp_acc"]->Fill(energy_vec.at(g1), energy_vec.at(g2));
-                            hist_2D["gg_matrix_comp_acc"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
-                            hist_2D["sum_energy_comp_acc"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
-                            hist_2D_comp_alg_acc[Form("index_%02i", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
+                            hist_2D["gg_matrix_comp_acc"]->Fill(crystal_energy_vec.at(g1), crystal_energy_vec.at(g2));
+                            hist_2D["gg_matrix_comp_acc"]->Fill(crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
+                            hist_2D["sum_energy_comp_acc"]->Fill(angle_index, crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2));
+                            hist_2D_comp_alg_acc[Form("index_%02i", angle_index)]->Fill(crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
                         } else { // Compton algorithm rejected, therefore does not match Compton scattering
-                            hist_2D["gg_matrix_comp_rej"]->Fill(energy_vec.at(g1), energy_vec.at(g2));
-                            hist_2D["gg_matrix_comp_rej"]->Fill(energy_vec.at(g2), energy_vec.at(g1));
+                            hist_2D["gg_matrix_comp_rej"]->Fill(crystal_energy_vec.at(g1), crystal_energy_vec.at(g2));
+                            hist_2D["gg_matrix_comp_rej"]->Fill(crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
+                            // no intra-clover events
+                            if (clover_vec.at(g1) != clover_vec.at(g2)) {
+                                hist_2D["gg_matrix_comp_rej1"]->Fill(crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
+                                hist_2D["gg_matrix_comp_rej1"]->Fill(crystal_energy_vec.at(g1), crystal_energy_vec.at(g2));
+                            }
                             // 1D
                             hist_1D["delta_t_comp_rej"]->Fill(delta_t);
                             // 2D
-                            hist_2D["sum_energy_comp_rej"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
-                            hist_2D_comp_alg_rej[Form("index_%02i", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
+                            hist_2D["sum_energy_comp_rej"]->Fill(angle_index, crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2));
+                            hist_2D_comp_alg_rej[Form("index_%02i", angle_index)]->Fill(crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
                         }
                     }
                     if (delta_t > bg_time_min) {
                         // 1D
 
                         // 2D
-                        hist_2D["sum_energy_angle_tr"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
-                        hist_2D_tr[Form("index_%02i_sum_tr", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), delta_t);
+                        hist_2D["sum_energy_angle_tr"]->Fill(angle_index, crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2));
+                        hist_2D_tr[Form("index_%02i_sum_tr", angle_index)]->Fill(crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2), delta_t);
 
                         if (IsInSlice(delta_t, prompt_time_max)) {
                             // fill histogram and scale by 1/5 since we want the average of 5 time slices
-                            hist_2D_tr[Form("index_%02i_sum_tr_avg", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1), 1.0 / 5.0);
+                            hist_2D_tr[Form("index_%02i_sum_tr_avg", angle_index)]->Fill(crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2), crystal_energy_vec.at(g1), 1.0 / 5.0);
                         }
                         // Compton algorithm
                         if (!comp_scatter_candidate) {
                             // 2D
-                            hist_2D["sum_energy_comp_rej_tr"]->Fill(angle_index, energy_vec.at(g1) + energy_vec.at(g2));
-                            hist_2D_comp_alg_rej_tr[Form("index_%02i", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1));
+                            hist_2D["sum_energy_comp_rej_tr"]->Fill(angle_index, crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2));
+                            hist_2D_comp_alg_rej_tr[Form("index_%02i", angle_index)]->Fill(crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
                             if (IsInSlice(delta_t, prompt_time_max)) {
                                 // fill histogram and scale by 1/5 since we want the average of 5 time slices
-                                hist_2D_comp_alg_rej_tr[Form("index_%02i_avg", angle_index)]->Fill(energy_vec.at(g1) + energy_vec.at(g2), energy_vec.at(g1), 1.0 / 5.0);
+                                hist_2D_comp_alg_rej_tr[Form("index_%02i_avg", angle_index)]->Fill(crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2), crystal_energy_vec.at(g1), 1.0 / 5.0);
                             }
                         } // end compton algorithm rejected
                     } // end time-random
                 } // grif2
             } // grif1
-        } // energy_vec
+           } // crystal_energy_vec
+         */
 
 
         if (i % 10000 == 0) {
@@ -240,16 +243,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
         ++progress_bar;         // iterates progress_bar
 
 
-        // cleaning up for next event
-        energy_vec.clear();
-        pos_vec.clear();
-        time_vec.clear();
-        kvalue_vec.clear();
-        detector_vec.clear();
-
     }     // end TChain loop
     progress_bar.done();
 } // FillHistograms()
+
+
 
 /************************************************************//**
  * Pre process data
@@ -258,17 +256,20 @@ void HistogramManager::FillHistograms(TChain *gChain)
 void HistogramManager::PreProcessData()
 {
     int det_id = -1;
-    bool multiplicity_limit_bool = true;
-    int multiplicity_limit = 2;
 
-    energy_vec.clear();
-    pos_vec.clear();
+    crystal_energy_vec.clear();
+
+    addback_energy_vec.clear();
+    addback_pos_vec.clear();
+
+    crystal_pos_vec.clear();
     time_vec.clear();
     kvalue_vec.clear();
-    detector_vec.clear();
+    crystal_vec.clear();
+    clover_vec.clear();
 
-    if (multiplicity_limit_bool) {
-        if (fGrif->GetSuppressedMultiplicity(fGriffinBgo) == multiplicity_limit) {         // multiplicity filter
+    if (_multiplicity_filter) {
+        if (fGrif->GetSuppressedMultiplicity(fGriffinBgo) == _multiplicity_limit) {         // multiplicity filter
             for (auto j = 0; j < fGrif->GetSuppressedMultiplicity(fGriffinBgo); ++j) {
                 det_id = fGrif->GetSuppressedHit(j)->GetArrayNumber();
                 if (det_id == -1) {
@@ -281,11 +282,12 @@ void HistogramManager::PreProcessData()
                     continue;
                 }
 
-                energy_vec.push_back(temp_energy);
-                pos_vec.push_back(fGrif->GetSuppressedHit(j)->GetPosition(145.0));
+                crystal_energy_vec.push_back(temp_energy);
+                crystal_pos_vec.push_back(fGrif->GetSuppressedHit(j)->GetPosition(145.0));
                 time_vec.push_back(fGrif->GetSuppressedHit(j)->GetTime());
                 kvalue_vec.push_back(fGrif->GetSuppressedHit(j)->GetKValue());
-                detector_vec.push_back(det_id);
+                crystal_vec.push_back(det_id);
+                clover_vec.push_back(fGrif->GetSuppressedHit(j)->GetDetector());
             }
         }         // multiplicity filter
     } else {
@@ -302,66 +304,22 @@ void HistogramManager::PreProcessData()
             // adds small random number to allow proper rebinning
             //energy_temp += ((double) rand() / RAND_MAX - 0.5);
 
-            energy_vec.push_back(fGrif->GetSuppressedHit(j)->GetEnergy());
-            pos_vec.push_back(fGrif->GetSuppressedHit(j)->GetPosition(145.0));
+            crystal_energy_vec.push_back(fGrif->GetSuppressedHit(j)->GetEnergy());
+            crystal_pos_vec.push_back(fGrif->GetSuppressedHit(j)->GetPosition(145.0));
             time_vec.push_back(fGrif->GetSuppressedHit(j)->GetTime());
             kvalue_vec.push_back(fGrif->GetSuppressedHit(j)->GetKValue());
-            detector_vec.push_back(det_id);
-        }
+            crystal_vec.push_back(det_id);
+        } // end singles loop
+
     }
+
+    for (auto g1 = 0; g1 < fGrif->GetSuppressedAddbackMultiplicity(fGriffinBgo); g1++) {
+        TGriffinHit * grif1 = static_cast<TGriffinHit*>(fGrif->GetSuppressedAddbackHit(g1));
+        addback_energy_vec.push_back(grif1->GetEnergy());
+        addback_pos_vec.push_back(grif1->GetPosition(145.0));
+    }     // end GetAddbackMultiplicity
 } // PreProcessData
 
-/************************************************************//**
- * Checks if the angle and energy between two photons can
- * be a Compton scatter
- *
- * @param angle Angle between two photons (radians)
- * @param energy_1 Energy of first photon (keV)
- * @param energy_2 Energy of second photon (keV)
- *****************************************************************************/
-bool HistogramManager::ComptonScatterCandidate(int angle_index, float energy_1, float energy_2)
-{
-    int verbose = 0;
-    float energy_total = energy_1 + energy_2;
-    float compton_angle_ftb = compton_limit_vec_ftb.at(angle_index);
-    float compton_angle_btf = compton_limit_vec_btf.at(angle_index);
-
-    double scattered_photon_energy_upper = ComptonScatter(compton_angle_ftb, energy_total * (1.0 + 2 * energy_resolution));
-    double scattered_photon_energy_lower = ComptonScatter(compton_angle_btf, energy_total * (1.0 - 2 * energy_resolution));
-    double second_photon_energy_upper = energy_total - scattered_photon_energy_lower;
-    double second_photon_energy_lower = energy_total - scattered_photon_energy_upper;
-
-    if (((scattered_photon_energy_lower < energy_1) && (energy_1 < scattered_photon_energy_upper)) && ((second_photon_energy_lower < energy_2) && (energy_2 < second_photon_energy_upper))) {
-        if (verbose > 0) {
-            std::cout << "[" << scattered_photon_energy_lower << ", " << scattered_photon_energy_upper << "] " << energy_1 << std::endl;
-            std::cout << "[" << second_photon_energy_lower << ", " << second_photon_energy_upper << "] " << energy_2 << std::endl;
-            std::cout << "-----------" << std::endl;
-        }
-        return true;
-    }
-    else if (((scattered_photon_energy_lower < energy_2) && (energy_2 < scattered_photon_energy_upper)) && ((second_photon_energy_lower < energy_1) && (energy_1 < second_photon_energy_upper))) {
-        if (verbose > 0) {
-            std::cout << "[" << scattered_photon_energy_lower << ", " << scattered_photon_energy_upper << "] " << energy_2 << std::endl;
-            std::cout << "[" << second_photon_energy_lower << ", " << second_photon_energy_upper << "] " << energy_1 << std::endl;
-            std::cout << "-----------" << std::endl;
-        }
-        return true;
-    } else {
-        return false;
-    }
-} // end ComptonScatterCandidate()
-
-/************************************************************//**
- * Compton scatter formula
- *
- * @param angle Compton scatter angle (rad)
- * @param energy Energy of initial photon (keV)
- *****************************************************************************/
-double HistogramManager::ComptonScatter(double angle, float energy)
-{
-    float electron_rest_mass_energy = 511.; //keV
-    return energy / (1 + (energy / electron_rest_mass_energy) * (1 - TMath::Cos(angle)));
-} // end ComptonScatter()
 
 /************************************************************//**
  * Returns the angular index

@@ -18,6 +18,7 @@
 
 int main(int argc, char **argv)
 {
+    std::string compton_limits_filepath = "/data1/S9038/current-sort/data/histograms/compton-algorithm/compton_limits.csv";
 
     if (argc == 1) { // no inputs given
         PrintUsage(argv);
@@ -39,18 +40,15 @@ int main(int argc, char **argv)
     // Turn off crosstalk corrections
     TGRSIOptions::AnalysisOptions()->SetCorrectCrossTalk(false);
 
-    HistogramManager hist_man;
-    std::string fName = gChain->GetCurrentFile()->GetName();
-    int run_number = GetRunNumber(fName.c_str());
+    HistogramManager * hist_man = new HistogramManager(compton_limits_filepath);
+    // turn on multiplicity filter
+    //hist_man->SetMultiplicityFilter(true);
 
-    std::cout << "Processing run " << run_number << " with " << gChain->GetNtrees() << " file(s)" << std::endl;
+    // fill histograms
+    hist_man->MakeHistograms(gChain);
+    hist_man->WriteHistogramsToFile();
 
-    // Fill histograms
-    hist_man.MakeHistograms(gChain);
-
-    // Write histograms to file
-    hist_man.WriteHistogramsToFile();
-
+    delete hist_man;
     std::cout << "Exiting ... " << std::endl;
     return 0;
 } // main()

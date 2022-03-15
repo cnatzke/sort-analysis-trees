@@ -20,10 +20,16 @@ function unpack_data(){
 
 #--- Main Function ---------------------------------------
 TOP_DIR=$(pwd)
-CAL_FILE="/data1/S9038/current-sort/data/cal-files/run-agnostic/July2020_calibration.cal"
-HIST_DIR="/data1/S9038/current-sort/data/histograms/compton-algorithm/subruns"
-DATA_DIR="/data1/S9038/current-sort/data/analysis-trees"
-SORT_CODE="/data1/S9038/current-sort/analysis/sort-analysis-trees/my-build/SortAnalysisTrees"
+#CAL_FILE="/data1/S9038/current-sort/data/cal-files/run-agnostic/July2020_calibration.cal"
+#HIST_DIR="/data1/S9038/current-sort/data/histograms/compton-algorithm/subruns"
+#DATA_DIR="/data1/S9038/current-sort/data/analysis-trees"
+#SORT_CODE="/data1/S9038/current-sort/analysis/sort-analysis-trees/my-build/SortAnalysisTrees"
+#SORT_DIR="/data1/S9038/current-sort/ongoing-sort"
+
+CAL_FILE="/data1/S9038/current-sort/data/S2036/cal-files/CalibrationFile.cal"
+HIST_DIR="/data1/S9038/current-sort/data/S2036/histograms"
+DATA_DIR="/data1/S9038/current-sort/data/S2036/analysis-trees"
+SORT_CODE="/data1/S9038/current-sort/analysis/sorting/bgo-suppression-factor/my-build/SortAnalysisTrees"
 SORT_DIR="/data1/S9038/current-sort/ongoing-sort"
 
 if [ $# -eq 0 ]; then
