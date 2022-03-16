@@ -69,6 +69,22 @@ bool ComptonRecovery::ComptonScatterCandidate(int angle_index, float energy_1, f
 } // end ComptonScatterCandidate()
 
 /************************************************************//**
+ * Returns the position of highest energy deposit
+ *
+ * @param hit1 First GRIFFIN hit
+ * @param hit2 Second GRIFFIN hit
+ *****************************************************************************/
+bool ComptonRecovery::FirstHitHigh(TGriffinHit * hit1, TGriffinHit * hit2)
+{
+    // assign reconstucted location to highest energy deposit
+    if (hit1->GetEnergy() > hit2->GetEnergy()) {
+        return true;
+    } else {
+        return false;
+    }
+} // end FirstHitHigh()
+
+/************************************************************//**
  * Compton scatter formula
  *
  * @param angle Compton scatter angle (rad)

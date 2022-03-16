@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <iostream>
+#include "TGriffin.h"
 
 class ComptonRecovery
 {
@@ -15,6 +16,7 @@ public:
     ComptonRecovery(std::string file_path);
     ~ComptonRecovery(void);
     bool ComptonScatterCandidate(int angle_index, float energy_1, float energy_2);
+    bool FirstHitHigh(TGriffinHit * hit1, TGriffinHit * hit2);
     double ComptonScatterFunction(double angle, float energy);
     void ReadInComptonLimits(std::string filepath);
 
