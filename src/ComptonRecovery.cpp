@@ -140,7 +140,7 @@ void ComptonRecovery::ReadInComptonLimits(std::string filepath)
         std::cout << "Could not open " << filepath << ", exiting." << std::endl;
         exit(EXIT_FAILURE);
     } else {
-        std::cout << "Found accepted Compton scatter angles file: " << filepath << std::endl;
+        std::cout << "Found accepted Compton scatter angles file: " << filepath << "\n" << std::endl;
         io::CSVReader<5> in(filepath);
         in.read_header(io::ignore_extra_column, "angular_bin", "compton_limit_ftb", "compton_limit_btf", "angle_diff_ftb", "angle_diff_btf");
         float angular_bin; float compton_limit_ftb; float compton_limit_btf; float angle_diff_ftb; float angle_diff_btf;
