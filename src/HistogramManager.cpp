@@ -338,11 +338,15 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
     crystal_time_vec.clear();
     addback_time_vec.clear();
     reconstucted_addback_time_vec.clear();
+    // detector id vectors
+    crystal_id_vec.clear();
+    crystal_clover_id_vec.clear();
+    addback_id_vec.clear();
+    reconstucted_addback_id_vec.clear();
+    // misc vectors
+    crystal_kvalue_vec.clear();
 
-    kvalue_vec.clear();
-    crystal_vec.clear();
-    clover_vec.clear();
-
+    /*
     if (_multiplicity_filter) {
         if (fGrif->GetSuppressedMultiplicity(fGriffinBgo) == _multiplicity_limit) {         // multiplicity filter
             for (auto j = 0; j < fGrif->GetSuppressedMultiplicity(fGriffinBgo); ++j) {
@@ -387,15 +391,35 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
         } // end singles loop
 
     }
+    */
 
-    // Compton recovery logic
+    // suppressed singles
+    int true_singles_multiplicity = static_cast<int>(fGrif->GetSuppressedMultiplicity(fGriffinBgo));
+    for(auto g1 = 0; g1 < true_singles_multiplicity; g1++) {
+        TGriffinHit * grif1 = static_cast<TGriffinHit*>(fGrif->GetSuppressedHit(g1));
 
+        crystal_energy_vec.push_back(grif1->GetEnergy());
+        crystal_pos_vec.push_back(grif1->GetPosition(_detector_radius));
+        crystal_time_vec.push_back(grif1->GetTime());
+        crystal_id_vec.push_back(grif1->GetArrayNumber());
+        crystal_clover_id_vec.push_back(grif1->GetDetector());
+
+    } // end g1 & singles
+
+
+    // suppressed addback
     int true_addback_multiplicity = static_cast<int>(fGrif->GetSuppressedAddbackMultiplicity(fGriffinBgo));
     std::vector<int> accepted_compton_indices;
     bool found_reconstruction_event = false;
     for (auto g1 = 0; g1 < true_addback_multiplicity; g1++) {
         TGriffinHit * grif1 = static_cast<TGriffinHit*>(fGrif->GetSuppressedAddbackHit(g1));
 
+        addback_energy_vec.push_back(grif1->GetEnergy());
+        addback_pos_vec.push_back(grif1->GetPosition(_detector_radius));
+        addback_time_vec.push_back(grif1->GetTime());
+        addback_id_vec.push_back(grif1->GetArrayNumber());
+
+        // Compton recovery logic
         for(auto g2 = g1 + 1; g2 < true_addback_multiplicity; g2++) { // loop MUST be assymmetric because of Compton recovery alg.
 
             // only check for reconstucted indices if one has been found
@@ -429,8 +453,10 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
                     // assign reconstructed energy to clover with highest energy
                     if (comp_check->FirstHitHigh(grif1, grif2)) {
                         reconstructed_addback_pos_vec.push_back(grif1->GetPosition(_detector_radius));
+                        reconstucted_addback_id_vec.push_back(grif1->GetArrayNumber());
                     } else{
                         reconstructed_addback_pos_vec.push_back(grif2->GetPosition(_detector_radius));
+                        reconstucted_addback_id_vec.push_back(grif2->GetArrayNumber());
                     }
                     // assign time as time of first hit
                     reconstucted_addback_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
@@ -451,14 +477,22 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
                     }
                 } // end compton_scatter_candidate
             } // end prompt coincidence
-        } // end grif2
+        } // end grif2 & compton recovery logic
+
         // add first grif hit if it was not a compton candidate with any other hits in the event
         if (std::find(accepted_compton_indices.begin(), accepted_compton_indices.end(), g1) != accepted_compton_indices.end()) {
+            continue;
+        } else {
             reconstucted_addback_energy_vec.push_back(grif1->GetEnergy());
             reconstructed_addback_pos_vec.push_back(grif1->GetPosition(_detector_radius));
             reconstucted_addback_time_vec.push_back(grif1->GetTime());
-        }
-    } // end grif1
+            reconstucted_addback_id_vec.push_back(grif1->GetArrayNumber());
+
+            if (diagnostic_verbosity && true_addback_multiplicity > 3) {
+                std::cout << _event_number << "| Added hit " << g1 << " to list" << std::endl;
+            }
+        } // end grif1 reconstruction check
+    } // end grif1 - addback
 
 } // PreProcessData
 

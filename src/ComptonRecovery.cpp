@@ -103,12 +103,12 @@ bool ComptonRecovery::FirstHitHigh(TGriffinHit * hit1, TGriffinHit * hit2)
 double ComptonRecovery::GetReconstructedTime(TGriffinHit * hit1, TGriffinHit * hit2)
 {
     // assign time as time of the first hit
-    double delta_t = (grif1->GetTime() - grif2->GetTime());
+    double delta_t = (hit1->GetTime() - hit2->GetTime());
 
     if (delta_t > 0){
-        return grif2->GetTime();
+        return hit2->GetTime();
     } else {
-        return grif1->GetTime();
+        return hit1->GetTime();
     }
 } // end GetReconstructedTime
 

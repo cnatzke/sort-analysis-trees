@@ -43,14 +43,13 @@ std::vector<TVector3> reconstructed_addback_pos_vec;
 std::vector<double> crystal_time_vec;
 std::vector<double> addback_time_vec;
 std::vector<double> reconstucted_addback_time_vec;
-
-
-
-std::vector<long> time_vec;     // vector which contains the time values
-std::vector<float> kvalue_vec;     // vector containing k-values
-std::vector<int> crystal_vec;
-std::vector<int> clover_vec;     // vector containing detector ids
-std::vector<float> charge_vec;     // vector containing detector ids
+// detector id vectors
+std::vector<int> crystal_id_vec;
+std::vector<int> crystal_clover_id_vec;
+std::vector<int> addback_id_vec;
+std::vector<int> reconstucted_addback_id_vec;
+// misc vectors
+std::vector<float> crystal_kvalue_vec;
 
 public:
 HistogramManager(std::string compton_limits_file);
