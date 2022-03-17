@@ -69,6 +69,16 @@ bool ComptonRecovery::ComptonScatterCandidate(int angle_index, float energy_1, f
 } // end ComptonScatterCandidate()
 
 /************************************************************//**
+ * Recovers Compton scatter event
+ *
+ * @param hit1 First GRIFFIN hit
+ * @param hit2 Second GRIFFIN hit
+ *****************************************************************************/
+void ComptonRecovery::RecoverComptonScatter(TGriffinHit * hit1, TGriffinHit * hit2)
+{
+} // end RecoverComptonScatter()
+
+/************************************************************//**
  * Returns the position of highest energy deposit
  *
  * @param hit1 First GRIFFIN hit
@@ -83,6 +93,24 @@ bool ComptonRecovery::FirstHitHigh(TGriffinHit * hit1, TGriffinHit * hit2)
         return false;
     }
 } // end FirstHitHigh()
+
+/************************************************************//**
+ * Returns the time of the first hit
+ *
+ * @param hit1 First GRIFFIN hit
+ * @param hit2 Second GRIFFIN hit
+ *****************************************************************************/
+double ComptonRecovery::GetReconstructedTime(TGriffinHit * hit1, TGriffinHit * hit2)
+{
+    // assign time as time of the first hit
+    double delta_t = (grif1->GetTime() - grif2->GetTime());
+
+    if (delta_t > 0){
+        return grif2->GetTime();
+    } else {
+        return grif1->GetTime();
+    }
+} // end GetReconstructedTime
 
 /************************************************************//**
  * Compton scatter formula
