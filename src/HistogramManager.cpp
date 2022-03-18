@@ -1,4 +1,4 @@
-crystalcrystal//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 // Creates and fills histograms
 //
 // Author:          Connor Natzke (cnatzke@triumf.ca)
@@ -273,7 +273,6 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
     crystal_kvalue_vec.clear();
 
     // suppressed singles
-    /*
     int true_singles_multiplicity = static_cast<int>(fGrif->GetSuppressedMultiplicity(fGriffinBgo));
     std::vector<int> accepted_singles_compton_indices;
     bool found_singles_reconstruction_event = false;
@@ -361,8 +360,6 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
             }
         } // end grif1 reconstruction check
     } // end g1 & singles
-    */
-
 
     // suppressed addback
     int true_addback_multiplicity = static_cast<int>(fGrif->GetSuppressedAddbackMultiplicity(fGriffinBgo));

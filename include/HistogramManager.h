@@ -29,27 +29,27 @@ std::map<std::string, TH2D*> hist_2D;
 // energy vectors
 std::vector<float> crystal_energy_vec;
 std::vector<float> addback_energy_vec;
-//std::vector<float> unsup_crystal_energy_vec;
-//std::vector<float> reconstructed_crystal_energy_vec;
+std::vector<float> unsup_crystal_energy_vec;
+std::vector<float> reconstructed_crystal_energy_vec;
 std::vector<float> reconstructed_addback_energy_vec;
 // position vectors
 std::vector<TVector3> crystal_pos_vec;
 std::vector<TVector3> addback_pos_vec;
-//std::vector<TVector3> unsup_crystal_pos_vec;
-//std::vector<TVector3> reconstructed_crystal_pos_vec;
+std::vector<TVector3> unsup_crystal_pos_vec;
+std::vector<TVector3> reconstructed_crystal_pos_vec;
 std::vector<TVector3> reconstructed_addback_pos_vec;
 // time vectors
 std::vector<double> crystal_time_vec;
 std::vector<double> addback_time_vec;
-//std::vector<double> unsup_crystal_time_vec;
-//std::vector<double> reconstructed_crystal_time_vec;
+std::vector<double> unsup_crystal_time_vec;
+std::vector<double> reconstructed_crystal_time_vec;
 std::vector<double> reconstructed_addback_time_vec;
 // detector id vectors
 std::vector<int> crystal_id_vec;
 std::vector<int> addback_id_vec;
 std::vector<int> crystal_clover_id_vec;
-//std::vector<int> unsup_crystal_id_vec;
-//std::vector<int> reconstructed_crystal_id_vec;
+std::vector<int> unsup_crystal_id_vec;
+std::vector<int> reconstructed_crystal_id_vec;
 std::vector<int> reconstructed_addback_id_vec;
 // misc vectors
 std::vector<float> crystal_kvalue_vec;
