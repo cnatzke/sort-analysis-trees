@@ -37,8 +37,8 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    // Turn off crosstalk corrections
-    TGRSIOptions::AnalysisOptions()->SetCorrectCrossTalk(false);
+    // Specifiy crosstalk corrections
+    //TGRSIOptions::AnalysisOptions()->SetCorrectCrossTalk(false);
 
     HistogramManager * hist_man = new HistogramManager(compton_limits_filepath);
     // turn on multiplicity filter

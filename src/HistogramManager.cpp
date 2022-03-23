@@ -60,12 +60,19 @@ void HistogramManager::InitializeHistograms(int verbose)
 
     hist_1D["singles_energy"] = new TH1D("singles_energy", "gamma singles", energy_bins_max, energy_bins_min, energy_bins_max);
     hist_1D["addback_energy"] = new TH1D("addback_energy", "Addback Energy", energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_1D["unsup_singles_energy"] = new TH1D("unsup_singles_energy", "Unsuppressed singles energy", energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_1D["reconstructed_singles_energy"] = new TH1D("reconstructed_singles_energy", "singles Energy", energy_bins_max, energy_bins_min, energy_bins_max);
     hist_1D["reconstructed_addback_energy"] = new TH1D("reconstructed_addback_energy", "Addback Energy", energy_bins_max, energy_bins_min, energy_bins_max);
+    // accepted Compton energies
+    hist_1D["singles_compton_energy"] = new TH1D("singles_compton_energy", "Accepted Compton gamma singles", energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_1D["addback_compton_energy"] = new TH1D("addback_compton_energy", "Accepted Compton addback energy", energy_bins_max, energy_bins_min, energy_bins_max);
+
 
     // 2D Histograms
     if (verbose > 0 ) std::cout << "Creating 2D histograms ... " << std::endl;
     hist_2D["singles_energy_channel"] = new TH2D("singles_energy_channel", "#gamma singles vs channel", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["singles_gg_matrix"] = new TH2D("singles_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["unsup_singles_gg_matrix"] = new TH2D("unsup_singles_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["singles_sum_angle"] = new TH2D("singles_sum_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["sum_energy_angle_tr"] = new TH2D("sum_energy_angle_tr", "Sum Energy vs angle index (time random);angle index;sum energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
 
@@ -74,8 +81,13 @@ void HistogramManager::InitializeHistograms(int verbose)
     hist_2D["addback_sum_angle"] = new TH2D("addback_sum_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
 
     hist_2D["reconstructed_addback_energy_channel"] = new TH2D("reconstructed_addback_energy_channel", "#gamma reconstructed_addback vs channel", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["reconstructed_singles_gg_matrix"] = new TH2D("reconstructed_singles_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["reconstructed_addback_gg_matrix"] = new TH2D("reconstructed_addback_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["reconstructed_addback_sum_angle"] = new TH2D("reconstructed_addback_sum_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
+
+    hist_2D["singles_compton_gg_matrix"] = new TH2D("singles_compton_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_2D["addback_compton_gg_matrix"] = new TH2D("addback_compton_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+
 
 } // InitializeHistograms()
 
@@ -123,32 +135,32 @@ void HistogramManager::FillHistograms(TChain *gChain)
         // Applies multiplicity filter and recovers intra-clover compton scatters
         PreProcessData(comp_check);
 
-        // singles
-        if (crystal_energy_vec.size() > 0) {
-            for (auto g1 = 0; g1 < (int) crystal_energy_vec.size(); g1++) {
-                hist_1D["k_value"]->Fill(crystal_kvalue_vec.at(g1));
-                hist_1D["singles_energy"]->Fill(crystal_energy_vec.at(g1));
-                hist_2D["singles_energy_channel"]->Fill(crystal_id_vec.at(g1), crystal_energy_vec.at(g1));
+        // suppressed singles
+        if (singles_energy_vec.size() > 0) {
+            for (auto g1 = 0; g1 < (int) singles_energy_vec.size(); g1++) {
+                hist_1D["k_value"]->Fill(singles_kvalue_vec.at(g1));
+                hist_1D["singles_energy"]->Fill(singles_energy_vec.at(g1));
+                hist_2D["singles_energy_channel"]->Fill(singles_id_vec.at(g1), singles_energy_vec.at(g1));
 
-                //for (auto g2 = 0; g2 < crystal_energy_vec.size(); g2++) { // symmetric matrices
-                for (auto g2 = g1 + 1; g2 < (int) crystal_energy_vec.size(); g2++) {     // asymmetric matrices
+                //for (auto g2 = 0; g2 < singles_energy_vec.size(); g2++) { // symmetric matrices
+                for (auto g2 = g1 + 1; g2 < (int) singles_energy_vec.size(); g2++) {     // asymmetric looping
                     if (g1 == g2) continue;
 
-                    double angle = crystal_pos_vec.at(g1).Angle(crystal_pos_vec.at(g2));
+                    double angle = singles_pos_vec.at(g1).Angle(singles_pos_vec.at(g2));
                     int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
                     if (angle * rad_to_degree < 0.0001 || angle * rad_to_degree > 180.0) {
                         continue;
                     }
 
-                    double delta_t = TMath::Abs(crystal_time_vec.at(g1) - crystal_time_vec.at(g2));
+                    double delta_t = TMath::Abs(singles_time_vec.at(g1) - singles_time_vec.at(g2));
                     // Prompt coincidences
                     if (delta_t < _prompt_time_max) {
                         // 1D
 
                         // 2D
-                        hist_2D["singles_sum_angle"]->Fill(angle_index, crystal_energy_vec.at(g1) + crystal_energy_vec.at(g2));
-                        hist_2D["singles_gg_matrix"]->Fill(crystal_energy_vec.at(g1), crystal_energy_vec.at(g2));
-                        hist_2D["singles_gg_matrix"]->Fill(crystal_energy_vec.at(g2), crystal_energy_vec.at(g1));
+                        hist_2D["singles_sum_angle"]->Fill(angle_index, singles_energy_vec.at(g1) + singles_energy_vec.at(g2));
+                        hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g1), singles_energy_vec.at(g2));
+                        hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g2), singles_energy_vec.at(g1));
                     } // end prompt coincidence
                 } // end g2
             } // end g1
@@ -161,7 +173,7 @@ void HistogramManager::FillHistograms(TChain *gChain)
                 hist_2D["addback_energy_channel"]->Fill(addback_id_vec.at(g1), addback_energy_vec.at(g1));
 
                 //for (auto g2 = 0; g2 < addback_energy_vec.size(); g2++) { // symmetric matrices
-                for (auto g2 = g1 + 1; g2 < (int) addback_energy_vec.size(); g2++) {     // asymmetric matrices
+                for (auto g2 = g1 + 1; g2 < (int) addback_energy_vec.size(); g2++) {     // asymmetric looping
                     if (g1 == g2) continue;
 
                     double angle = addback_pos_vec.at(g1).Angle(addback_pos_vec.at(g2));
@@ -184,6 +196,32 @@ void HistogramManager::FillHistograms(TChain *gChain)
             } // end g1
         } // end addback
 
+        // Compton recovered singles
+        if (reconstructed_singles_energy_vec.size() > 0) {
+            for (auto g1 = 0; g1 < (int) reconstructed_singles_energy_vec.size(); g1++) {
+                hist_1D["reconstructed_singles_energy"]->Fill(reconstructed_singles_energy_vec.at(g1));
+                for (auto g2 = g1 + 1; g2 < (int) reconstructed_singles_energy_vec.size(); g2++) {     // asymmetric looping
+                    if (g1 == g2) continue;
+
+                    double angle = reconstructed_singles_pos_vec.at(g1).Angle(reconstructed_singles_pos_vec.at(g2));
+                    int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
+                    if (angle * rad_to_degree < 0.0001 || angle * rad_to_degree > 180.0) {
+                        continue;
+                    }
+
+                    double delta_t = TMath::Abs(reconstructed_singles_time_vec.at(g1) - reconstructed_singles_time_vec.at(g2));
+                    // Prompt coincidences
+                    if (delta_t < _prompt_time_max) {
+                        // 1D
+
+                        // 2D
+                        hist_2D["reconstructed_singles_gg_matrix"]->Fill(reconstructed_singles_energy_vec.at(g1), reconstructed_singles_energy_vec.at(g2));
+                        hist_2D["reconstructed_singles_gg_matrix"]->Fill(reconstructed_singles_energy_vec.at(g2), reconstructed_singles_energy_vec.at(g1));
+                    } // end prompt coincidence
+                } // end g2
+            } // end g1
+        } // end compton reconstructed singles
+
         // Compton recovered addback
         if (reconstructed_addback_energy_vec.size() > 0) {
             for (auto g1 = 0; g1 < (int) reconstructed_addback_energy_vec.size(); g1++) {
@@ -191,7 +229,7 @@ void HistogramManager::FillHistograms(TChain *gChain)
                 hist_2D["reconstructed_addback_energy_channel"]->Fill(reconstructed_addback_id_vec.at(g1), reconstructed_addback_energy_vec.at(g1));
 
                 //for (auto g2 = 0; g2 < reconstructed_addback_energy_vec.size(); g2++) { // symmetric matrices
-                for (auto g2 = g1 + 1; g2 < (int) reconstructed_addback_energy_vec.size(); g2++) {     // asymmetric matrices
+                for (auto g2 = g1 + 1; g2 < (int) reconstructed_addback_energy_vec.size(); g2++) {     // asymmetric looping
                     if (g1 == g2) continue;
 
                     double angle = reconstructed_addback_pos_vec.at(g1).Angle(reconstructed_addback_pos_vec.at(g2));
@@ -213,6 +251,64 @@ void HistogramManager::FillHistograms(TChain *gChain)
                 } // end g2
             } // end g1
         } // end compton recovered addback
+
+        // Unsuppressed singles
+        if (unsup_singles_energy_vec.size() > 0) {
+            for (auto g1 = 0; g1 < (int) unsup_singles_energy_vec.size(); g1++) {
+                hist_1D["unsup_singles_energy"]->Fill(unsup_singles_energy_vec.at(g1));
+                for (auto g2 = g1 + 1; g2 < (int) unsup_singles_energy_vec.size(); g2++) { // asymmetric looping
+                    if (g1 == g2) continue;
+
+                    double delta_t = TMath::Abs(unsup_singles_time_vec.at(g1) - unsup_singles_time_vec.at(g2));
+                    // Prompt coincidences
+                    if (delta_t < _prompt_time_max) {
+                        // 1D
+
+                        // 2D
+                        hist_2D["unsup_singles_gg_matrix"]->Fill(unsup_singles_energy_vec.at(g1), unsup_singles_energy_vec.at(g2));
+                        hist_2D["unsup_singles_gg_matrix"]->Fill(unsup_singles_energy_vec.at(g2), unsup_singles_energy_vec.at(g1));
+                    } // end prompt coincidence
+                } // end g2
+            } // end g1
+        } // end compton reconstructed singles
+
+        // singles Compton events
+        if (singles_compton_energy_vec.size() > 0) {
+            for (auto g1 = 0; g1 < (int) singles_compton_energy_vec.size(); g1++) {
+                hist_1D["singles_compton_energy"]->Fill(singles_compton_energy_vec.at(g1));
+                for (auto g2 = g1 + 1; g2 < (int) singles_compton_energy_vec.size(); g2++) { // asymmetric looping
+                    if (g1 == g2) continue;
+
+                    double delta_t = TMath::Abs(singles_compton_time_vec.at(g1) - singles_compton_time_vec.at(g2));
+                    // Prompt coincidences
+                    if (delta_t < _prompt_time_max) {
+                        // 1D
+                        // 2D
+                        hist_2D["singles_compton_gg_matrix"]->Fill(singles_compton_energy_vec.at(g1), singles_compton_energy_vec.at(g2));
+                        hist_2D["singles_compton_gg_matrix"]->Fill(singles_compton_energy_vec.at(g2), singles_compton_energy_vec.at(g1));
+                    } // end prompt coincidence
+                } // end g2
+            } // end g1
+        } // end singles Compton events
+
+        // addback Compton events
+        if (addback_compton_energy_vec.size() > 0) {
+            for (auto g1 = 0; g1 < (int) addback_compton_energy_vec.size(); g1++) {
+                hist_1D["addback_compton_energy"]->Fill(addback_compton_energy_vec.at(g1));
+                for (auto g2 = g1 + 1; g2 < (int) addback_compton_energy_vec.size(); g2++) { // asymmetric looping
+                    if (g1 == g2) continue;
+
+                    double delta_t = TMath::Abs(addback_compton_time_vec.at(g1) - addback_compton_time_vec.at(g2));
+                    // Prompt coincidences
+                    if (delta_t < _prompt_time_max) {
+                        // 1D
+                        // 2D
+                        hist_2D["addback_compton_gg_matrix"]->Fill(addback_compton_energy_vec.at(g1), addback_compton_energy_vec.at(g2));
+                        hist_2D["addback_compton_gg_matrix"]->Fill(addback_compton_energy_vec.at(g2), addback_compton_energy_vec.at(g1));
+                    } // end prompt coincidence
+                } // end g2
+            } // end g1
+        } // end addback Compton events
 
         if (i % 10000 == 0) {
             progress_bar.display();
@@ -238,51 +334,142 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
     bool diagnostic_verbosity = false;
 
     // energy vectors
-    crystal_energy_vec.clear();
+    singles_energy_vec.clear();
     addback_energy_vec.clear();
-    unsup_crystal_energy_vec.clear();
-    reconstucted_crystal_energy_vec.clear();
+    unsup_singles_energy_vec.clear();
+    reconstructed_singles_energy_vec.clear();
     reconstructed_addback_energy_vec.clear();
+    singles_compton_energy_vec.clear();
+    addback_compton_energy_vec.clear();
     // position vectors
-    crystal_pos_vec.clear();
+    singles_pos_vec.clear();
     addback_pos_vec.clear();
-    unsup_crystal_pos_vec.clear();
-    reconstructed_crystal_pos_vec.clear();
+    unsup_singles_pos_vec.clear();
+    reconstructed_singles_pos_vec.clear();
     reconstructed_addback_pos_vec.clear();
     // time vectors
-    crystal_time_vec.clear();
+    singles_time_vec.clear();
     addback_time_vec.clear();
-    unsup_crystal_time_vec.clear();
-    reconstructed_crystal_time_vec.clear();
+    unsup_singles_time_vec.clear();
+    reconstructed_singles_time_vec.clear();
     reconstructed_addback_time_vec.clear();
+    singles_compton_time_vec.clear();
+    addback_compton_energy_vec.clear();
     // detector id vectors
-    crystal_id_vec.clear();
+    singles_id_vec.clear();
     addback_id_vec.clear();
-    crystal_clover_id_vec.clear();
-    unsup_crystal_id_vec.clear();
-    reconstructed_crystal_id_vec.clear();
+    singles_clover_id_vec.clear();
+    unsup_singles_id_vec.clear();
+    reconstructed_singles_id_vec.clear();
     reconstructed_addback_id_vec.clear();
     // misc vectors
-    crystal_kvalue_vec.clear();
+    singles_kvalue_vec.clear();
+
+    // unsuppressed singles
+    for(auto g1 = 0; g1 < fGrif->GetMultiplicity(); g1++) {
+        TGriffinHit * grif1 = static_cast<TGriffinHit*>(fGrif->GetHit(g1));
+
+        unsup_singles_energy_vec.push_back(grif1->GetEnergy());
+        unsup_singles_pos_vec.push_back(grif1->GetPosition(_detector_radius));
+        unsup_singles_time_vec.push_back(grif1->GetTime());
+        unsup_singles_id_vec.push_back(grif1->GetArrayNumber());
+    } // end unsuppressed singles
 
     // suppressed singles
     int true_singles_multiplicity = static_cast<int>(fGrif->GetSuppressedMultiplicity(fGriffinBgo));
+    std::vector<int> accepted_singles_compton_indices;
+    bool found_singles_reconstruction_event = false;
     for(auto g1 = 0; g1 < true_singles_multiplicity; g1++) {
         TGriffinHit * grif1 = static_cast<TGriffinHit*>(fGrif->GetSuppressedHit(g1));
 
-        crystal_energy_vec.push_back(grif1->GetEnergy());
-        crystal_pos_vec.push_back(grif1->GetPosition(_detector_radius));
-        crystal_time_vec.push_back(grif1->GetTime());
-        crystal_id_vec.push_back(grif1->GetArrayNumber());
-        crystal_clover_id_vec.push_back(grif1->GetDetector());
-        crystal_kvalue_vec.push_back(grif1->GetKValue());
+        singles_energy_vec.push_back(grif1->GetEnergy());
+        singles_pos_vec.push_back(grif1->GetPosition(_detector_radius));
+        singles_time_vec.push_back(grif1->GetTime());
+        singles_id_vec.push_back(grif1->GetArrayNumber());
+        singles_clover_id_vec.push_back(grif1->GetDetector());
+        singles_kvalue_vec.push_back(grif1->GetKValue());
 
+        // Compton recovery logic
+        for(auto g2 = g1 + 1; g2 < true_singles_multiplicity; g2++) { // loop MUST be assymmetric because of Compton recovery alg.
+
+            // only check for reconstructed indices if one has been found
+            if (diagnostic_verbosity && found_singles_reconstruction_event && true_singles_multiplicity > 3) std::cout << _event_number << " | " << g1 << " | " << g2 << " | "<< std::endl;
+            if (found_singles_reconstruction_event) {
+                if (std::find(accepted_singles_compton_indices.begin(), accepted_singles_compton_indices.end(), g1) != accepted_singles_compton_indices.end()) {
+                    continue;
+                }
+                if (std::find(accepted_singles_compton_indices.begin(), accepted_singles_compton_indices.end(), g2) != accepted_singles_compton_indices.end()) {
+                    continue;
+                }
+            }
+            if (diagnostic_verbosity && found_singles_reconstruction_event && true_singles_multiplicity > 3) std::cout << _event_number << " | " << g1 << " | " << g2 << " | Passed"<< std::endl;
+
+            TGriffinHit * grif2 = static_cast<TGriffinHit*>(fGrif->GetSuppressedHit(g2));
+
+            // find angle between hits
+            double angle = grif1->GetPosition(_detector_radius).Angle(grif2->GetPosition(_detector_radius));
+            int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
+            // angle safety check
+            if (angle * rad_to_degree < 0.0001 || angle * rad_to_degree > 180.0) {
+                continue;
+            }
+
+            double delta_t = TMath::Abs(grif1->GetTime() - grif2->GetTime());
+            if (delta_t < _prompt_time_max) {
+                // check for possible intra-clover Compton scatter
+                bool compton_scatter_candidate = comp_check->ComptonScatterCandidate(angle_index, grif1->GetEnergy(), grif2->GetEnergy());
+                if (compton_scatter_candidate) {
+                    reconstructed_singles_energy_vec.push_back(grif1->GetEnergy() + grif2->GetEnergy());
+                    singles_compton_energy_vec.push_back(grif1->GetEnergy() + grif2->GetEnergy());
+                    // assign reconstructed energy to clover with highest energy
+                    if (comp_check->FirstHitHigh(grif1, grif2)) {
+                        reconstructed_singles_pos_vec.push_back(grif1->GetPosition(_detector_radius));
+                        reconstructed_singles_id_vec.push_back(grif1->GetArrayNumber());
+                    } else{
+                        reconstructed_singles_pos_vec.push_back(grif2->GetPosition(_detector_radius));
+                        reconstructed_singles_id_vec.push_back(grif2->GetArrayNumber());
+                    }
+                    // assign time as time of first hit
+                    reconstructed_singles_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
+                    singles_compton_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
+
+                    // removing hits from future loops
+                    accepted_singles_compton_indices.push_back(g1);
+                    accepted_singles_compton_indices.push_back(g2);
+                    found_singles_reconstruction_event = true;
+
+                    // checking correct events are passed
+                    if (diagnostic_verbosity && true_singles_multiplicity > 3) {
+                        std::cout << "---> " << _event_number
+                                  << " | " << g1
+                                  << " | " << g2
+                                  << " | " << true_singles_multiplicity
+                            //<< " | " << effective_singles_multiplicity
+                                  << " | " << std::endl;
+                    }
+                } // end compton_scatter_candidate
+            } // end prompt coincidence
+        } // end grif2 & compton recovery logic
+
+        // add first grif hit if it was not a compton candidate with any other hits in the event
+        if (std::find(accepted_singles_compton_indices.begin(), accepted_singles_compton_indices.end(), g1) != accepted_singles_compton_indices.end()) {
+            continue;
+        } else {
+            reconstructed_singles_energy_vec.push_back(grif1->GetEnergy());
+            reconstructed_singles_pos_vec.push_back(grif1->GetPosition(_detector_radius));
+            reconstructed_singles_time_vec.push_back(grif1->GetTime());
+            reconstructed_singles_id_vec.push_back(grif1->GetArrayNumber());
+
+            if (diagnostic_verbosity && true_singles_multiplicity > 3) {
+                std::cout << _event_number << "| Added hit " << g1 << " to list" << std::endl;
+            }
+        } // end grif1 reconstruction check
     } // end g1 & singles
 
 
     // suppressed addback
     int true_addback_multiplicity = static_cast<int>(fGrif->GetSuppressedAddbackMultiplicity(fGriffinBgo));
-    std::vector<int> accepted_compton_indices;
+    std::vector<int> accepted_addback_compton_indices;
     bool found_reconstruction_event = false;
     for (auto g1 = 0; g1 < true_addback_multiplicity; g1++) {
         TGriffinHit * grif1 = static_cast<TGriffinHit*>(fGrif->GetSuppressedAddbackHit(g1));
@@ -298,10 +485,10 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
             // only check for reconstructed indices if one has been found
             if (diagnostic_verbosity && found_reconstruction_event && true_addback_multiplicity > 3) std::cout << _event_number << " | " << g1 << " | " << g2 << " | "<< std::endl;
             if (found_reconstruction_event) {
-                if (std::find(accepted_compton_indices.begin(), accepted_compton_indices.end(), g1) != accepted_compton_indices.end()) {
+                if (std::find(accepted_addback_compton_indices.begin(), accepted_addback_compton_indices.end(), g1) != accepted_addback_compton_indices.end()) {
                     continue;
                 }
-                if (std::find(accepted_compton_indices.begin(), accepted_compton_indices.end(), g2) != accepted_compton_indices.end()) {
+                if (std::find(accepted_addback_compton_indices.begin(), accepted_addback_compton_indices.end(), g2) != accepted_addback_compton_indices.end()) {
                     continue;
                 }
             }
@@ -323,6 +510,7 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
                 bool compton_scatter_candidate = comp_check->ComptonScatterCandidate(angle_index, grif1->GetEnergy(), grif2->GetEnergy());
                 if (compton_scatter_candidate) {
                     reconstructed_addback_energy_vec.push_back(grif1->GetEnergy() + grif2->GetEnergy());
+                    addback_compton_energy_vec.push_back(grif1->GetEnergy() + grif2->GetEnergy());
                     // assign reconstructed energy to clover with highest energy
                     if (comp_check->FirstHitHigh(grif1, grif2)) {
                         reconstructed_addback_pos_vec.push_back(grif1->GetPosition(_detector_radius));
@@ -333,10 +521,11 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
                     }
                     // assign time as time of first hit
                     reconstructed_addback_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
+                    addback_compton_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
 
                     // removing hits from future loops
-                    accepted_compton_indices.push_back(g1);
-                    accepted_compton_indices.push_back(g2);
+                    accepted_addback_compton_indices.push_back(g1);
+                    accepted_addback_compton_indices.push_back(g2);
                     found_reconstruction_event = true;
 
                     // checking correct events are passed
@@ -353,7 +542,7 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
         } // end grif2 & compton recovery logic
 
         // add first grif hit if it was not a compton candidate with any other hits in the event
-        if (std::find(accepted_compton_indices.begin(), accepted_compton_indices.end(), g1) != accepted_compton_indices.end()) {
+        if (std::find(accepted_addback_compton_indices.begin(), accepted_addback_compton_indices.end(), g1) != accepted_addback_compton_indices.end()) {
             continue;
         } else {
             reconstructed_addback_energy_vec.push_back(grif1->GetEnergy());
