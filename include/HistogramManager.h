@@ -29,32 +29,37 @@ std::map<std::string, TH2D*> hist_2D;
 // energy vectors
 std::vector<float> singles_energy_vec;
 std::vector<float> addback_energy_vec;
-std::vector<float> unsup_singles_energy_vec;
-std::vector<float> reconstructed_singles_energy_vec;
+std::vector<float> singles_unsup_energy_vec;
+std::vector<float> singles_reconstructed_energy_vec;
+std::vector<float> addback_reconstructed_energy_vec;
+std::vector<float> singles_rejected_energy_vec;
+std::vector<float> addback_rejected_energy_vec;
 std::vector<float> singles_compton_energy_vec;
 std::vector<float> addback_compton_energy_vec;
 
 // position vectors
 std::vector<TVector3> singles_pos_vec;
 std::vector<TVector3> addback_pos_vec;
-std::vector<TVector3> unsup_singles_pos_vec;
-std::vector<TVector3> reconstructed_singles_pos_vec;
-std::vector<TVector3> reconstructed_addback_pos_vec;
+std::vector<TVector3> singles_unsup_pos_vec;
+std::vector<TVector3> singles_reconstructed_pos_vec;
+std::vector<TVector3> addback_reconstructed_pos_vec;
 // time vectors
 std::vector<double> singles_time_vec;
 std::vector<double> addback_time_vec;
-std::vector<double> unsup_singles_time_vec;
-std::vector<double> reconstructed_singles_time_vec;
-std::vector<double> reconstructed_addback_time_vec;
+std::vector<double> singles_unsup_time_vec;
+std::vector<double> singles_reconstructed_time_vec;
+std::vector<double> addback_reconstructed_time_vec;
+std::vector<double> singles_rejected_time_vec;
+std::vector<double> addback_rejected_time_vec;
 std::vector<double> singles_compton_time_vec;
 std::vector<double> addback_compton_time_vec;
 // detector id vectors
 std::vector<int> singles_id_vec;
 std::vector<int> addback_id_vec;
-std::vector<int> unsup_singles_id_vec;
+std::vector<int> singles_unsup_id_vec;
 std::vector<int> singles_clover_id_vec;
-std::vector<int> reconstructed_singles_id_vec;
-std::vector<int> reconstructed_addback_id_vec;
+std::vector<int> singles_reconstructed_id_vec;
+std::vector<int> addback_reconstructed_id_vec;
 // misc vectors
 std::vector<float> singles_kvalue_vec;
 
