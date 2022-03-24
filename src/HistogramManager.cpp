@@ -63,6 +63,8 @@ void HistogramManager::InitializeHistograms(int verbose)
     hist_1D["singles_unsup_energy"] = new TH1D("singles_unsup_energy", "Unsuppressed singles energy", energy_bins_max, energy_bins_min, energy_bins_max);
     hist_1D["singles_reconstructed_energy"] = new TH1D("singles_reconstructed_energy", "singles Energy", energy_bins_max, energy_bins_min, energy_bins_max);
     hist_1D["addback_reconstructed_energy"] = new TH1D("addback_reconstructed_energy", "Addback Energy", energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_1D["singles_rejected_energy"] = new TH1D("singles_rejected_energy", "singles Energy", energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_1D["addback_rejected_energy"] = new TH1D("addback_rejected_energy", "Addback Energy", energy_bins_max, energy_bins_min, energy_bins_max);
     // accepted Compton energies
     hist_1D["singles_compton_energy"] = new TH1D("singles_compton_energy", "Accepted Compton gamma singles", energy_bins_max, energy_bins_min, energy_bins_max);
     hist_1D["addback_compton_energy"] = new TH1D("addback_compton_energy", "Accepted Compton addback energy", energy_bins_max, energy_bins_min, energy_bins_max);
@@ -313,23 +315,42 @@ void HistogramManager::FillHistograms(TChain *gChain)
         } // end addback Compton events
 
         // singles Compton rejected events
-        if (singles_compton_energy_vec.size() > 0) {
-            for (auto g1 = 0; g1 < (int) singles_compton_energy_vec.size(); g1++) {
-                hist_1D["singles_compton_energy"]->Fill(singles_compton_energy_vec.at(g1));
-                for (auto g2 = g1 + 1; g2 < (int) singles_compton_energy_vec.size(); g2++) { // asymmetric looping
+        if (singles_rejected_energy_vec.size() > 0) {
+            for (auto g1 = 0; g1 < (int) singles_rejected_energy_vec.size(); g1++) {
+                hist_1D["singles_rejected_energy"]->Fill(singles_rejected_energy_vec.at(g1));
+                for (auto g2 = g1 + 1; g2 < (int) singles_rejected_energy_vec.size(); g2++) { // asymmetric looping
                     if (g1 == g2) continue;
 
-                    double delta_t = TMath::Abs(singles_compton_time_vec.at(g1) - singles_compton_time_vec.at(g2));
+                    double delta_t = TMath::Abs(singles_rejected_time_vec.at(g1) - singles_rejected_time_vec.at(g2));
                     // Prompt coincidences
                     if (delta_t < _prompt_time_max) {
                         // 1D
                         // 2D
-                        hist_2D["singles_compton_gg_matrix"]->Fill(singles_compton_energy_vec.at(g1), singles_compton_energy_vec.at(g2));
-                        hist_2D["singles_compton_gg_matrix"]->Fill(singles_compton_energy_vec.at(g2), singles_compton_energy_vec.at(g1));
+                        hist_2D["singles_rejected_gg_matrix"]->Fill(singles_rejected_energy_vec.at(g1), singles_rejected_energy_vec.at(g2));
+                        hist_2D["singles_rejected_gg_matrix"]->Fill(singles_rejected_energy_vec.at(g2), singles_rejected_energy_vec.at(g1));
                     } // end prompt coincidence
                 } // end g2
             } // end g1
-        } // end singles Compton events
+        } // end singles rejected events
+
+        // addback Compton rejected events
+        if (addback_rejected_energy_vec.size() > 0) {
+            for (auto g1 = 0; g1 < (int) addback_rejected_energy_vec.size(); g1++) {
+                hist_1D["addback_rejected_energy"]->Fill(addback_rejected_energy_vec.at(g1));
+                for (auto g2 = g1 + 1; g2 < (int) addback_rejected_energy_vec.size(); g2++) { // asymmetric looping
+                    if (g1 == g2) continue;
+
+                    double delta_t = TMath::Abs(addback_rejected_time_vec.at(g1) - addback_rejected_time_vec.at(g2));
+                    // Prompt coincidences
+                    if (delta_t < _prompt_time_max) {
+                        // 1D
+                        // 2D
+                        hist_2D["addback_rejected_gg_matrix"]->Fill(addback_rejected_energy_vec.at(g1), addback_rejected_energy_vec.at(g2));
+                        hist_2D["addback_rejected_gg_matrix"]->Fill(addback_rejected_energy_vec.at(g2), addback_rejected_energy_vec.at(g1));
+                    } // end prompt coincidence
+                } // end g2
+            } // end g1
+        } // end addback rejected events
 
         if (i % 10000 == 0) {
             progress_bar.display();
@@ -379,7 +400,7 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
     singles_rejected_time_vec.clear();
     addback_rejected_time_vec.clear();
     singles_compton_time_vec.clear();
-    addback_compton_energy_vec.clear();
+    addback_compton_time_vec.clear();
     // detector id vectors
     singles_id_vec.clear();
     addback_id_vec.clear();
@@ -445,7 +466,10 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
                 bool compton_scatter_candidate = comp_check->ComptonScatterCandidate(angle_index, grif1->GetEnergy(), grif2->GetEnergy());
                 if (compton_scatter_candidate) {
                     singles_reconstructed_energy_vec.push_back(grif1->GetEnergy() + grif2->GetEnergy());
-                    singles_compton_energy_vec.push_back(grif1->GetEnergy() + grif2->GetEnergy());
+                    singles_compton_energy_vec.push_back(grif1->GetEnergy());
+                    singles_compton_time_vec.push_back(grif1->GetTime());
+                    singles_compton_energy_vec.push_back(grif2->GetEnergy());
+                    singles_compton_time_vec.push_back(grif2->GetTime());
                     // assign reconstructed energy to clover with highest energy
                     if (comp_check->FirstHitHigh(grif1, grif2)) {
                         singles_reconstructed_pos_vec.push_back(grif1->GetPosition(_detector_radius));
@@ -456,7 +480,6 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
                     }
                     // assign time as time of first hit
                     singles_reconstructed_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
-                    singles_compton_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
 
                     // removing hits from future loops
                     accepted_singles_compton_indices.push_back(g1);
@@ -538,7 +561,10 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
                 bool compton_scatter_candidate = comp_check->ComptonScatterCandidate(angle_index, grif1->GetEnergy(), grif2->GetEnergy());
                 if (compton_scatter_candidate) {
                     addback_reconstructed_energy_vec.push_back(grif1->GetEnergy() + grif2->GetEnergy());
-                    addback_compton_energy_vec.push_back(grif1->GetEnergy() + grif2->GetEnergy());
+                    addback_compton_energy_vec.push_back(grif1->GetEnergy());
+                    addback_compton_time_vec.push_back(grif1->GetTime());
+                    addback_compton_energy_vec.push_back(grif2->GetEnergy());
+                    addback_compton_time_vec.push_back(grif2->GetTime());
                     // assign reconstructed energy to clover with highest energy
                     if (comp_check->FirstHitHigh(grif1, grif2)) {
                         addback_reconstructed_pos_vec.push_back(grif1->GetPosition(_detector_radius));
@@ -549,7 +575,6 @@ void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
                     }
                     // assign time as time of first hit
                     addback_reconstructed_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
-                    addback_compton_time_vec.push_back(comp_check->GetReconstructedTime(grif1, grif2));
 
                     // removing hits from future loops
                     accepted_addback_compton_indices.push_back(g1);
