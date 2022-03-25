@@ -25,6 +25,8 @@ float _detector_radius;
 // Histogram vectors
 std::map<std::string, TH1D*> hist_1D;
 std::map<std::string, TH2D*> hist_2D;
+std::map<std::string, TH2D*> hist_2D_prompt;
+std::map<std::string, TH2D*> hist_2D_time_random;
 
 // energy vectors
 std::vector<float> singles_energy_vec;

@@ -92,6 +92,15 @@ void HistogramManager::InitializeHistograms(int verbose)
     hist_2D["singles_compton_gg_matrix"] = new TH2D("singles_compton_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
     hist_2D["addback_compton_gg_matrix"] = new TH2D("addback_compton_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
 
+    // individual histograms for each angular bin
+    for (unsigned int i = 0; i < angle_combinations_vec.size(); i++) {
+        // prompt coincidence matrices
+        hist_2D_prompt[Form("index_%02i", i)] = new TH2D(Form("index_%02i_sum", i), ";sum energy [keV];#gamma_1 energy [keV]", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+        // Time randoms
+        hist_2D_time_random[Form("index_%02i", i)] = new TH2D(Form("index_%02i_sum_tr", i), ";sum energy [keV];#Deltat [ns]", energy_bins_max, energy_bins_min, energy_bins_max, 600, 400, 1000);
+        hist_2D_time_random[Form("index_%02i_avg", i)] = new TH2D(Form("index_%02i_sum_tr_avg", i), ";sum energy [keV];#gamma_1 energy [keV]", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+    }
+
 
 } // InitializeHistograms()
 
@@ -131,16 +140,21 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
     long analysis_entries = gChain->GetEntries();
     ProgressBar progress_bar(analysis_entries, 70, '=', ' ');
-    //for (auto i = 0; i < 100; i++) {
+    //for (auto i = 0; i < 1000; i++) {
     for (auto i = 0; i < analysis_entries; i++) {
         gChain->GetEntry(i);
         _event_number = i;
 
-        // Applies multiplicity filter and recovers intra-clover compton scatters
+        // Applies multiplicity filter and recovers inter-clover compton scatters
         PreProcessData(comp_check);
 
         // suppressed singles
         if (singles_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(singles_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) singles_energy_vec.size(); g1++) {
                 hist_1D["k_value"]->Fill(singles_kvalue_vec.at(g1));
                 hist_1D["singles_energy"]->Fill(singles_energy_vec.at(g1));
@@ -172,6 +186,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
         // addback
         if (addback_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(addback_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) addback_energy_vec.size(); g1++) {
                 hist_1D["addback_energy"]->Fill(addback_energy_vec.at(g1));
                 hist_2D["addback_energy_channel"]->Fill(addback_id_vec.at(g1), addback_energy_vec.at(g1));
@@ -202,13 +221,18 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
         // Compton recovered singles
         if (singles_reconstructed_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(singles_reconstructed_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) singles_reconstructed_energy_vec.size(); g1++) {
                 hist_1D["singles_reconstructed_energy"]->Fill(singles_reconstructed_energy_vec.at(g1));
                 for (auto g2 = g1 + 1; g2 < (int) singles_reconstructed_energy_vec.size(); g2++) {     // asymmetric looping
                     if (g1 == g2) continue;
 
                     double angle = singles_reconstructed_pos_vec.at(g1).Angle(singles_reconstructed_pos_vec.at(g2));
-                    int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
+                    //int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
                     if (angle * rad_to_degree < 0.0001 || angle * rad_to_degree > 180.0) {
                         continue;
                     }
@@ -228,6 +252,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
         // Compton recovered addback
         if (addback_reconstructed_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(addback_reconstructed_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) addback_reconstructed_energy_vec.size(); g1++) {
                 hist_1D["addback_reconstructed_energy"]->Fill(addback_reconstructed_energy_vec.at(g1));
                 hist_2D["addback_reconstructed_energy_channel"]->Fill(addback_reconstructed_id_vec.at(g1), addback_reconstructed_energy_vec.at(g1));
@@ -258,6 +287,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
         // Unsuppressed singles
         if (singles_unsup_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(singles_unsup_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) singles_unsup_energy_vec.size(); g1++) {
                 hist_1D["singles_unsup_energy"]->Fill(singles_unsup_energy_vec.at(g1));
                 for (auto g2 = g1 + 1; g2 < (int) singles_unsup_energy_vec.size(); g2++) { // asymmetric looping
@@ -278,6 +312,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
         // singles Compton events
         if (singles_compton_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(singles_compton_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) singles_compton_energy_vec.size(); g1++) {
                 hist_1D["singles_compton_energy"]->Fill(singles_compton_energy_vec.at(g1));
                 for (auto g2 = g1 + 1; g2 < (int) singles_compton_energy_vec.size(); g2++) { // asymmetric looping
@@ -297,6 +336,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
         // addback Compton events
         if (addback_compton_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(addback_compton_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) addback_compton_energy_vec.size(); g1++) {
                 hist_1D["addback_compton_energy"]->Fill(addback_compton_energy_vec.at(g1));
                 for (auto g2 = g1 + 1; g2 < (int) addback_compton_energy_vec.size(); g2++) { // asymmetric looping
@@ -316,6 +360,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
         // singles Compton rejected events
         if (singles_rejected_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(singles_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) singles_rejected_energy_vec.size(); g1++) {
                 hist_1D["singles_rejected_energy"]->Fill(singles_rejected_energy_vec.at(g1));
                 for (auto g2 = g1 + 1; g2 < (int) singles_rejected_energy_vec.size(); g2++) { // asymmetric looping
@@ -335,6 +384,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
         // addback Compton rejected events
         if (addback_rejected_energy_vec.size() > 0) {
+
+            if (_multiplicity_filter && static_cast<int>(addback_rejected_energy_vec.size()) != _multiplicity_limit) {
+                continue;
+            }
+
             for (auto g1 = 0; g1 < (int) addback_rejected_energy_vec.size(); g1++) {
                 hist_1D["addback_rejected_energy"]->Fill(addback_rejected_energy_vec.at(g1));
                 for (auto g2 = g1 + 1; g2 < (int) addback_rejected_energy_vec.size(); g2++) { // asymmetric looping
@@ -372,7 +426,6 @@ void HistogramManager::FillHistograms(TChain *gChain)
  ***************************************************************/
 void HistogramManager::PreProcessData(ComptonRecovery * comp_check)
 {
-    int det_id = -1;
     bool diagnostic_verbosity = false;
 
     // energy vectors
