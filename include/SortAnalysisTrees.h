@@ -1,16 +1,13 @@
 #ifndef SORT_ANALYSIS_TREES_H
 #define SORT_ANALYSIS_TREES_H
 
-// configured options for GammaGamma
-#define SortAnalysisTrees_VERSION_MAJOR @SortAnalysisTrees_VERSION_MAJOR@
-#define SortAnalysisTrees_VERSION_MINOR @SortAnalysisTrees_VERSION_MINOR@
-
 #include "Notifier.h"
 
 int main(int argc, char **argv);
 void AutoFileDetect(std::string file_name);
 void OpenRootFile(std::string file_name);
-void PrintUsage(char* argv[]);
+void LoadInternalCalibration();
+void PrintUsage(char *argv[]);
 void InitGRSISort();
 
 std::string grsi_path;

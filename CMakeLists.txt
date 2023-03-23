@@ -5,11 +5,11 @@ cmake_minimum_required(VERSION 3.2)
 
 project(SortAnalysisTrees VERSION 0.1.0)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
+#set(CMAKE_CXX_STANDARD 14)
+#set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 # configure header file
-configure_file(SortAnalysisTrees.h.in SortAnalysisTrees.h)
+#configure_file(SortAnalysisTrees.h.in SortAnalysisTrees.h)
 
 set(CMAKE_C_COMPILER "gcc")
 set(CMAKE_CXX_COMPILER "g++")
