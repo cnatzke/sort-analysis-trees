@@ -4,16 +4,6 @@
 #include "TChain.h"
 #include "TPPG.h"
 
-// TGRSIRunInfo *info = NULL;
-TPPG *ppg = NULL;
-TChain *gChain = NULL;
-TList *outList = NULL;
-
-std::vector<std::string> RootFiles;
-std::vector<std::string> CalFiles;
-std::vector<std::string> InfoFiles;
-bool internal_cal_file_flag = true;
-
 class Notifier : public TObject
 {
 public:
@@ -70,10 +60,17 @@ public:
 		return true;
 	}
 
+	// TGRSIRunInfo *info = NULL;
+	TPPG *ppg = NULL;
+	TList *outList = NULL;
+
+	bool internal_cal_file_flag = true;
+
 private:
 	TChain *fChain;
 	std::vector<std::string> RootFiles;
 	std::vector<std::string> CalFiles;
 	std::vector<std::string> InfoFiles;
+
 }; // End Notifier class
 #endif

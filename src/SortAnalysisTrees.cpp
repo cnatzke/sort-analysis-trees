@@ -8,11 +8,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 #include <iostream>
-#include "TFile.h" // needed for GetRunNumber
 #include "TGRSIUtilities.h"
 #include "TParserLibrary.h"
 #include "TEnv.h"
 
+#include "FileManager.h"
 #include "HistogramManager.h"
 #include "SortAnalysisTrees.h"
 
@@ -28,18 +28,16 @@ int main(int argc, char **argv)
 
     InitGRSISort();
 
-    for (auto i = 1; i < argc; i++)
-        AutoFileDetect(argv[i]);
+    FileManager *file_manager = new FileManager();
+    file_manager->ProcessInputFiles(argc, argv);
+    event_chain = file_manager->GetChain();
 
-    if (notifier->GetInternalCalFlag())
-        LoadInternalCalibration();
+    if (!event_chain)
+        std::cout << "No event_chain found" << std::endl;
+    if (!event_chain->GetEntries())
+        std::cout << "Found event_chain, but no entries retrieved" << std::endl;
 
-    if (!gChain)
-        std::cout << "No gChain found" << std::endl;
-    if (!gChain->GetEntries())
-        std::cout << "Found gChain, but no entries retrieved" << std::endl;
-
-    if (!gChain || !gChain->GetEntries())
+    if (!event_chain || !event_chain->GetEntries())
     {
         std::cerr << "Failed to find anything. Exiting" << std::endl;
         return 1;
@@ -49,74 +47,20 @@ int main(int argc, char **argv)
     TGRSIOptions::AnalysisOptions()->SetCorrectCrossTalk(false);
 
     /*
-    HistogramManager *hist_man = new HistogramManager(compton_limits_filepath);
+    // HistogramManager *hist_man = new HistogramManager(compton_limits_filepath);
+    HistogramManager *hist_man = new HistogramManager();
     // turn on multiplicity filter
     // hist_man->SetMultiplicityFilter(true);
 
     // fill histograms
-    hist_man->MakeHistograms(gChain);
+    hist_man->MakeHistograms(event_chain);
     hist_man->WriteHistogramsToFile();
 
     delete hist_man;
-    */
     std::cout << "Exiting ... " << std::endl;
+    */
     return 0;
 } // main()
-
-/**************************************************************
- * Opens Root files
- *
- * @param file_name Analysis file path
- ***************************************************************/
-void OpenRootFile(std::string file_name)
-{
-    TFile f(file_name.c_str());
-    if (f.Get("AnalysisTree"))
-    {
-        if (!gChain)
-        {
-            gChain = new TChain("AnalysisTree");
-            notifier->AddChain(gChain);
-            gChain->SetNotify(notifier);
-        }
-        gChain->Add(file_name.c_str());
-        // std::cout << "Added: " << file_name << std::endl;
-    }
-} // end OpenRootFile
-
-/**************************************************************
- * Reads calibration parameters from the root file
- *
- ***************************************************************/
-void LoadInternalCalibration()
-{
-    TChannel::ReadCalFromCurrentFile();
-}
-
-/******************************************************************************
- * Determines input file type
- *
- * @param file_name  Input file
- *****************************************************************************/
-void AutoFileDetect(std::string file_name)
-{
-    size_t dot_pos = file_name.find_last_of('.');
-    std::string ext = file_name.substr(dot_pos + 1);
-
-    if (ext == "root")
-    {
-        OpenRootFile(file_name);
-    }
-    else if (ext == "cal")
-    {
-        notifier->InternalCalFile(false);
-        notifier->AddCalFile(file_name);
-    }
-    else
-    {
-        std::cerr << "Discarding unknown file: " << file_name.c_str() << std::endl;
-    }
-} // AutoFileDetect()
 
 /******************************************************************************
  * Initializes GRSISort libraries and stuff
