@@ -14,13 +14,6 @@
 
 class HistogramManager
 {
-    std::string _compton_limits_file;
-    bool _multiplicity_filter = false;
-    int _multiplicity_limit = 2;
-    int _event_number;
-    int _prompt_time_max;
-    int _bg_time_min;
-    float _detector_radius;
 
 public:
     HistogramManager();
@@ -32,11 +25,11 @@ public:
     void WriteHistogramsToFile();
     void SetMultiplicityFilter(bool val)
     {
-        _multiplicity_filter = val;
+        multiplicity_filter = val;
     };
     bool GetMultiplicityFilter()
     {
-        return _multiplicity_filter;
+        return multiplicity_filter;
     };
 
 private:
@@ -46,6 +39,13 @@ private:
     bool IsInSlice(double delta_t, int prompt_time);
 
     bool compton_rejection_algorithm_flag;
+    float detector_radius;
+    std::string compton_mapping_file;
+    bool multiplicity_filter = false;
+    int multiplicity_limit = 2;
+    int event_number;
+    int prompt_time_max;
+    int bg_time_min;
     ComptonRecovery *comp_check = NULL;
 
     double degree_to_rad = TMath::Pi() / 180.;
@@ -73,7 +73,7 @@ private:
     std::vector<float> addback_reconstructed_energy_vec;
     std::vector<float> singles_rejected_energy_vec;
     std::vector<float> addback_rejected_energy_vec;
-    std::vector<float> singles_compton_energy_vec;
+    std::vector<float> singles_accepted_energy_vec;
     std::vector<float> addback_compton_energy_vec;
 
     // position vectors

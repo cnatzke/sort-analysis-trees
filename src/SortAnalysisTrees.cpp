@@ -18,7 +18,6 @@
 
 int main(int argc, char **argv)
 {
-    std::string compton_limits_filepath = "/data1/S9038/current-sort/data/histograms/compton-algorithm/compton_limits.csv";
 
     if (argc == 1)
     { // no inputs given
@@ -46,9 +45,9 @@ int main(int argc, char **argv)
     // Specifiy crosstalk corrections
     TGRSIOptions::AnalysisOptions()->SetCorrectCrossTalk(false);
 
-    /*
-    // HistogramManager *hist_man = new HistogramManager(compton_limits_filepath);
-    HistogramManager *hist_man = new HistogramManager();
+    std::string compton_limits_filepath = "./compton_limits_145mm.csv";
+    HistogramManager *hist_man = new HistogramManager(compton_limits_filepath);
+    // HistogramManager *hist_man = new HistogramManager();
     // turn on multiplicity filter
     // hist_man->SetMultiplicityFilter(true);
 
@@ -56,9 +55,10 @@ int main(int argc, char **argv)
     hist_man->MakeHistograms(event_chain);
     hist_man->WriteHistogramsToFile();
 
+    delete file_manager;
     delete hist_man;
     std::cout << "Exiting ... " << std::endl;
-    */
+
     return 0;
 } // main()
 
