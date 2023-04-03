@@ -77,7 +77,7 @@ void HistogramManager::InitializeHistograms(int verbose)
     {
         std::cout << "Creating 2D histograms ... " << std::endl;
     }
-    hist_2D["singles_energy_channel"] = new TH1D("singles_energy_channel", ";Channel;Energy [keV]", 66, -0.5, 65.5, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
+    hist_2D["singles_energy_channel"] = new TH2D("singles_energy_channel", ";Channel;Energy [keV]", 66, -0.5, 65.5, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
 } // InitializeHistograms()
 
