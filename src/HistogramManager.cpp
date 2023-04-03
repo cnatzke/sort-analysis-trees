@@ -55,66 +55,29 @@ void HistogramManager::MakeHistograms(TChain *input_chain)
  ***************************************************************/
 void HistogramManager::InitializeHistograms(int verbose)
 {
-    int energy_bins_max = 1100;
-    int energy_bins_min = 0;
+    double gamma_binning = 1;
+    double gamma_bin_min = 0;
+    double gamma_bin_max = 3000;
 
     if (verbose > 0)
         std::cout << "Creating 1D histograms ... " << std::endl;
 
-    // 1D Histograms
-    // hist_1D["delta_t"] = new TH1D("delta_time", "#Delta t", energy_bins_max, energy_bins_min, energy_bins_max);
-    // hist_1D["k_value"] = new TH1D("k_value", "#Delta t", 1000, 0, 1000);
+    // Diagnostic matrices
+    hist_1D["event_multiplicity"] = new TH1D("event_multiplicity", ";multiplicity", 66, -0.5, 65.5);
+    hist_2D["det_cry_mapping"] = new TH2D("det_cry_mapping", ";detector;crystal", 18, -0.5, 17.5, 66, -0.5, 65.5);
 
-    hist_1D["singles_energy"] = new TH1D("singles_energy", "gamma singles", energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_1D["singles_energy_m1"] = new TH1D("singles_energy_m1", "gamma singles m == 1", energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_1D["singles_energy_m2"] = new TH1D("singles_energy_m2", "gamma singles m >= 2", energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_1D["addback_energy"] = new TH1D("addback_energy", "Addback Energy", energy_bins_max, energy_bins_min, energy_bins_max);
-    // hist_1D["singles_unsup_energy"] = new TH1D("singles_unsup_energy", "Unsuppressed singles energy", energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_1D["singles_reconstructed_energy"] = new TH1D("singles_reconstructed_energy", "singles Energy", energy_bins_max, energy_bins_min, energy_bins_max);
-    // hist_1D["addback_reconstructed_energy"] = new TH1D("addback_reconstructed_energy", "Addback Energy", energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_1D["singles_rejected_energy"] = new TH1D("singles_rejected_energy", "singles Energy", energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_1D["singles_rejected_energy_m2"] = new TH1D("singles_rejected_energy_m2", "gamma singles m >= 2", energy_bins_max, energy_bins_min, energy_bins_max);
-    // hist_1D["addback_rejected_energy"] = new TH1D("addback_rejected_energy", "Addback Energy", energy_bins_max, energy_bins_min, energy_bins_max);
+    // Efficiency matrices
+    hist_1D["sum_energy"] = new TH1D("sum_energy", ";sum_energy", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
+    hist_2D["compton_pol_efficiency"] = new TH2D("compton_pol_efficiency", "trigger hit energy;sum energy;", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
-    // accepted Compton energies
-    hist_1D["singles_accepted_energy"] = new TH1D("singles_accepted_energy", "Accepted Compton gamma singles", energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_1D["singles_accepted_energy_m2"] = new TH1D("singles_accepted_energy_m2", "gamma singles m >= 2", energy_bins_max, energy_bins_min, energy_bins_max);
-    // hist_1D["addback_compton_energy"] = new TH1D("addback_compton_energy", "Accepted Compton addback energy", energy_bins_max, energy_bins_min, energy_bins_max);
+    hist_1D["singles_energy"] = new TH1D("singles_energy", "gamma singles", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
     // 2D Histograms
     if (verbose > 0)
-        std::cout << "Creating 2D histograms ... " << std::endl;
-    hist_2D["singles_rejected_gg_matrix"] = new TH2D("singles_rejected_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["singles_compton_gg_matrix"] = new TH2D("singles_compton_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    /*
-    hist_2D["singles_energy_channel"] = new TH2D("singles_energy_channel", "#gamma singles vs channel", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["singles_gg_matrix"] = new TH2D("singles_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["singles_reconstructed_gg_matrix"] = new TH2D("singles_reconstructed_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["singles_unsup_gg_matrix"] = new TH2D("singles_unsup_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["singles_sum_angle"] = new TH2D("singles_sum_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["sum_energy_angle_tr"] = new TH2D("sum_energy_angle_tr", "Sum Energy vs angle index (time random);angle index;sum energy [keV]", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-
-    hist_2D["addback_energy_channel"] = new TH2D("addback_energy_channel", "#gamma addback vs channel", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["addback_gg_matrix"] = new TH2D("addback_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["addback_sum_angle"] = new TH2D("addback_sum_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-
-    hist_2D["addback_reconstructed_energy_channel"] = new TH2D("addback_reconstructed_energy_channel", "#gamma addback_reconstructed vs channel", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["addback_reconstructed_gg_matrix"] = new TH2D("addback_reconstructed_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["addback_reconstructed_sum_angle"] = new TH2D("addback_reconstructed_sum_angle", "Sum Energy vs angle index", 70, 0, 70, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["addback_rejected_gg_matrix"] = new TH2D("addback_rejected_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-    hist_2D["addback_compton_gg_matrix"] = new TH2D("addback_compton_gg_matrix", "", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-
-
-    // individual histograms for each angular bin
-    for (unsigned int i = 0; i < angle_combinations_vec.size(); i++)
     {
-        // prompt coincidence matrices
-        hist_2D_prompt[Form("index_%02i", i)] = new TH2D(Form("index_%02i_sum", i), ";sum energy [keV];#gamma_1 energy [keV]", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
-        // Time randoms
-        hist_2D_time_random[Form("index_%02i", i)] = new TH2D(Form("index_%02i_sum_tr", i), ";sum energy [keV];#Deltat [ns]", energy_bins_max, energy_bins_min, energy_bins_max, 600, 400, 1000);
-        hist_2D_time_random[Form("index_%02i_avg", i)] = new TH2D(Form("index_%02i_sum_tr_avg", i), ";sum energy [keV];#gamma_1 energy [keV]", energy_bins_max, energy_bins_min, energy_bins_max, energy_bins_max, energy_bins_min, energy_bins_max);
+        std::cout << "Creating 2D histograms ... " << std::endl;
     }
-    */
+    hist_2D["singles_energy_channel"] = new TH1D("singles_energy_channel", ";Channel;Energy [keV]", 66, -0.5, 65.5, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
 } // InitializeHistograms()
 
@@ -184,33 +147,20 @@ void HistogramManager::FillHistograms(TChain *gChain)
                 continue;
             }
 
+            hist_1D["event_multiplicity"]->Fill(singles_energy_vec.size());
+
             for (auto g1 = 0; g1 < (int)singles_energy_vec.size(); g1++)
             {
-                // hist_1D["k_value"]->Fill(singles_kvalue_vec.at(g1));
                 hist_1D["singles_energy"]->Fill(singles_energy_vec.at(g1));
-                if (singles_energy_vec.size() == 1)
-                {
-                    hist_1D["singles_energy_m1"]->Fill(singles_energy_vec.at(g1));
-                }
-                if (singles_energy_vec.size() >= 2)
-                {
-                    hist_1D["singles_energy_m2"]->Fill(singles_energy_vec.at(g1));
-                }
-                // hist_2D["singles_energy_channel"]->Fill(singles_id_vec.at(g1), singles_energy_vec.at(g1));
+                hist_2D["singles_energy_channel"]->Fill(singles_id_vec.at(g1), singles_energy_vec.at(g1));
+                hist_2D["det_cry_mapping"]->Fill(singles_clover_id_vec.at(g1), singles_id_vec.at(g1));
 
-                /*
-                // for (auto g2 = 0; g2 < singles_energy_vec.size(); g2++) { // symmetric matrices
                 for (auto g2 = g1 + 1; g2 < (int)singles_energy_vec.size(); g2++)
                 { // asymmetric looping
                     if (g1 == g2)
                         continue;
 
-                    double angle = singles_pos_vec.at(g1).Angle(singles_pos_vec.at(g2));
-                    int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
-                    if (angle * rad_to_degree < 0.0001 || angle * rad_to_degree > 180.0)
-                    {
-                        continue;
-                    }
+                    hist_1D["sum_energy"]->Fill(singles_energy_vec.at(g1) + singles_energy_vec.at(g2));
 
                     double delta_t = TMath::Abs(singles_time_vec.at(g1) - singles_time_vec.at(g2));
                     // Prompt coincidences
@@ -224,294 +174,8 @@ void HistogramManager::FillHistograms(TChain *gChain)
                         hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g2), singles_energy_vec.at(g1));
                     } // end prompt coincidence
                 }     // end g2
-                */
-            } // end g1
-        }     // end singles
-
-        // addback
-        if (addback_energy_vec.size() > 0)
-        {
-
-            if (multiplicity_filter && static_cast<int>(addback_energy_vec.size()) != multiplicity_limit)
-            {
-                continue;
-            }
-
-            for (auto g1 = 0; g1 < (int)addback_energy_vec.size(); g1++)
-            {
-                hist_1D["addback_energy"]->Fill(addback_energy_vec.at(g1));
-                // hist_2D["addback_energy_channel"]->Fill(addback_id_vec.at(g1), addback_energy_vec.at(g1));
-
-                /*
-                // for (auto g2 = 0; g2 < addback_energy_vec.size(); g2++) { // symmetric matrices
-                for (auto g2 = g1 + 1; g2 < (int)addback_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
-
-                    double angle = addback_pos_vec.at(g1).Angle(addback_pos_vec.at(g2));
-                    int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
-                    if (angle * rad_to_degree < 0.0001 || angle * rad_to_degree > 180.0)
-                    {
-                        continue;
-                    }
-
-                    double delta_t = TMath::Abs(addback_time_vec.at(g1) - addback_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-
-                        // 2D
-                        hist_2D["addback_sum_angle"]->Fill(angle_index, addback_energy_vec.at(g1) + addback_energy_vec.at(g2));
-                        hist_2D["addback_gg_matrix"]->Fill(addback_energy_vec.at(g1), addback_energy_vec.at(g2));
-                        hist_2D["addback_gg_matrix"]->Fill(addback_energy_vec.at(g2), addback_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-                */
-            } // end g1
-        }     // end addback
-
-        // Compton recovered singles
-        if (singles_reconstructed_energy_vec.size() > 0)
-        {
-
-            if (multiplicity_filter && static_cast<int>(singles_reconstructed_energy_vec.size()) != multiplicity_limit)
-            {
-                continue;
-            }
-
-            for (auto g1 = 0; g1 < (int)singles_reconstructed_energy_vec.size(); g1++)
-            {
-                hist_1D["singles_reconstructed_energy"]->Fill(singles_reconstructed_energy_vec.at(g1));
-                /*
-                for (auto g2 = g1 + 1; g2 < (int)singles_reconstructed_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
-
-                    double angle = singles_reconstructed_pos_vec.at(g1).Angle(singles_reconstructed_pos_vec.at(g2));
-                    // int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
-                    if (angle * rad_to_degree < 0.0001 || angle * rad_to_degree > 180.0)
-                    {
-                        continue;
-                    }
-
-                    double delta_t = TMath::Abs(singles_reconstructed_time_vec.at(g1) - singles_reconstructed_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-
-                        // 2D
-                        hist_2D["singles_reconstructed_gg_matrix"]->Fill(singles_reconstructed_energy_vec.at(g1), singles_reconstructed_energy_vec.at(g2));
-                        hist_2D["singles_reconstructed_gg_matrix"]->Fill(singles_reconstructed_energy_vec.at(g2), singles_reconstructed_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-                */
-            } // end g1
-        }     // end compton reconstructed singles
-
-        /*
-        // Compton recovered addback
-        if (addback_reconstructed_energy_vec.size() > 0)
-        {
-
-            if (multiplicity_filter && static_cast<int>(addback_reconstructed_energy_vec.size()) != multiplicity_limit)
-            {
-                continue;
-            }
-
-            for (auto g1 = 0; g1 < (int)addback_reconstructed_energy_vec.size(); g1++)
-            {
-                hist_1D["addback_reconstructed_energy"]->Fill(addback_reconstructed_energy_vec.at(g1));
-                hist_2D["addback_reconstructed_energy_channel"]->Fill(addback_reconstructed_id_vec.at(g1), addback_reconstructed_energy_vec.at(g1));
-
-                // for (auto g2 = 0; g2 < addback_reconstructed_energy_vec.size(); g2++) { // symmetric matrices
-                for (auto g2 = g1 + 1; g2 < (int)addback_reconstructed_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
-
-                    double angle = addback_reconstructed_pos_vec.at(g1).Angle(addback_reconstructed_pos_vec.at(g2));
-                    int angle_index = GetAngleIndex(angle * rad_to_degree, angle_combinations_vec);
-                    if (angle * rad_to_degree < 0.0001 || angle * rad_to_degree > 180.0)
-                    {
-                        continue;
-                    }
-
-                    double delta_t = TMath::Abs(addback_reconstructed_time_vec.at(g1) - addback_reconstructed_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-
-                        // 2D
-                        hist_2D["addback_reconstructed_sum_angle"]->Fill(angle_index, addback_reconstructed_energy_vec.at(g1) + addback_reconstructed_energy_vec.at(g2));
-                        hist_2D["addback_reconstructed_gg_matrix"]->Fill(addback_reconstructed_energy_vec.at(g1), addback_reconstructed_energy_vec.at(g2));
-                        hist_2D["addback_reconstructed_gg_matrix"]->Fill(addback_reconstructed_energy_vec.at(g2), addback_reconstructed_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
             }         // end g1
-        }             // end compton recovered addback
-        */
-
-        /*
-        // Unsuppressed singles
-        if (singles_unsup_energy_vec.size() > 0)
-        {
-
-            if (multiplicity_filter && static_cast<int>(singles_unsup_energy_vec.size()) != multiplicity_limit)
-            {
-                continue;
-            }
-
-            for (auto g1 = 0; g1 < (int)singles_unsup_energy_vec.size(); g1++)
-            {
-                hist_1D["singles_unsup_energy"]->Fill(singles_unsup_energy_vec.at(g1));
-                for (auto g2 = g1 + 1; g2 < (int)singles_unsup_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
-
-                    double delta_t = TMath::Abs(singles_unsup_time_vec.at(g1) - singles_unsup_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-
-                        // 2D
-                        hist_2D["singles_unsup_gg_matrix"]->Fill(singles_unsup_energy_vec.at(g1), singles_unsup_energy_vec.at(g2));
-                        hist_2D["singles_unsup_gg_matrix"]->Fill(singles_unsup_energy_vec.at(g2), singles_unsup_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-            }         // end g1
-        }             // end compton reconstructed singles
-        */
-
-        // singles Compton events
-        if (singles_accepted_energy_vec.size() > 0)
-        {
-
-            if (multiplicity_filter && static_cast<int>(singles_accepted_energy_vec.size()) != multiplicity_limit)
-            {
-                continue;
-            }
-
-            for (auto g1 = 0; g1 < (int)singles_accepted_energy_vec.size(); g1++)
-            {
-                hist_1D["singles_accepted_energy"]->Fill(singles_accepted_energy_vec.at(g1));
-                for (auto g2 = g1 + 1; g2 < (int)singles_accepted_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
-
-                    double delta_t = TMath::Abs(singles_compton_time_vec.at(g1) - singles_compton_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-                        // 2D
-                        hist_2D["singles_compton_gg_matrix"]->Fill(singles_accepted_energy_vec.at(g1), singles_accepted_energy_vec.at(g2));
-                        hist_2D["singles_compton_gg_matrix"]->Fill(singles_accepted_energy_vec.at(g2), singles_accepted_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-            }         // end g1
-        }             // end singles Compton events
-
-        /*
-        // addback Compton events
-        if (addback_compton_energy_vec.size() > 0)
-        {
-
-            if (multiplicity_filter && static_cast<int>(addback_compton_energy_vec.size()) != multiplicity_limit)
-            {
-                continue;
-            }
-
-            for (auto g1 = 0; g1 < (int)addback_compton_energy_vec.size(); g1++)
-            {
-                hist_1D["addback_compton_energy"]->Fill(addback_compton_energy_vec.at(g1));
-                for (auto g2 = g1 + 1; g2 < (int)addback_compton_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
-
-                    double delta_t = TMath::Abs(addback_compton_time_vec.at(g1) - addback_compton_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-                        // 2D
-                        hist_2D["addback_compton_gg_matrix"]->Fill(addback_compton_energy_vec.at(g1), addback_compton_energy_vec.at(g2));
-                        hist_2D["addback_compton_gg_matrix"]->Fill(addback_compton_energy_vec.at(g2), addback_compton_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-            }         // end g1
-        }             // end addback Compton events
-        */
-
-        // singles Compton rejected events
-        if (singles_rejected_energy_vec.size() > 0)
-        {
-
-            if (multiplicity_filter && static_cast<int>(singles_energy_vec.size()) != multiplicity_limit)
-            {
-                continue;
-            }
-
-            for (auto g1 = 0; g1 < (int)singles_rejected_energy_vec.size(); g1++)
-            {
-                hist_1D["singles_rejected_energy"]->Fill(singles_rejected_energy_vec.at(g1));
-                for (auto g2 = g1 + 1; g2 < (int)singles_rejected_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
-
-                    double delta_t = TMath::Abs(singles_rejected_time_vec.at(g1) - singles_rejected_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-                        // 2D
-                        hist_2D["singles_rejected_gg_matrix"]->Fill(singles_rejected_energy_vec.at(g1), singles_rejected_energy_vec.at(g2));
-                        hist_2D["singles_rejected_gg_matrix"]->Fill(singles_rejected_energy_vec.at(g2), singles_rejected_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-            }         // end g1
-        }             // end singles rejected events
-
-        /*
-        // addback Compton rejected events
-        if (addback_rejected_energy_vec.size() > 0)
-        {
-
-            if (multiplicity_filter && static_cast<int>(addback_rejected_energy_vec.size()) != multiplicity_limit)
-            {
-                continue;
-            }
-
-            for (auto g1 = 0; g1 < (int)addback_rejected_energy_vec.size(); g1++)
-            {
-                hist_1D["addback_rejected_energy"]->Fill(addback_rejected_energy_vec.at(g1));
-                for (auto g2 = g1 + 1; g2 < (int)addback_rejected_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
-
-                    double delta_t = TMath::Abs(addback_rejected_time_vec.at(g1) - addback_rejected_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-                        // 2D
-                        hist_2D["addback_rejected_gg_matrix"]->Fill(addback_rejected_energy_vec.at(g1), addback_rejected_energy_vec.at(g2));
-                        hist_2D["addback_rejected_gg_matrix"]->Fill(addback_rejected_energy_vec.at(g2), addback_rejected_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-            }         // end g1
-        }             // end addback rejected events
-        */
+        }             // end singles
 
         if (i % 10000 == 0)
         {

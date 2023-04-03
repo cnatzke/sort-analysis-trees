@@ -18,6 +18,7 @@
 
 int main(int argc, char **argv)
 {
+    bool use_compton_alg = false;
 
     if (argc == 1)
     { // no inputs given
@@ -45,9 +46,16 @@ int main(int argc, char **argv)
     // Specifiy crosstalk corrections
     TGRSIOptions::AnalysisOptions()->SetCorrectCrossTalk(false);
 
-    std::string compton_limits_filepath = "./compton_limits_145mm.csv";
-    HistogramManager *hist_man = new HistogramManager(compton_limits_filepath);
-    // HistogramManager *hist_man = new HistogramManager();
+    HistogramManager *hist_man;
+    if (use_compton_alg)
+    {
+        std::string compton_limits_filepath = "./compton_limits_145mm.csv";
+        hist_man = new HistogramManager(compton_limits_filepath);
+    }
+    else
+    {
+        hist_man = new HistogramManager();
+    }
     // turn on multiplicity filter
     // hist_man->SetMultiplicityFilter(true);
 
