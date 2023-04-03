@@ -162,19 +162,17 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
                     hist_1D["sum_energy"]->Fill(singles_energy_vec.at(g1) + singles_energy_vec.at(g2));
 
-                    double delta_t = TMath::Abs(singles_time_vec.at(g1) - singles_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
-                    {
-                        // 1D
-
-                        // 2D
-                        hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g1), singles_energy_vec.at(g2));
-                        hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g2), singles_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-            }         // end g1
-        }             // end singles
+                    // double delta_t = TMath::Abs(singles_time_vec.at(g1) - singles_time_vec.at(g2));
+                    // // Prompt coincidences
+                    // if (delta_t < prompt_time_max)
+                    // {
+                    //     // 2D
+                    //     hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g1), singles_energy_vec.at(g2));
+                    //     hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g2), singles_energy_vec.at(g1));
+                    // } // end prompt coincidence
+                } // end g2
+            }     // end g1
+        }         // end singles
 
         if (i % 10000 == 0)
         {
