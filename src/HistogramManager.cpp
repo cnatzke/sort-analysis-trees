@@ -169,7 +169,6 @@ void HistogramManager::FillHistograms(TChain *gChain)
                         // 1D
 
                         // 2D
-                        hist_2D["singles_sum_angle"]->Fill(angle_index, singles_energy_vec.at(g1) + singles_energy_vec.at(g2));
                         hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g1), singles_energy_vec.at(g2));
                         hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g2), singles_energy_vec.at(g1));
                     } // end prompt coincidence
