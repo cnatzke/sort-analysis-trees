@@ -68,7 +68,7 @@ void HistogramManager::InitializeHistograms(int verbose)
 
     // Efficiency matrices
     hist_1D["sum_energy"] = new TH1D("sum_energy", ";sum_energy", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
-    hist_2D["compton_pol_efficiency"] = new TH2D("compton_pol_efficiency", "trigger hit energy;sum energy;", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
+    hist_2D["compton_pol_efficiency"] = new TH2D("compton_pol_efficiency", ";trigger hit energy;sum energy;", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
     hist_1D["singles_energy"] = new TH1D("singles_energy", "gamma singles", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
