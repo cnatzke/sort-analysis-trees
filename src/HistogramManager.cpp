@@ -63,14 +63,13 @@ void HistogramManager::InitializeHistograms(int verbose)
         std::cout << "Creating 1D histograms ... " << std::endl;
 
     // Diagnostic matrices
+    hist_1D["singles_energy"] = new TH1D("singles_energy", "gamma singles", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
     hist_1D["event_multiplicity"] = new TH1D("event_multiplicity", ";multiplicity", 66, -0.5, 65.5);
     hist_2D["det_cry_mapping"] = new TH2D("det_cry_mapping", ";detector;crystal", 18, -0.5, 17.5, 66, -0.5, 65.5);
 
     // Efficiency matrices
     hist_1D["sum_energy"] = new TH1D("sum_energy", ";sum_energy", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
     hist_2D["compton_pol_efficiency"] = new TH2D("compton_pol_efficiency", ";trigger hit energy;sum energy;", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
-
-    hist_1D["singles_energy"] = new TH1D("singles_energy", "gamma singles", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
     // 2D Histograms
     if (verbose > 0)
@@ -130,52 +129,140 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
     long analysis_entries = gChain->GetEntries();
     ProgressBar progress_bar(analysis_entries, 70, '=', ' ');
+
+    TGriffinHit *first_griffin_hit;
+    TGriffinHit *second_griffin_hit;
+    TGriffinHit *third_griffin_hit;
+
     // for (auto i = 0; i < 1000; i++)
-    for (auto i = 0; i < analysis_entries; i++)
+    for (auto h = 0; h < analysis_entries; h++)
     {
-        gChain->GetEntry(i);
-        event_number = i;
+        gChain->GetEntry(h);
 
-        // Applies multiplicity filter and recovers inter-clover compton scatters
-        PreProcessData(comp_check);
+        Int_t multiplicity = fGrif->GetMultiplicity();
+        hist_1D["event_multiplicity"]->Fill(multiplicity);
 
-        // suppressed singles
-        if (singles_energy_vec.size() > 0)
+        for (auto i = 0; i < multiplicity; ++i)
         {
+            Int_t match_counter = 0;
+            Int_t match_case = 0;
 
-            if (multiplicity_filter && static_cast<int>(singles_energy_vec.size()) != multiplicity_limit)
+            first_griffin_hit = fGrif->GetGriffinHit(i);
+            Int_t first_cry = first_griffin_hit->GetArrayNumber();
+            Int_t first_det = first_griffin_hit->GetDetector();
+
+            hist_1D["singles_energy"]->Fill(first_griffin_hit->GetEnergy());
+            hist_2D["det_cry_mapping"]->Fill(first_det, first_cry);
+
+            for (auto j = i + 1; j < multiplicity; ++j)
             {
-                continue;
-            }
+                second_griffin_hit = fGrif->GetGriffinHit(j);
+                Int_t second_det = second_griffin_hit->GetDetector();
 
-            hist_1D["event_multiplicity"]->Fill(singles_energy_vec.size());
+                hist_1D["sum_energy"]->Fill(first_griffin_hit->GetEnergy() + second_griffin_hit->GetEnergy());
 
-            for (auto g1 = 0; g1 < (int)singles_energy_vec.size(); g1++)
-            {
-                hist_1D["singles_energy"]->Fill(singles_energy_vec.at(g1));
-                hist_2D["singles_energy_channel"]->Fill(singles_id_vec.at(g1), singles_energy_vec.at(g1));
-                hist_2D["det_cry_mapping"]->Fill(singles_clover_id_vec.at(g1), singles_id_vec.at(g1));
+                if (second_det == first_det)
+                {
+                    match_case = 1;
+                    match_counter += 1;
+                }
 
-                for (auto g2 = g1 + 1; g2 < (int)singles_energy_vec.size(); g2++)
-                { // asymmetric looping
-                    if (g1 == g2)
-                        continue;
+                for (auto k = j + 1; k < multiplicity; ++k)
+                {
+                    third_griffin_hit = fGrif->GetGriffinHit(k);
+                    Int_t third_det = third_griffin_hit->GetDetector();
 
-                    hist_1D["sum_energy"]->Fill(singles_energy_vec.at(g1) + singles_energy_vec.at(g2));
-
-                    double delta_t = TMath::Abs(singles_time_vec.at(g1) - singles_time_vec.at(g2));
-                    // Prompt coincidences
-                    if (delta_t < prompt_time_max)
+                    if (multiplicity == 3)
                     {
-                        // 2D
-                        hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g1), singles_energy_vec.at(g2));
-                        hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g2), singles_energy_vec.at(g1));
-                    } // end prompt coincidence
-                }     // end g2
-            }         // end g1
-        }             // end singles
+                        if (third_det == first_det)
+                        {
+                            match_case = 2;
+                            match_counter += 1;
+                        }
+                        if (third_det == second_det)
+                        {
+                            match_case = 3;
+                            match_counter += 1;
+                        }
 
-        if (i % 10000 == 0)
+                        // only consider events that have a scatter in different detectors
+                        if (match_counter == 1)
+                        {
+                            // build hit array based on which two events scattered in one clover
+                            std::array<TGriffinHit *, 3> ordered_hit_array;
+                            switch (match_case)
+                            {
+                            case 1:
+                                ordered_hit_array = {third_griffin_hit, first_griffin_hit, second_griffin_hit};
+                                break;
+                            case 2:
+                                ordered_hit_array = {second_griffin_hit, first_griffin_hit, third_griffin_hit};
+                                break;
+                            case 3:
+                                ordered_hit_array = {first_griffin_hit, second_griffin_hit, third_griffin_hit};
+                                break;
+
+                            default:
+                                break;
+                            }
+
+                            // sum up total energy of all three hits
+                            Double_t sum_energy = 0;
+                            for (Int_t hit = 0; hit < 3; hit++)
+                            {
+                                sum_energy += ordered_hit_array[hit]->GetEnergy();
+                            }
+                            hist_2D["compton_pol_efficiency"]->Fill(ordered_hit_array[0]->GetEnergy(), sum_energy);
+                        }
+                    }
+                }
+            }
+        }
+
+        /*
+                event_number = i;
+
+                    // Applies multiplicity filter and recovers inter-clover compton scatters
+                    // PreProcessData(comp_check);
+
+                    // suppressed singles
+                    if (singles_energy_vec.size() > 0)
+                {
+
+                    if (multiplicity_filter && static_cast<int>(singles_energy_vec.size()) != multiplicity_limit)
+                    {
+                        continue;
+                    }
+
+                    hist_1D["event_multiplicity"]->Fill(singles_energy_vec.size());
+
+                    for (auto g1 = 0; g1 < (int)singles_energy_vec.size(); g1++)
+                    {
+                        hist_1D["singles_energy"]->Fill(singles_energy_vec.at(g1));
+                        hist_2D["singles_energy_channel"]->Fill(singles_id_vec.at(g1), singles_energy_vec.at(g1));
+                        hist_2D["det_cry_mapping"]->Fill(singles_clover_id_vec.at(g1), singles_id_vec.at(g1));
+
+                        for (auto g2 = g1 + 1; g2 < (int)singles_energy_vec.size(); g2++)
+                        { // asymmetric looping
+                            if (g1 == g2)
+                                continue;
+
+                            hist_1D["sum_energy"]->Fill(singles_energy_vec.at(g1) + singles_energy_vec.at(g2));
+
+                            double delta_t = TMath::Abs(singles_time_vec.at(g1) - singles_time_vec.at(g2));
+                            // Prompt coincidences
+                            if (delta_t < prompt_time_max)
+                            {
+                                // 2D
+                                hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g1), singles_energy_vec.at(g2));
+                                hist_2D["singles_gg_matrix"]->Fill(singles_energy_vec.at(g2), singles_energy_vec.at(g1));
+                            } // end prompt coincidence
+                        }     // end g2
+                    }         // end g1
+                }             // end singles
+                */
+
+        if (h % 10000 == 0)
         {
             progress_bar.display();
         }
