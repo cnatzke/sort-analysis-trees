@@ -69,6 +69,7 @@ void HistogramManager::InitializeHistograms(int verbose)
 
     // Efficiency matrices
     hist_1D["sum_energy"] = new TH1D("sum_energy", ";sum_energy", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
+    hist_1D["sum_energy_timing"] = new TH1D("sum_energy_timing", ";#Deltat [ns]", 5000, -2500, 2500);
     hist_2D["compton_pol_efficiency"] = new TH2D("compton_pol_efficiency", ";trigger hit energy;sum energy;", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
     // 2D Histograms
@@ -159,7 +160,11 @@ void HistogramManager::FillHistograms(TChain *gChain)
                 second_griffin_hit = fGrif->GetGriffinHit(j);
                 Int_t second_det = second_griffin_hit->GetDetector();
 
+                // if (IsCoincidentInTime(first_griffin_hit->GetTime(), second_griffin_hit->GetTime(), 30)) // 30 ns
+                // {
                 hist_1D["sum_energy"]->Fill(first_griffin_hit->GetEnergy() + second_griffin_hit->GetEnergy());
+                hist_1D["sum_energy_timing"]->Fill(first_griffin_hit->GetTime() - second_griffin_hit->GetTime());
+                // }
 
                 if (second_det == first_det)
                 {
@@ -564,6 +569,18 @@ void HistogramManager::PreProcessData(ComptonRecovery *comp_check)
     }     // end grif1 - addback
 
 } // PreProcessData
+
+/****************************************************************
+ * Checks for timing coincidence
+ *
+ * @param t1 Time of first hit
+ * @param t2 Time of second hit
+ * @param dt Max time difference
+ *****************************************************************************/
+bool HistogramManager::IsCoincidentInTime(double t1, double t2, double dt)
+{
+    return std::abs(t1 - t2) < dt;
+} // end TimingCoincidence
 
 /****************************************************************
  * Returns the angular index

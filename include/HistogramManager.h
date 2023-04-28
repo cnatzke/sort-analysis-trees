@@ -37,6 +37,7 @@ private:
     int GetAngleIndex(double angle, std::vector<double> vec);
     int GetClosest(int val1, int val2, std::vector<double> vec, double target);
     bool IsInSlice(double delta_t, int prompt_time);
+    bool IsCoincidentInTime(double t1, double t2, double dt);
 
     bool compton_rejection_algorithm_flag;
     float detector_radius;
