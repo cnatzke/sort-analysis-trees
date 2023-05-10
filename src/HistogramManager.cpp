@@ -71,6 +71,7 @@ void HistogramManager::InitializeHistograms(int verbose)
     hist_1D["sum_energy"] = new TH1D("sum_energy", ";sum_energy", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
     hist_1D["sum_energy_timing"] = new TH1D("sum_energy_timing", ";#Deltat [ns]", 5000, -2500, 2500);
     hist_2D["compton_pol_efficiency"] = new TH2D("compton_pol_efficiency", ";trigger hit energy;sum energy;", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
+    hist_2D["sum_energy_distribution"] = new TH2D("sum_energy_distribution", ";sum energy;#gamma_1 energy;", gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max, gamma_bin_max / gamma_binning, gamma_bin_min, gamma_bin_max);
 
     // 2D Histograms
     if (verbose > 0)
@@ -153,6 +154,7 @@ void HistogramManager::FillHistograms(TChain *gChain)
             Int_t first_det = first_griffin_hit->GetDetector();
 
             hist_1D["singles_energy"]->Fill(first_griffin_hit->GetEnergy());
+            hist_2D["singles_energy_channel"]->Fill(first_griffin_hit->GetEnergy(), first_cry);
             hist_2D["det_cry_mapping"]->Fill(first_det, first_cry);
 
             for (auto j = i + 1; j < multiplicity; ++j)
@@ -162,8 +164,10 @@ void HistogramManager::FillHistograms(TChain *gChain)
 
                 // if (IsCoincidentInTime(first_griffin_hit->GetTime(), second_griffin_hit->GetTime(), 30)) // 30 ns
                 // {
-                hist_1D["sum_energy"]->Fill(first_griffin_hit->GetEnergy() + second_griffin_hit->GetEnergy());
+                double sum_energy = first_griffin_hit->GetEnergy() + second_griffin_hit->GetEnergy();
+                hist_1D["sum_energy"]->Fill(sum_energy);
                 hist_1D["sum_energy_timing"]->Fill(first_griffin_hit->GetTime() - second_griffin_hit->GetTime());
+                hist_2D["sum_energy_distribution"]->Fill(sum_energy, first_griffin_hit->GetEnergy());
                 // }
 
                 if (second_det == first_det)
